@@ -28,7 +28,7 @@ public class Scene
 
     public string GetCurrentLine()
     {
-        Debug.Log(Lines[Index]);
+        //Debug.Log(Lines[Index]);
         return Lines[Index];
     }
 

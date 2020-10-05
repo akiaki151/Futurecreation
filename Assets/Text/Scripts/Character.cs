@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class Character : MonoBehaviour {
 
-    private GameObject charactorObject;
-    private SpriteRenderer charactorImage;
-    private Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
-    private CanvasGroup canvasGroup;
+    private GameObject _charactorObject;
+    private SpriteRenderer _charactorImage;
+    private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
+    private CanvasGroup _canvasGroup;
 
     public string Name { get; private set; }
     
@@ -20,8 +20,8 @@ public class Character : MonoBehaviour {
     public void Init(string name)
     {
         this.Name = name;
-        charactorObject = gameObject;
-        charactorImage = charactorObject.GetComponent<SpriteRenderer>();
+        _charactorObject = gameObject;
+        _charactorImage = _charactorObject.GetComponent<SpriteRenderer>();
         gameObject.SetActive(false);
         LoadImage();
     }
@@ -31,26 +31,26 @@ public class Character : MonoBehaviour {
         var temp = Resources.LoadAll<Sprite>("Image/Characters/"+Name).ToList();
         foreach (Sprite s in temp)
         {
-            sprites.Add(s.name, s);
+            _sprites.Add(s.name, s);
         }
     }
 
     public void SetImage(string imageID)
     {
-        charactorImage.sprite = sprites[imageID];
+        _charactorImage.sprite = _sprites[imageID];
         FadeIn();
     }
 
     public void Appear()
     {
-        charactorObject.SetActive(true);
+        _charactorObject.SetActive(true);
         FadeIn();
     }
 
     public void FadeIn()
     {
-        charactorImage.color = new Color(1f, 1f, 1f, 0);
-        charactorImage.DOFade(1.0f, 0.2f);
+        _charactorImage.color = new Color(1f, 1f, 1f, 0);
+        _charactorImage.DOFade(1.0f, 0.2f);
     }
 
     public void Destroy()

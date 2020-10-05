@@ -2,16 +2,15 @@
 using System.Linq;
 using System.Reflection;
 
-
 public class SceneReader
 {
-    private SceneController sc;
-    private Actions actions;
+    private SceneController _sc;
+    private Actions _actions;
 
-    public SceneReader(SceneController sc)
+    public SceneReader(SceneController _sc)
     {
-        this.sc = sc;
-        actions = sc.Actions;
+        this._sc = _sc;
+        _actions = _sc.Actions;
     }
 
     public void ReadLines(Scene s)
@@ -19,6 +18,7 @@ public class SceneReader
         if (s.Index >= s.Lines.Count) return;
 
         var line = s.GetCurrentLine();
+
         var text = "";
 
         if (line.Contains("#"))
@@ -28,33 +28,34 @@ public class SceneReader
                 if (!line.Contains("#")) break;
 
                 line = line.Replace("#", "");
+
                 if (line.Contains("speaker"))
                 {
                     line = line.Replace("speaker=", "");
-                    sc.SetSpeaker(line);
+                    _sc.SetSpeaker(line);
                 }
                 else if (line.Contains("chara"))
                 {
                     line = line.Replace("chara=", "");
-                    sc.AddCharactor(line);
+                    _sc.AddCharactor(line);
                 }
                 else if (line.Contains("image"))
                 {
                     line = line.Replace("image_", "");
                     var splitted = line.Split('=');
-                    sc.SetImage(splitted[0], splitted[1]);
+                    _sc.SetImage(splitted[0], splitted[1]);
                 }
                 else if (line.Contains("next"))
                 {
                     line = line.Replace("next=", "");
-                    sc.SetScene(line);
+                    _sc.SetScene(line);
                 }
                 else if (line.Contains("method"))
                 {
                     line = line.Replace("method=", "");
-                    var type = actions.GetType();
+                    var type = _actions.GetType();
                     MethodInfo mi = type.GetMethod(line);
-                    mi.Invoke(actions, new object[] { });
+                    mi.Invoke(_actions, new object[] { });
                 }
                 else if (line.Contains("options"))
                 {
@@ -71,7 +72,7 @@ public class SceneReader
                         }
                         else
                         {
-                            sc.SetOptions(options);
+                            _sc.SetOptions(options);
                             break;
                         }
                     }
@@ -85,7 +86,7 @@ public class SceneReader
         if (line.Contains('{'))
         {
             line = line.Replace("{", "");
-            
+
             while (true)
             {
                 if (line.Contains('}'))
@@ -103,7 +104,7 @@ public class SceneReader
                 if (s.IsFinished()) break;
                 line = s.GetCurrentLine();
             }
-            if (!string.IsNullOrEmpty(text)) sc.SetText(text);
+            if (!string.IsNullOrEmpty(text)) _sc.SetText(text);
         }
     }
 }

@@ -8,7 +8,9 @@ using UnityEngine.UI;
 public class SceneController
 {  
     public Actions Actions;
-    public List<Character> Characters = new List<Character>();
+    public List<CharacterIcon>  CharaIcons  = new List<CharacterIcon>();
+    public List<Character>      Characters  = new List<Character>();
+    public List<Background>     Backgrounds = new List<Background>();
 
     private GameController _gc;
     private GUIManager _gui;
@@ -114,18 +116,18 @@ public class SceneController
         _gui.Speaker.text = name;
     }
 
-    public void SetCharactor(string name)
+    //キャラクター処理//////////////////////////////////////////////////
+    public void SetCharacter(string name)
     {
         Characters.ForEach(c => c.Destroy());
         Characters = new List<Character>();
-        AddCharactor(name);
+        AddCharacter(name);
     }
-
-    public void AddCharactor(string name)
+    public void AddCharacter(string name)
     {
         if (Characters.Exists(c => c.Name == name)) return;
 
-        var prefab = Resources.Load("Charactor") as GameObject;
+        var prefab = Resources.Load("Character") as GameObject;
         var charactorObject = Object.Instantiate(prefab);
         var character = charactorObject.GetComponent<Character>();
 
@@ -133,25 +135,76 @@ public class SceneController
         Characters.Add(character);
         _imageSeq = DOTween.Sequence();
 
-        for (int i = 0; i < Characters.Count; i++)
-        {
-            var pos = _gui.MainCamera.ScreenToWorldPoint(Vector3.zero);
-            var pos2 = _gui.MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-            var posWidth = pos2.x - pos.x;
-            var left = pos.x + (posWidth * (i + 1) / (Characters.Count + 1));
-            var cpos = new Vector3(0, _gui.MainCamera.transform.position.y, 0);
-
-            _imageSeq.Append(Characters[i].transform.DOMove(cpos, 0f))
-                .OnComplete(() => character.Appear());
-        }
-
+        var cpos = new Vector3(0, _gui.MainCamera.transform.position.y , 0);
+        _imageSeq.Append(Characters[0].transform.DOMove(cpos, 0f))
+            .OnComplete(() => character.Appear());
     }
-
-    public void SetImage(string name, string ID)
+    public void SetCharaImage(string name, string ID)
     {
         var character = Characters.Find(c => c.Name == name);
         character.SetImage(ID);
     }
+    //////////////////////////////////////////////////////////////////////
+
+    //キャラアイコン処理//////////////////////////////////////////////////
+    public void SetCharaIcon(string name)
+    {
+        CharaIcons.ForEach(c => c.Destroy());
+        CharaIcons = new List<CharacterIcon>();
+        AddCharaIcon(name);
+    }
+    public void AddCharaIcon(string name)
+    {
+        if (CharaIcons.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("CharacterIcon") as GameObject;
+        var charactorObject = Object.Instantiate(prefab);
+        var character = charactorObject.GetComponent<CharacterIcon>();
+
+        character.Init(name);
+        CharaIcons.Add(character);
+        _imageSeq = DOTween.Sequence();
+
+        var cpos = new Vector3(-7, _gui.MainCamera.transform.position.y - 3, 0);
+        _imageSeq.Append(CharaIcons[0].transform.DOMove(cpos, 0f))
+            .OnComplete(() => character.Appear());
+    }
+    public void SetIcoImage(string name, string ID)
+    {
+        var character = CharaIcons.Find(c => c.Name == name);
+        character.SetImage(ID);
+    }
+    //////////////////////////////////////////////////////////////////////
+    
+    //背景処理////////////////////////////////////////////////////////////
+    public void SetBackground(string name)
+    {
+        Backgrounds.ForEach(c => c.Destroy());
+        Backgrounds = new List<Background>();
+        AddBackground(name);
+    }
+    public void AddBackground(string name)
+    {
+        if (Backgrounds.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("Background") as GameObject;
+        var backgroundObject = Object.Instantiate(prefab);
+        var background = backgroundObject.GetComponent<Background>();
+
+        background.Init(name);
+        Backgrounds.Add(background);
+        _imageSeq = DOTween.Sequence();
+
+        var cpos = new Vector3(0, _gui.MainCamera.transform.position.y, 0);
+        _imageSeq.Append(Backgrounds[0].transform.DOMove(cpos, 0f))
+            .OnComplete(() => background.Appear());
+    }
+    public void SetBgImage(string name, string ID)
+    {
+        var background = Backgrounds.Find(c => c.Name == name);
+        background.SetImage(ID);
+    }
+    //////////////////////////////////////////////////////////////////////
 
     public void SetOptions(List<(string text, string nextScene)> options)
     {

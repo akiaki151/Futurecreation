@@ -11,6 +11,9 @@ public class SceneReader
     {
         this._sc = _sc;
         _actions = _sc.Actions;
+        _sc.AddBackground("BackGrounds");
+        _sc.AddCharaIcon("CharaIcons");
+        _sc.AddCharacter("Characters");
     }
 
     public void ReadLines(Scene s)
@@ -37,13 +40,17 @@ public class SceneReader
                 else if (line.Contains("chara"))
                 {
                     line = line.Replace("chara=", "");
-                    _sc.AddCharactor(line);
+                    _sc.SetCharaImage("Characters", line);
                 }
-                else if (line.Contains("image"))
+                else if (line.Contains("ico"))
                 {
-                    line = line.Replace("image_", "");
-                    var splitted = line.Split('=');
-                    _sc.SetImage(splitted[0], splitted[1]);
+                    line = line.Replace("ico=", "");
+                    _sc.SetIcoImage("CharaIcons", line);
+                }
+                else if (line.Contains("background"))
+                {
+                    line = line.Replace("background=", "");
+                    _sc.SetBgImage("BackGrounds", line);
                 }
                 else if (line.Contains("next"))
                 {

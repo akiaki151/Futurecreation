@@ -14,6 +14,7 @@ public class SceneReader
         _sc.AddBackground("BackGrounds");
         _sc.AddCharaIcon("CharaIcons");
         _sc.AddCharacter("Characters");
+        
     }
 
     public void ReadLines(Scene s)
@@ -51,6 +52,18 @@ public class SceneReader
                 {
                     line = line.Replace("background=", "");
                     _sc.SetBgImage("BackGrounds", line);
+                }
+                else if (line.Contains("score"))
+                {
+                    line = line.Replace("score=", "");
+                    _sc.AddScore(line);
+                    
+                }
+                else if (line.Contains("add"))
+                {
+                    line = line.Replace("add=", "");
+                    var splitted = line.Split(':');
+                    _sc.SetScore(splitted[0], splitted[1]);
                 }
                 else if (line.Contains("next"))
                 {

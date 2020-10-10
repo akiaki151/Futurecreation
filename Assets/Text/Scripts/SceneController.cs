@@ -11,6 +11,7 @@ public class SceneController
     public List<CharacterIcon>  CharaIcons  = new List<CharacterIcon>();
     public List<Character>      Characters  = new List<Character>();
     public List<Background>     Backgrounds = new List<Background>();
+    public List<Score>          Score       = new List<Score>();
 
     private GameController _gc;
     private GUIManager _gui;
@@ -205,6 +206,25 @@ public class SceneController
         background.SetImage(ID);
     }
     //////////////////////////////////////////////////////////////////////
+
+    //スコア処理////////////////////////////////////////////////////////////
+    public void AddScore(string name)
+    {
+        if (Score.Exists(c => c.Name == name)) return;
+        var prefab = Resources.Load("CharaScore") as GameObject;
+        var scoreobject = Object.Instantiate(prefab);
+        var score = scoreobject.GetComponent<Score>();
+        score.Init(name);
+        Score.Add(score);
+    }
+    public void SetScore(string name, string num)
+    {
+        var score = Score.Find(c => c.Name == name);
+        int num2 = int.Parse(num);
+        score.ChangeScore(num2);
+    }
+    //////////////////////////////////////////////////////////////////////
+
 
     public void SetOptions(List<(string text, string nextScene)> options)
     {

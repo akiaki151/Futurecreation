@@ -3,10 +3,10 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
-public class Character : MonoBehaviour {
+public class CharacterIcon : MonoBehaviour {
 
-    private GameObject _characterObject;
-    private SpriteRenderer _characterImage;
+    private GameObject _charaIcoObject;
+    private SpriteRenderer _charaIcoImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private CanvasGroup _canvasGroup;
 
@@ -20,8 +20,8 @@ public class Character : MonoBehaviour {
     public void Init(string name)
     {
         this.Name = name;
-        _characterObject = gameObject;
-        _characterImage = _characterObject.GetComponent<SpriteRenderer>();
+        _charaIcoObject = gameObject;
+        _charaIcoImage = _charaIcoObject.GetComponent<SpriteRenderer>();
         gameObject.SetActive(false);
         LoadImage();
     }
@@ -37,20 +37,20 @@ public class Character : MonoBehaviour {
 
     public void SetImage(string imageID)
     {
-        _characterImage.sprite = _sprites[imageID];
+        _charaIcoImage.sprite = _sprites[imageID];
         FadeIn();
     }
 
     public void Appear()
     {
-        _characterObject.SetActive(true);
+        _charaIcoObject.SetActive(true);
         FadeIn();
     }
 
     public void FadeIn()
     {
-        _characterImage.color = new Color(1f, 1f, 1f, 0);
-        _characterImage.DOFade(1.0f, 0.2f);
+        _charaIcoImage.color = new Color(1f, 1f, 1f, 0);
+        _charaIcoImage.DOFade(1.0f, 0.2f);
     }
 
     public void Destroy()

@@ -5,11 +5,11 @@ using UnityEngine;
 public class SceneHolder
 {
     public List<Scene> Scenes = new List<Scene>();
-    private SceneController sc;
+    private SceneController _sc;
 
-    public SceneHolder(SceneController sc)
+    public SceneHolder(SceneController _sc)
     {
-        this.sc = sc;
+        this._sc = _sc;
         Load();
     }
 

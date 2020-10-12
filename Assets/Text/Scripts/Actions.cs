@@ -1,6 +1,4 @@
-﻿
-
-public class Actions
+﻿public class Actions
 {
     GameController gc;
     

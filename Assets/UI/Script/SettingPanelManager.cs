@@ -6,9 +6,11 @@ using UnityEngine.UI;
 public class SettingPanelManager : MonoBehaviour
 {
     [SerializeField] private GameObject SettingWindow;
-    [SerializeField] private GameObject GeneralSettingPanel, TextSettingPanel, SoundSettingPanel, ShortcutSettingPanel, DialougeSettingPanel;
+    [SerializeField] private GameObject GeneralSettingPanel, TextSettingPanel, SoundSettingPanel, ShortcutSettingPanel, DialougeSettingPanel, ControlSettingPanel;
 
-    [SerializeField] private Button GeneralSettingButton, TextSettingButton, SoundSettingButton, ShortcutSettingButton, DialougeSettingButton;
+    [SerializeField] private Button GeneralSettingButton, TextSettingButton, SoundSettingButton, ShortcutSettingButton, DialougeSettingButton, ControlSettingButton;
+
+    [SerializeField] private Text PageTitle;
 
     [SerializeField] private ColorBlock SelectedButtonColor;
     [SerializeField] private ColorBlock UnselectedButtonColor;
@@ -20,7 +22,8 @@ public class SettingPanelManager : MonoBehaviour
         TEXT,
         SOUND,
         SHORTCUT,
-        DIALOUGE
+        DIALOUGE,
+        CONTROL
     }
 
     private int CurrentSettingIndex;
@@ -43,6 +46,7 @@ public class SettingPanelManager : MonoBehaviour
         SoundSettingButton.colors = newColor;
         ShortcutSettingButton.colors = newColor;
         DialougeSettingButton.colors = newColor;
+        ControlSettingButton.colors = newColor;
 
         newColor = SelectedButtonColor;
 
@@ -74,12 +78,14 @@ public class SettingPanelManager : MonoBehaviour
         SoundSettingButton.colors = newColor;
         ShortcutSettingButton.colors = newColor;
         DialougeSettingButton.colors = newColor;
+        ControlSettingButton.colors = newColor;
 
         GeneralSettingPanel.SetActive(false);
         TextSettingPanel.SetActive(false);
         SoundSettingPanel.SetActive(false);
         ShortcutSettingPanel.SetActive(false);
         DialougeSettingPanel.SetActive(false);
+        ControlSettingPanel.SetActive(false);
 
         switch (CurrentSettingIndex)
         {
@@ -92,6 +98,9 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.selectedColor = SelectedButtonColor.selectedColor;
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 GeneralSettingButton.colors = newColor;
+
+                PageTitle.text = "簡単設定";
+
                 GeneralSettingPanel.SetActive(true);
 
                 break;
@@ -102,6 +111,9 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.normalColor = SelectedButtonColor.normalColor;
                 newColor.pressedColor = SelectedButtonColor.pressedColor;
                 TextSettingButton.colors = newColor;
+
+                PageTitle.text = "テキスト設定";
+
                 TextSettingPanel.SetActive(true);
 
                 break;
@@ -114,6 +126,9 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.selectedColor = SelectedButtonColor.selectedColor;
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 SoundSettingButton.colors = newColor;
+
+                PageTitle.text = "サウンド設定";
+
                 SoundSettingPanel.SetActive(true);
 
                 break;
@@ -126,6 +141,9 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.selectedColor = SelectedButtonColor.selectedColor;
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 ShortcutSettingButton.colors = newColor;
+
+                PageTitle.text = "ショートカット設定";
+
                 ShortcutSettingPanel.SetActive(true);
 
                 break;
@@ -138,7 +156,26 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.selectedColor = SelectedButtonColor.selectedColor;
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 DialougeSettingButton.colors = newColor;
+
+                PageTitle.text = "ダイアログ設定";
+
                 DialougeSettingPanel.SetActive(true);
+
+                break;
+
+            case 6:
+                newColor = SelectedButtonColor;
+
+                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+                newColor.normalColor = SelectedButtonColor.normalColor;
+                newColor.pressedColor = SelectedButtonColor.pressedColor;
+                newColor.selectedColor = SelectedButtonColor.selectedColor;
+                newColor.disabledColor = SelectedButtonColor.disabledColor;
+                ControlSettingButton.colors = newColor;
+
+                PageTitle.text = "ダイアログ設定";
+
+                ControlSettingPanel.SetActive(true);
 
                 break;
         }

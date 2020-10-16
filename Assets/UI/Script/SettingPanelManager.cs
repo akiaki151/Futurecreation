@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class SettingPanelManager : MonoBehaviour
 {
     [SerializeField] private GameObject SettingWindow;
-    [SerializeField] private GameObject GeneralSettingPanel, TextSettingPanel, SoundSettingPanel, ShortcutSettingPanel, DialougeSettingPanel, ControlSettingPanel;
+    [SerializeField] private GameObject GeneralSettingPanel, TextSettingPanel, SoundSettingPanel, ShortcutSettingPanel, DialougeSettingPanel;
 
-    [SerializeField] private Button GeneralSettingButton, TextSettingButton, SoundSettingButton, ShortcutSettingButton, DialougeSettingButton, ControlSettingButton;
+    [SerializeField] private Button GeneralSettingButton, TextSettingButton, SoundSettingButton, ShortcutSettingButton, DialougeSettingButton;
 
     [SerializeField] private Text PageTitle;
 
@@ -22,8 +22,7 @@ public class SettingPanelManager : MonoBehaviour
         TEXT,
         SOUND,
         SHORTCUT,
-        DIALOUGE,
-        CONTROL
+        DIALOUGE
     }
 
     private int CurrentSettingIndex;
@@ -46,7 +45,6 @@ public class SettingPanelManager : MonoBehaviour
         SoundSettingButton.colors = newColor;
         ShortcutSettingButton.colors = newColor;
         DialougeSettingButton.colors = newColor;
-        ControlSettingButton.colors = newColor;
 
         newColor = SelectedButtonColor;
 
@@ -78,14 +76,12 @@ public class SettingPanelManager : MonoBehaviour
         SoundSettingButton.colors = newColor;
         ShortcutSettingButton.colors = newColor;
         DialougeSettingButton.colors = newColor;
-        ControlSettingButton.colors = newColor;
 
         GeneralSettingPanel.SetActive(false);
         TextSettingPanel.SetActive(false);
         SoundSettingPanel.SetActive(false);
         ShortcutSettingPanel.SetActive(false);
         DialougeSettingPanel.SetActive(false);
-        ControlSettingPanel.SetActive(false);
 
         switch (CurrentSettingIndex)
         {
@@ -160,22 +156,6 @@ public class SettingPanelManager : MonoBehaviour
                 PageTitle.text = "ダイアログ設定";
 
                 DialougeSettingPanel.SetActive(true);
-
-                break;
-
-            case 6:
-                newColor = SelectedButtonColor;
-
-                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
-                newColor.normalColor = SelectedButtonColor.normalColor;
-                newColor.pressedColor = SelectedButtonColor.pressedColor;
-                newColor.selectedColor = SelectedButtonColor.selectedColor;
-                newColor.disabledColor = SelectedButtonColor.disabledColor;
-                ControlSettingButton.colors = newColor;
-
-                PageTitle.text = "ダイアログ設定";
-
-                ControlSettingPanel.SetActive(true);
 
                 break;
         }

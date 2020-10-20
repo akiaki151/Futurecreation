@@ -8,10 +8,11 @@ using UnityEngine.UI;
 public class SceneController
 {  
     public Actions Actions;
-    public List<CharacterIcon>  CharaIcons  = new List<CharacterIcon>();
-    public List<Character>      Characters  = new List<Character>();
-    public List<Background>     Backgrounds = new List<Background>();
-    public List<Score>          Score       = new List<Score>();
+    public List<CharacterIcon>  CharaIcons  = new List<CharacterIcon>();//このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Character>      Characters  = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Background>     Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Score>          Scores      = new List<Score>();
+    private Sound               _Sound;      
 
     private GameController _gc;
     private GUIManager _gui;
@@ -104,6 +105,21 @@ public class SceneController
                     text,
                     text.Length * _messageSpeed
                 ).SetEase(Ease.Linear));
+        }
+    }
+
+    public void SetTMP(string text)
+    {
+        _tempText = text;
+        if (_textSeq.IsPlaying())
+        {
+            _textSeq.Complete();
+        }
+        else
+        {
+            _gui.TMP.text = "";
+            _gui.TMP.text = text;
+
         }
     }
 
@@ -210,21 +226,41 @@ public class SceneController
     //スコア処理////////////////////////////////////////////////////////////
     public void AddScore(string name)
     {
-        if (Score.Exists(c => c.Name == name)) return;
+        if (Scores.Exists(c => c.Name == name)) return;
         var prefab = Resources.Load("CharaScore") as GameObject;
         var scoreobject = Object.Instantiate(prefab);
         var score = scoreobject.GetComponent<Score>();
         score.Init(name);
-        Score.Add(score);
+        Scores.Add(score);
     }
     public void SetScore(string name, string num)
     {
-        var score = Score.Find(c => c.Name == name);
+        var score = Scores.Find(c => c.Name == name);
         int num2 = int.Parse(num);
         score.ChangeScore(num2);
     }
     //////////////////////////////////////////////////////////////////////
 
+    //サウンド処理////////////////////////////////////////////////////////////
+    public void AddSound()
+    {
+        var prefab = Resources.Load("SoundManager") as GameObject;
+        var soundobject = Object.Instantiate(prefab);
+        var sound = soundobject.GetComponent<Sound>();
+        _Sound = sound;
+        _Sound.Init();
+    }
+    public void ChangeBGM(string num)
+    {
+        int num2 = int.Parse(num);
+        _Sound.ChangeBGM(num2);
+    }
+    public void ChangeSE(string num)
+    {
+        int num2 = int.Parse(num);
+        _Sound.ChangeSE(num2);
+    }
+    //////////////////////////////////////////////////////////////////////
 
     public void SetOptions(List<(string text, string nextScene)> options)
     {

@@ -5,6 +5,7 @@ using System.Reflection;
 public class SceneReader
 {
     private SceneController _sc;
+    private Sound _sound;
     private Actions _actions;
 
     public SceneReader(SceneController _sc)
@@ -14,7 +15,9 @@ public class SceneReader
         _sc.AddBackground("BackGrounds");
         _sc.AddCharaIcon("CharaIcons");
         _sc.AddCharacter("Characters");
-        
+        _sc.AddSound();
+
+
     }
 
     public void ReadLines(Scene s)
@@ -58,6 +61,18 @@ public class SceneReader
                     line = line.Replace("score=", "");
                     _sc.AddScore(line);
                     
+                }
+                else if (line.Contains("SE"))
+                {
+                    line = line.Replace("SE=", "");
+                    _sc.ChangeSE(line);
+
+                }
+                else if (line.Contains("BGM"))
+                {
+                    line = line.Replace("BGM=", "");
+                    _sc.ChangeBGM(line);
+
                 }
                 else if (line.Contains("add"))
                 {

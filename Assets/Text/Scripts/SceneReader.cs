@@ -62,12 +62,6 @@ public class SceneReader
                     _sc.AddScore(line);
                     
                 }
-                else if (line.Contains("Action"))
-                {
-                    line = line.Replace("Action=", "");
-                    _sc.Action(line);
-
-                }
                 else if (line.Contains("SE"))
                 {
                     line = line.Replace("SE=", "");

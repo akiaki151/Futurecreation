@@ -3,20 +3,16 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
-public class Character : MonoBehaviour
-{
+public class Character : MonoBehaviour {
 
     private GameObject _characterObject;
     private SpriteRenderer _characterImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private CanvasGroup _canvasGroup;
-    private Vector3 direction = new Vector3(-20f, 0f, 0f);
-    private float speed =2.5f;
-    public bool action = false;
 
     public string Name { get; private set; }
-
-    void Start()
+    
+    void Start ()
     {
 
     }
@@ -32,7 +28,7 @@ public class Character : MonoBehaviour
 
     public void LoadImage()
     {
-        var temp = Resources.LoadAll<Sprite>("Image/" + Name).ToList();
+        var temp = Resources.LoadAll<Sprite>("Image/"+Name).ToList();
         foreach (Sprite s in temp)
         {
             _sprites.Add(s.name, s);
@@ -43,23 +39,6 @@ public class Character : MonoBehaviour
     {
         _characterImage.sprite = _sprites[imageID];
         FadeIn();
-    }
-
-    public void Move()
-    {
-        action = true;
-    }
-    void Update()
-    {
-        if (action)
-        {
-            float step = speed * Time.deltaTime;
-            _characterObject.transform.position = Vector3.MoveTowards(transform.position, direction, step);
-        }
-        else
-        {
-            _characterObject.transform.position = new Vector3(0f, 0f, 0f);
-        }
     }
 
     public void Appear()

@@ -6,13 +6,13 @@ using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class SceneController
-{
+{  
     public Actions Actions;
-    public List<CharacterIcon> CharaIcons = new List<CharacterIcon>();//このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
-    public List<Character> Characters = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
-    public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
-    public List<Score> Scores = new List<Score>();
-    private Sound _Sound;
+    public List<CharacterIcon>  CharaIcons  = new List<CharacterIcon>();//このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Character>      Characters  = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Background>     Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Score>          Scores      = new List<Score>();
+    private Sound               _Sound;      
 
     private GameController _gc;
     private GUIManager _gui;
@@ -24,7 +24,6 @@ public class SceneController
     private bool _isOptionsShowed;
     private string _tempText;
     private float _messageSpeed = 0.1f;
-    private bool charaAction = false;
 
     public SceneController(GameController _gc)
     {
@@ -42,14 +41,6 @@ public class SceneController
         {
             if (Input.GetMouseButtonDown(0))
             {
-                //  キャラの座標戻し
-                if (charaAction)
-                {
-                    var character = Characters.Find(c => c.Name == "Characters");
-                    character.action = false;
-                    charaAction = false;
-                }
-
                 if (EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -142,24 +133,6 @@ public class SceneController
         _gui.Speaker.text = name;
     }
 
-
-    //特別なアクション処理//////////////////////////////////////////////////
-    public void Action(string num)
-    {
-        int num2 = int.Parse(num);
-        Actions.SelectAction(num2);
-    }
-
-    public void ActionMove()
-    {
-        var character = Characters.Find(c => c.Name == "Characters");
-        charaAction = true;
-        character.Move();
-    }
-
-    /////////////////////////////////////////////////////////////////////
-
-
     //キャラクター処理//////////////////////////////////////////////////
     public void SetCharacter(string name)
     {
@@ -179,11 +152,10 @@ public class SceneController
         Characters.Add(character);
         _imageSeq = DOTween.Sequence();
 
-        var cpos = new Vector3(0, _gui.MainCamera.transform.position.y, 0);
+        var cpos = new Vector3(0, _gui.MainCamera.transform.position.y , 0);
         _imageSeq.Append(Characters[0].transform.DOMove(cpos, 0f))
             .OnComplete(() => character.Appear());
     }
-
     public void SetCharaImage(string name, string ID)
     {
         var character = Characters.Find(c => c.Name == name);
@@ -220,7 +192,7 @@ public class SceneController
         character.SetImage(ID);
     }
     //////////////////////////////////////////////////////////////////////
-
+    
     //背景処理////////////////////////////////////////////////////////////
     public void SetBackground(string name)
     {
@@ -307,12 +279,10 @@ public class SceneController
     {
         SetScene(nextID);
         _isOptionsShowed = false;
-
         foreach (Transform t in _gui.ButtonPanel)
         {
             UnityEngine.Object.Destroy(t.gameObject);
         }
     }
-
 
 }

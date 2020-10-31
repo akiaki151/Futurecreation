@@ -12,7 +12,7 @@ public class DropdownCreate : MonoBehaviour
         m_dropdown.ClearOptions();
 
         List<string> list = new List<string>();
-        for(int i=1; i <= 1000; i++)
+        for(int i=1; i <= 500; i++)
         {
             list.Add("" + i);
         }

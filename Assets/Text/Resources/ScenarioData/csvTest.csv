@@ -1,14 +1,14 @@
 ﻿#scene=001
 #BGM=1
 #ico=a_icon
-#chara=a_chara
+#chara=a_chara(10:0:1)
 #background=bg1_tex
 #speaker=A君
 {アクション処理の動作をテストします}
 #Action=1
 {左に移動します（移動中にクリックされると強制的に元の位置に戻します）}
 {以上です！}
-#chara=del_chara
+#chara=del_chara(0:0:1)
 #ico=del
 {誰と話しますか？}
 #SE=1
@@ -20,7 +20,7 @@
 #scene=002
 #BGM=2
 #ico=b_icon
-#chara=b_chara
+#chara=b_chara(0:0:1)
 #background=bg2_tex
 #speaker=B君
 #score=B君
@@ -33,7 +33,7 @@
 #add=B君:-20
 {スコアを30加算します}
 #add=B君:30
-#chara=del_chara
+#chara=del_chara(0:0:1)
 #ico=del
 #speaker=
 {全員と会話します}
@@ -42,16 +42,15 @@
 #scene=003
 #BGM=3
 #ico=c_icon
-#chara=c_chara
+#chara=c_chara(0:0:1)
 #background=bg4_tex
 #speaker=C君
 {2択の迷路をします(正解は右だよ～～～)}
 #next=005
 
-
 #scene=005
 #ico=c_icon
-#chara=c_chara
+#chara=c_chara(0:0:1)
 #background=bg4_tex
 #speaker=C君
 {目の前に分かれ道がある！}
@@ -64,11 +63,11 @@
 #scene=006
 #SE=2
 #ico=c_icon
-#chara=c_chara
+#chara=c_chara(0:0:1)
 #background=bg4_tex
 #speaker=C君
 {正解だったようだ！}
-#chara=del_chara
+#chara=del_chara(0:0:1)
 #ico=del
 #speaker=
 {おわり 最初に戻ります}
@@ -77,12 +76,12 @@
 #scene=007
 #SE=3
 #ico=c_icon
-#chara=c_chara
+#chara=c_chara(0:0:1)
 #background=bg4_tex
 #speaker=C君
 {あれ？行き止まりだ！}
 {選択肢に戻るね！}
-#chara=del_chara
+#chara=del_chara(0:0:1)
 #ico=del
 #next=005
 
@@ -92,23 +91,23 @@
 #score=C君
 #score=B君
 #background=bg3_tex
-#chara=b_chara
+#chara=b_chara(0:0:1)
 #ico=b_icon
 #speaker=B君
 {全員のスコアを別々に集計も可能です}
 {スコアを50加算}
 #add=B君:50
-#chara=c_chara
+#chara=c_chara(0:0:1)
 #ico=c_icon
 #speaker=C君
 {スコアを100減算}
 #add=C君:-100
-#chara=a_chara
+#chara=a_chara(0:0:1)
 #ico=a_icon
 #speaker=A君
 {スコアを1加算}
 #add=A君:1
-#chara=del_chara
+#chara=del_chara(0:0:1)
 #ico=del
 #speaker=
 {おわり 最初に戻ります}

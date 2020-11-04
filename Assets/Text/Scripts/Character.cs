@@ -10,19 +10,18 @@ public class Character : MonoBehaviour
     private SpriteRenderer _characterImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private CanvasGroup _canvasGroup;
-    private Vector3 direction = new Vector3(-20f, 0f, 0f);
-    private float speed =2.5f;
+    private Vector3 _direction = new Vector3(-20f, 0f, 0f);
+    private float _speed =2.5f;
     public bool action = false;
+    private Vector3 _position;
+    private Vector3 _scale;
 
     public string Name { get; private set; }
 
-    void Start()
-    {
-
-    }
-
     public void Init(string name)
     {
+        _position = new Vector3(0f, 0f, 0f);
+        _scale = new Vector3(1f, 1f, 1f);
         this.Name = name;
         _characterObject = gameObject;
         _characterImage = _characterObject.GetComponent<SpriteRenderer>();
@@ -39,9 +38,13 @@ public class Character : MonoBehaviour
         }
     }
 
-    public void SetImage(string imageID)
+    public void SetImage(string imageID, float x, float y, float scale)
     {
         _characterImage.sprite = _sprites[imageID];
+        _position.x = x;
+        _position.y = y;
+        _scale.x = scale;
+        _scale.y = scale;
         FadeIn();
     }
 
@@ -53,12 +56,13 @@ public class Character : MonoBehaviour
     {
         if (action)
         {
-            float step = speed * Time.deltaTime;
-            _characterObject.transform.position = Vector3.MoveTowards(transform.position, direction, step);
+            float step = _speed * Time.deltaTime;
+            _characterObject.transform.position = Vector3.MoveTowards(transform.position, _direction, step);
         }
         else
         {
-            _characterObject.transform.position = new Vector3(0f, 0f, 0f);
+            _characterObject.transform.position = _position;
+            _characterObject.transform.localScale = _scale;
         }
     }
 

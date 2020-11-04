@@ -43,8 +43,18 @@ public class SceneReader
                 }
                 else if (line.Contains("chara"))
                 {
-                    line = line.Replace("chara=", "");
-                    _sc.SetCharaImage("Characters", line);
+                    if (line.Contains("("))
+                    {
+                        line = line.Replace("chara=", "").Replace(")", "");
+                        var splitted = line.Split('(');
+                        var splitted2 = splitted[1].Split(':');
+                        _sc.SetCharaImage("Characters", splitted[0], float.Parse(splitted2[0]), float.Parse(splitted2[1]), float.Parse(splitted2[2]));
+                    }
+                    else
+                    {
+                        line = line.Replace("chara=", "");                 
+                        _sc.SetCharaImage("Characters", line, 0f, 0f,1f);
+                    }
                 }
                 else if (line.Contains("ico"))
                 {

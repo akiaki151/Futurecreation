@@ -184,10 +184,10 @@ public class SceneController
             .OnComplete(() => character.Appear());
     }
 
-    public void SetCharaImage(string name, string ID)
+    public void SetCharaImage(string name, string ID,float x,float y,float scale)
     {
         var character = Characters.Find(c => c.Name == name);
-        character.SetImage(ID);
+        character.SetImage(ID,x,y,scale);
     }
     //////////////////////////////////////////////////////////////////////
 

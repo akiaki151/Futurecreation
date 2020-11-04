@@ -80,8 +80,18 @@ public class SceneReader
                 }
                 else if (line.Contains("SE"))
                 {
-                    line = line.Replace("SE=", "");
-                    _sc.ChangeSE(line);
+                    if (line.Contains("("))
+                    {
+                        line = line.Replace("SE=", "").Replace(")", "");
+                        var splitted = line.Split('(');
+                        _sc.ChangeSE(splitted[0], splitted[1]);
+                    }
+                    else
+                    {
+                        line = line.Replace("SE=", "");
+                        _sc.ChangeSE(line,"0");
+                    }
+                    
 
                 }
                 else if (line.Contains("BGM"))

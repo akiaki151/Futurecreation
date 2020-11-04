@@ -105,9 +105,9 @@ public class SceneReader
                     {
                         s.GoNextLine();
                         line = line = s.Lines[s.Index];
-                        if (line.Contains("{"))
+                        if (line.Contains("["))
                         {
-                            line = line.Replace("{", "").Replace("}", "");
+                            line = line.Replace("[", "").Replace("]", "");
                             var splitted = line.Split(':');
                             options.Add((splitted[0], splitted[1]));
                         }

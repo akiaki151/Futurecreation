@@ -30,11 +30,14 @@ public class Sound : MonoBehaviour
         _bgm_index = 0;
     }
 
-    public void ChangeSE(int num)
+    public void ChangeSE(int num,int flag)
     {
+        bool judge = (flag == 1) ? true : false ;
         _se_index = num;
         if (_se_index!= 0)
         {
+          
+            _sources[0].loop = judge;
             _sources[0].clip = SE[_se_index - 1];
             _sources[0].Play();
             _se_index = 0;

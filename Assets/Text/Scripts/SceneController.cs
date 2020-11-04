@@ -283,10 +283,11 @@ public class SceneController
         int num2 = int.Parse(num);
         _Sound.ChangeBGM(num2);
     }
-    public void ChangeSE(string num)
+    public void ChangeSE(string num, string flag)
     {
         int num2 = int.Parse(num);
-        _Sound.ChangeSE(num2);
+        int flag2 = int.Parse(flag);
+        _Sound.ChangeSE(num2, flag2);
     }
     //////////////////////////////////////////////////////////////////////
 

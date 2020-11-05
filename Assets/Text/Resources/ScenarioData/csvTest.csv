@@ -18,6 +18,7 @@
 ]
 
 #scene=002
+#SE=0
 #BGM=2
 #ico=b_icon
 #chara=b_chara(0:0:1)
@@ -40,6 +41,7 @@
 #next=004
 
 #scene=003
+#SE=0
 #BGM=3
 #ico=c_icon
 #chara=c_chara(0:0:1)

@@ -42,6 +42,8 @@ public class Sound : MonoBehaviour
             _sources[0].Play();
             _se_index = 0;
         }
+        else
+         _sources[0].Stop();
     }
 
     public void ChangeBGM(int num)

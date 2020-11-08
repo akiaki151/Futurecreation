@@ -1,13 +1,26 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
+using UnityEngine;
+using Tag;
 
-public class SceneReader
+public class SceneReader 
 {
     private SceneController _sc;
     private Sound _sound;
     private Actions _actions;
-
+    private string[] _taglist = {"Speaker",
+                                "Chara",
+                                "Ico",
+                                "Background",
+                                "Score",
+                                "Action",
+                                "SE",
+                                "BGM",
+                                "Add",
+                                "Next",
+                                "Options"
+                                };
+    
     public SceneReader(SceneController _sc)
     {
         this._sc = _sc;
@@ -16,109 +29,33 @@ public class SceneReader
         _sc.AddCharaIcon("CharaIcons");
         _sc.AddCharacter("Characters");
         _sc.AddSound();
-
-
     }
 
     public void ReadLines(Scene s)
     {
         if (s.Index >= s.Lines.Count) return;
-
         var line = s.GetCurrentLine();
-
         var text = "";
-
+        var list = new List<string>();
+        list.AddRange(_taglist);
+        var _tagFactory = new Taglist();
+        
         if (line.Contains("#"))
         {
             while (true)
             {
                 if (!line.Contains("#")) break;
-
-                line = line.Replace("#", "");
-
-                if (line.Contains("speaker"))
+                line = line.Replace("#", ""); 
+                foreach (string tag in list)
                 {
-                    line = line.Replace("speaker=", "");
-                    _sc.SetSpeaker(line);
-                }
-                else if (line.Contains("chara"))
-                {
-                    line = line.Replace("chara=", "");
-                    _sc.SetCharaImage("Characters", line);
-                }
-                else if (line.Contains("ico"))
-                {
-                    line = line.Replace("ico=", "");
-                    _sc.SetIcoImage("CharaIcons", line);
-                }
-                else if (line.Contains("background"))
-                {
-                    line = line.Replace("background=", "");
-                    _sc.SetBgImage("BackGrounds", line);
-                }
-                else if (line.Contains("score"))
-                {
-                    line = line.Replace("score=", "");
-                    _sc.AddScore(line);
-                    
-                }
-                else if (line.Contains("Action"))
-                {
-                    line = line.Replace("Action=", "");
-                    _sc.Action(line);
-
-                }
-                else if (line.Contains("SE"))
-                {
-                    line = line.Replace("SE=", "");
-                    _sc.ChangeSE(line);
-
-                }
-                else if (line.Contains("BGM"))
-                {
-                    line = line.Replace("BGM=", "");
-                    _sc.ChangeBGM(line);
-
-                }
-                else if (line.Contains("add"))
-                {
-                    line = line.Replace("add=", "");
-                    var splitted = line.Split(':');
-                    _sc.SetScore(splitted[0], splitted[1]);
-                }
-                else if (line.Contains("next"))
-                {
-                    line = line.Replace("next=", "");
-                    _sc.SetScene(line);
-                }
-                else if (line.Contains("method"))
-                {
-                    line = line.Replace("method=", "");
-                    var type = _actions.GetType();
-                    MethodInfo mi = type.GetMethod(line);
-                    mi.Invoke(_actions, new object[] { });
-                }
-                else if (line.Contains("options"))
-                {
-                    var options = new List<(string, string)>();
-                    while (true)
+                    if (line.Contains(tag))
                     {
-                        s.GoNextLine();
-                        line = line = s.Lines[s.Index];
-                        if (line.Contains("{"))
-                        {
-                            line = line.Replace("{", "").Replace("}", "");
-                            var splitted = line.Split(':');
-                            options.Add((splitted[0], splitted[1]));
-                        }
-                        else
-                        {
-                            _sc.SetOptions(options);
-                            break;
-                        }
+
+                        _tagFactory.CreateTag(tag).Do(_sc,line,s);
+                        
                     }
                 }
-
+               
                 s.GoNextLine();
                 if (s.IsFinished()) break;
                 line = s.GetCurrentLine();
@@ -127,7 +64,6 @@ public class SceneReader
         if (line.Contains('{'))
         {
             line = line.Replace("{", "");
-
             while (true)
             {
                 if (line.Contains('}'))

@@ -186,7 +186,7 @@
 					half2 uv = input.texcoord0.xy;
 					uv.y = clamp(uv.y, 0.0 ,0.7 * sin(_Time.x));
 					half d = tex2D(_MainTex, uv).a * input.param.x;			//SDFのフェッチ
-					half4 c = float4(0.0,1.0,0.0,1.0) * saturate(d - input.param.w);//SDFを元に内外判定
+					half4 c = _FaceColor * saturate(d - input.param.w);//SDFを元に内外判定
 					clip(c.a - 0.001);
 
 						return c;

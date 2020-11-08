@@ -184,10 +184,10 @@ public class SceneController
             .OnComplete(() => character.Appear());
     }
 
-    public void SetCharaImage(string name, string ID)
+    public void SetCharaImage(string name, string ID,float x,float y,float scale)
     {
         var character = Characters.Find(c => c.Name == name);
-        character.SetImage(ID);
+        character.SetImage(ID,x,y,scale);
     }
     //////////////////////////////////////////////////////////////////////
 
@@ -283,10 +283,11 @@ public class SceneController
         int num2 = int.Parse(num);
         _Sound.ChangeBGM(num2);
     }
-    public void ChangeSE(string num)
+    public void ChangeSE(string num, string flag)
     {
         int num2 = int.Parse(num);
-        _Sound.ChangeSE(num2);
+        int flag2 = int.Parse(flag);
+        _Sound.ChangeSE(num2, flag2);
     }
     //////////////////////////////////////////////////////////////////////
 

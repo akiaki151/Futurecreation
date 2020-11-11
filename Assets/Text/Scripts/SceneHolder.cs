@@ -16,30 +16,26 @@ public class SceneHolder
     public void Load()
     {
         var itemFile = Resources.Load("ScenarioData/csvTest") as TextAsset;
-        var csvData = LoadCSV(itemFile);
-        
+        var csvData = LoadCSV(itemFile);  
         Scenes = Parse(csvData);
     }
 
-    public List<string[]> LoadCSV(TextAsset file)
+    public List<string> LoadCSV(TextAsset file)
     {
         StringReader reader = new StringReader(file.text);
-        var list = new List<string[]>();
+        var list = new List<string>();
         while (reader.Peek() > -1)
         {
             string line = reader.ReadLine();
-            list.Add(line.Split(','));         }
+            list.Add(line);         }
         return list;
     }
 
-    public List<Scene> Parse(List<string[]> list)
+    public List<Scene> Parse(List<string> list)
     {
         var scenes = new List<Scene>();
         var scene = new Scene();
-
-        for(int i=0;i<list.Count;i++)
-
-        foreach (string line in list[i])
+        foreach (string line in list)
         {
             if (line.Contains("#scene"))
             {

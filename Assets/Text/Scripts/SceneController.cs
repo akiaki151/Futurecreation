@@ -13,6 +13,7 @@ public class SceneController
     public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Score> Scores = new List<Score>();
     private Sound _Sound;
+    public string sceneTxtname { private get; set; }
 
     private GameController _gc;
     private GUIManager _gui;
@@ -24,7 +25,8 @@ public class SceneController
     private bool _isOptionsShowed;
     private string _tempText;
     private float _messageSpeed = 0.1f;
-    private bool charaAction = false;
+    private bool _charaAction = false;
+    
 
     public SceneController(GameController _gc)
     {
@@ -34,6 +36,7 @@ public class SceneController
         _sh = new SceneHolder(this);
         _sr = new SceneReader(this);
         _textSeq.Complete();
+        sceneTxtname = "";
     }
 
     public void WaitClick()
@@ -43,11 +46,11 @@ public class SceneController
             if (Input.GetMouseButtonDown(0))
             {
                 //  キャラの座標戻し
-                if (charaAction)
+                if (_charaAction)
                 {
                     var character = Characters.Find(c => c.Name == "Characters");
                     character.action = false;
-                    charaAction = false;
+                    _charaAction = false;
                 }
 
                 if (EventSystem.current.IsPointerOverGameObject())
@@ -91,7 +94,7 @@ public class SceneController
 
     public void SetScene(string id)
     {
-        _currentScene = _sh.Scenes.Find(s => s.ID == id);
+        _currentScene = _sh.Scenes.Find(s => s.ID == id+sceneTxtname);
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
         SetNextProcess();
@@ -153,7 +156,7 @@ public class SceneController
     public void ActionMove()
     {
         var character = Characters.Find(c => c.Name == "Characters");
-        charaAction = true;
+        _charaAction = true;
         character.Move();
     }
 

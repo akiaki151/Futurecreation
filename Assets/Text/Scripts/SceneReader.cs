@@ -18,7 +18,8 @@ public class SceneReader
                                 "BGM",
                                 "Add",
                                 "Next",
-                                "Options"
+                                "Options",
+                                "Getscenario"
                                 };
     
     public SceneReader(SceneController _sc)

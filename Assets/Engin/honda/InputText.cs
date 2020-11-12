@@ -10,19 +10,19 @@ public class InputText : MonoBehaviour
     private InputField m_InputText;
     private GameObject[] selectbutton = new GameObject[50];
     private Dropdown m_dropdown;
-    public Dropdown m_CharName;
     private Button m_CharImage;
-    private Button m_IconImage;
+    private Image m_IconImage;
     private Image m_BgImage;
     public GameObject m_ImageBar;
     public GameObject m_Log;
     public GameObject m_InputPanel;
     public GameObject m_ElementPanel;
     public GameObject m_TextCreatCanvas;
+    public GameObject m_CharacterProperty;
     //private List<string> csvData = new List<string>();
     private string[] csvData = new string[Engin_Const.line_size];
     private string path;
-    private string fileName = "Data/csvTest.csv";
+    private string fileName = "Data/csvTest.txt";
     private string stock;
     private int filecount;
 
@@ -37,7 +37,6 @@ public class InputText : MonoBehaviour
         m_InputText.text = "";
         stock = "";
     }
-
     //文字列保存
     public void InputData()
     {
@@ -65,7 +64,7 @@ public class InputText : MonoBehaviour
 
         //変更された情報の書き出し
         GameObject NowFile = GameObject.Find("NowTextFile");
-        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".csv";
+        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".txt";
         path = Application.persistentDataPath + "/Data/" + fileName;
         StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8);
         for (int i = 0;i < Engin_Const.line_size; i++)
@@ -75,11 +74,10 @@ public class InputText : MonoBehaviour
         }
         sw.Close();
     }
-
     public void Load()
     {
         GameObject NowFile = GameObject.Find("NowTextFile");
-        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".csv";
+        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".txt";
         path = Application.persistentDataPath + "/Data/" + fileName;
         StreamReader sr = new StreamReader(path, Encoding.UTF8);
         int index = 0;
@@ -102,16 +100,15 @@ public class InputText : MonoBehaviour
         Backlog m_bl = GameObject.Find("BackLogCanvas").GetComponent<Backlog>();
         m_bl.ImportLog();
     }
-
     public void SpeakerName()
     {
-        m_InputText.text = stock + "#speaker=" + m_CharName.options[m_CharName.value].text;
-        stock = m_InputText.text;
+        Dropdown c_n = GameObject.Find("CharNameDropdown").GetComponent<Dropdown>();
+        InputTagData("#Speaker=", c_n.options[c_n.value].text);
     }
     public void CharaImage()
     {
         m_CharImage = GameObject.Find("CharacterButton").GetComponent<Button>();
-        InputTagData("#Chara=", m_CharImage.image.sprite.name);
+        InputTagData("#Chara=", m_CharImage.image.sprite.name + "(" + m_CharImage.transform.localPosition.x + ":" + m_CharImage.transform.localPosition.y + ":" + m_CharImage.transform.localScale.x + ")");
     }
     public void DeleteCharaImage()
     {
@@ -121,14 +118,14 @@ public class InputText : MonoBehaviour
     }
     public void IconImage()
     {
-        m_IconImage = GameObject.Find("iconButton").GetComponent<Button>();
-        InputTagData("#Ico=", m_IconImage.image.sprite.name);
+        m_IconImage = GameObject.Find("iconImage").GetComponent<Image>();
+        InputTagData("#Ico=", m_IconImage.sprite.name);
     }
     public void DeleteIconImage()
     {
         m_InputText.text = stock + "#ico=del_chara";
         stock = m_InputText.text;
-        m_IconImage.image.sprite = null;
+        m_IconImage.sprite = null;
     }
     public void BackImage()
     {
@@ -146,6 +143,11 @@ public class InputText : MonoBehaviour
         string m_BGM = GameObject.Find("BGMNameFile").GetComponentInChildren<Text>().text;
         m_BGM = m_BGM.Replace("BGM : ", "");
         InputTagData("#BGM=", m_BGM);
+    }
+    public void AnimeInput()
+    {
+        Dropdown Anime = GameObject.Find("CharaAnimeDropdown").GetComponent<Dropdown>();
+        InputTagData("#Action=", Anime.options[Anime.value].text);
     }
     public void OpenBar()
     {
@@ -250,6 +252,7 @@ public class InputText : MonoBehaviour
         {
             m_ElementPanel.SetActive(true);
             m_Log.SetActive(true);
+
         }
     }
     public void OpenInputPanel()
@@ -275,5 +278,46 @@ public class InputText : MonoBehaviour
         GameObject obj = GameObject.Find("SelectTextFile");
         GameObject NowFile = GameObject.Find("NowTextFile");
         NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text = obj.GetComponent<Dropdown>().options[obj.GetComponent<Dropdown>().value].text;
+    }
+    public void NewLine()
+    {
+        Load();
+
+        int num = 0;
+        //各情報を格納
+        string str = "";
+        m_dropdown = GameObject.Find("TextNum").GetComponentInChildren<Dropdown>();
+
+        //変更された情報の書き出し
+        GameObject NowFile = GameObject.Find("NowTextFile");
+        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".txt";
+        path = Application.persistentDataPath + "/Data/" + fileName;
+        StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8);
+        for (int i = 0; i < Engin_Const.line_size; i++)
+        {
+            if (m_dropdown.value != i)
+            {
+                sw.WriteLine(csvData[num]);
+                num++;
+            }
+            else if (m_dropdown.value == i)
+                sw.WriteLine(str);
+
+        }
+        sw.Close();
+
+        DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
+        m_tc.ClearText();
+        Backlog m_bl = GameObject.Find("BackLogCanvas").GetComponent<Backlog>();
+        m_bl.ImportLog();
+    }
+    public void OpenCharacterProperty()
+    {
+        if (!m_CharacterProperty.activeSelf)
+            m_CharacterProperty.SetActive(true);
+    }
+    public void CloseCharacterProperty()
+    {
+        m_CharacterProperty.SetActive(false);
     }
 }

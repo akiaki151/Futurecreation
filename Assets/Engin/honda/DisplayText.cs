@@ -10,10 +10,8 @@ public class DisplayText : MonoBehaviour
     public Text uiText;   // uiTextへの参照
     public Text Nametext;
     public Dropdown m_dropdown;
-    public InputField inputtext;
 
     private string[] m_stock_text = new string[Engin_Const.line_size];
-    //private string[] m_display_text = new string[500];
     private string path;
     private string fileName = "";
     private int serch_num = 0;
@@ -23,7 +21,6 @@ public class DisplayText : MonoBehaviour
         IMG = 0,
         BUTTON
     }
-    // Start is called before the first frame update
     void Start()
     {
         LoadText();
@@ -34,17 +31,14 @@ public class DisplayText : MonoBehaviour
         InputText m_Input = GameObject.Find("InputMenu").GetComponent<InputText>();
         m_Input.Init();
     }
-
-    // Update is called once per frame
     void Update()
     {
         SelectLine();
     }
-
     public void LoadText()
     {
         GameObject NowFile = GameObject.Find("NowTextFile");
-        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".csv";
+        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".txt";
         path = Application.persistentDataPath + "/Data/" + fileName;
         StreamReader sr = new StreamReader(path, Encoding.UTF8);
         int num = 0;
@@ -53,13 +47,11 @@ public class DisplayText : MonoBehaviour
         {
             string line = sr.ReadLine();
             m_stock_text[num] = line;
-            Debug.Log(m_stock_text[num]);
             num++;
         }
         // StreamReaderを閉じる
         sr.Close();
     }
-
     public void SelectText(int index)
     {
         int num = 0;
@@ -100,7 +92,6 @@ public class DisplayText : MonoBehaviour
         }
         //uiText.text = text_t[index];
     }
-
     public void DisplayName(int index)
     {
         string text_t = m_stock_text[index];
@@ -123,21 +114,23 @@ public class DisplayText : MonoBehaviour
                 else if (m_stock_text[index].Contains("Ico"))
                 {
                     text_t = text_t.Replace("Ico=", "");
-                    GameObject img = GameObject.Find("iconButton");
-                    SpriteChange("CharaIcons/" + text_t, img, ObjectNumber.BUTTON);
+                    GameObject img = GameObject.Find("iconImage");
+                    SpriteChange("CharaIcons/" + text_t, img, ObjectNumber.IMG);
                 }
                 else if (m_stock_text[index].Contains("Chara"))
                 {
                     text_t = text_t.Replace("Chara=", "");
                     var splitted = text_t.Split('(');
-                    //var splitted2 = splitted[1].Split(':');
+                    var splitted2 = splitted[1].Split(':');
+                    splitted2[2] = splitted2[2].Replace(")", "");
+
                     GameObject img = GameObject.Find("CharacterButton");
                     SpriteChange("Characters/" + splitted[0], img, ObjectNumber.BUTTON);
+                    SpriteStatus(img, splitted2[0], splitted2[1], splitted2[2]);
                 }
             }
         }
     }
-
     void SpriteChange(string t,GameObject obj, ObjectNumber number)
     {
         Sprite load_t = Resources.Load<Sprite>("Image/" + t);
@@ -146,15 +139,23 @@ public class DisplayText : MonoBehaviour
         if (number == ObjectNumber.BUTTON)
         {
             obj.GetComponent<Button>().image.sprite = load_t;
-            Debug.Log(obj.GetComponent<Button>().image.sprite);
         }
     }
-
+    void SpriteStatus(GameObject obj, string sx,string sy,string ss)
+    {
+        float x, y, scale;
+        float.TryParse(sx, out x);
+        float.TryParse(sy, out y);
+        Debug.Log(ss);
+        float.TryParse(ss, out scale);
+        Debug.Log(scale);
+        obj.GetComponent<Button>().transform.localPosition = new Vector3(x, y, -1.0f);
+        obj.GetComponent<Button>().transform.localScale = new Vector3(scale, scale, 1.0f);
+    }
     public string GetText(int i)
     {
         return m_stock_text[i];
     }
-
     private void SelectLineNum()
     {
         if (GameObject.Find("BackLogCanvas") != null)
@@ -205,7 +206,6 @@ public class DisplayText : MonoBehaviour
             SelectText(serch_num);
         }
     }
-
     private void SelectLine()
     {
         if (GameObject.Find("BackLogCanvas") != null)
@@ -222,7 +222,6 @@ public class DisplayText : MonoBehaviour
             SelectText(m_dropdown.value);
         }
     }
-
     public void ClearText()
     {
         for (int i = 0; i < Engin_Const.line_size; i++)
@@ -231,7 +230,6 @@ public class DisplayText : MonoBehaviour
         }
         LoadText();
     }
-
     public void SetTextLineNum(int index)
     {
         m_dropdown.value = index;

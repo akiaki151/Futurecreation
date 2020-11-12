@@ -1,0 +1,15 @@
+﻿#scene=001
+#BGM=1
+#Ico=a_icon
+#Chara=a_chara(10:0:1)
+#Background=bg1_tex
+#Speaker=A君
+{アクション処理の動作をテストします}
+#Action=1
+{左に移動します（移動中にクリックされると強制的に元の位置に戻します）}
+{以上です！}
+#Chara=del_chara(0:0:1)
+#Ico=del
+#Background=bg1_tex
+{シナリオ選択に戻ります!}
+#Getscenario=SelectScenario

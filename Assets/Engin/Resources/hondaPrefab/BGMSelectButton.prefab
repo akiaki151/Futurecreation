@@ -165,7 +165,7 @@ GameObject:
   - component: {fileID: 6144865078554313790}
   - component: {fileID: 6144865078554313791}
   - component: {fileID: 5354883500353986112}
-  - component: {fileID: -5746336269029165397}
+  - component: {fileID: -2651098877787815426}
   m_Layer: 5
   m_Name: BGMSelectButton
   m_TagString: Untagged
@@ -285,7 +285,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: -5746336269029165397}
+      - m_Target: {fileID: -2651098877787815426}
         m_MethodName: BGMInput
         m_Mode: 1
         m_Arguments:
@@ -308,7 +308,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f4db3692a827954d90c57994a144e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &-5746336269029165397
+--- !u!114 &-2651098877787815426
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -320,12 +320,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d0a2fcf8fce745a3c9f7263f7ab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_CharName: {fileID: 0}
   m_ImageBar: {fileID: 0}
   m_Log: {fileID: 0}
   m_InputPanel: {fileID: 0}
   m_ElementPanel: {fileID: 0}
   m_TextCreatCanvas: {fileID: 0}
+  m_CharacterProperty: {fileID: 0}
 --- !u!1 &6144865078648582259
 GameObject:
   m_ObjectHideFlags: 0

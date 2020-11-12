@@ -7,8 +7,8 @@ public class Imageselect : MonoBehaviour
 {
     public void IconImageView()
     {
-        GameObject button = GameObject.Find("iconButton");
-        button.GetComponent<Button>().image.sprite = gameObject.GetComponent<Button>().image.sprite;
+        GameObject button = GameObject.Find("iconImage");
+        button.GetComponent<Image>().sprite = gameObject.GetComponent<Button>().image.sprite;
     }
     public void CharacterImageView()
     {

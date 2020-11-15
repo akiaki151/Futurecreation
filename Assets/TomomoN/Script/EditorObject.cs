@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EditorObject : MonoBehaviour
 {
-    public bool bDraw = true;         // ギズモの描画フラグ
-    public float radius = 2.5f;        // 大きさ
+    public bool bDraw = true;          // ギズモの描画フラグ
+    public float radius = 0.25f;        // 大きさ
     public Color color = Color.blue;   // 色
 
     // Start is called before the first frame update
@@ -23,7 +23,7 @@ public class EditorObject : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!bDraw) return;
-
+        
         Gizmos.color = color;
         Gizmos.DrawSphere(transform.position, radius);
     }

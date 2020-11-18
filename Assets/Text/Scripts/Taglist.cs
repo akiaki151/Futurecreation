@@ -158,6 +158,15 @@ namespace Tag
             }
         }
 
+        public class Fade : ITag
+        {
+            public void Do(SceneController _sc, string line, Scene s)
+            {
+                line = line.Replace("Fade=", "");
+                _sc.SetFadeImage("Fade", line);
+            }
+        }
+
         public Type TagJudge(string className)
         {
             Type type = null;
@@ -198,6 +207,9 @@ namespace Tag
                     break;
                 case "Getscenario":
                     type = typeof(Getscenario);                
+                    break;
+                case "Fade":
+                    type = typeof(Fade);
                     break;
             }
             return type;

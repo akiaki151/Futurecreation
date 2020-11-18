@@ -3,10 +3,10 @@ using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 
-public class Background : MonoBehaviour {
+public class Fade : MonoBehaviour {
 
-    private GameObject _bgObject;
-    private SpriteRenderer _bgImage;
+    private GameObject _fadeObject;
+    private SpriteRenderer _fadeImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private CanvasGroup _canvasGroup;
 
@@ -20,15 +20,15 @@ public class Background : MonoBehaviour {
     public void Init(string name)
     {
         this.Name = name;
-        _bgObject = gameObject;
-        _bgImage = _bgObject.GetComponent<SpriteRenderer>();
+        _fadeObject = gameObject;
+        _fadeImage = _fadeObject.GetComponent<SpriteRenderer>();
         gameObject.SetActive(false);
         LoadImage();
     }
 
     public void LoadImage()
     {
-        var temp = Resources.LoadAll<Sprite>("Image/" + Name).ToList();
+        var temp = Resources.LoadAll<Sprite>("Image/"+Name).ToList();
         foreach (Sprite s in temp)
         {
             _sprites.Add(s.name, s);
@@ -37,20 +37,26 @@ public class Background : MonoBehaviour {
 
     public void SetImage(string imageID)
     {
-        _bgImage.sprite = _sprites[imageID];
+        _fadeImage.sprite = _sprites[imageID];
         FadeIn();
+        FadeOut();
     }
 
     public void Appear()
     {
-        _bgObject.SetActive(true);
-        FadeIn();
+        _fadeObject.SetActive(true);
     }
 
     public void FadeIn()
     {
-        _bgImage.color = new Color(1f, 1f, 1f, 0);
-        _bgImage.DOFade(1.0f, 0.0f);
+        _fadeImage.color = new Color(1f, 1f, 1f, 0);
+        _fadeImage.DOFade(1.0f, 0.0f);
+    }
+
+    public void FadeOut()
+    {
+        _fadeImage.color = new Color(1f, 1f, 1f, 0);
+        _fadeImage.DOFade(0.0f, 1.0f);
     }
 
     public void Destroy()

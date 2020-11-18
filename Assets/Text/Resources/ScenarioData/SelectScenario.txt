@@ -1,5 +1,5 @@
 ﻿#scene=001
-#Background=bg1_tex
+#Background=fade_tex
 #Setscenario=SelectScenario
 #Setscenario=csvTest
 #Setscenario=csvTest2
@@ -14,9 +14,12 @@
 ]
 
 #scene=002
+#Fade=fade_tex
 #Getscenario=csvTest
 #scene=003
+#Fade=fade_tex
 #Getscenario=csvTest2
 #scene=004
+#Fade=fade_tex
 #Getscenario=csvTest3
 

@@ -12,6 +12,7 @@ public class SceneController
     public List<Character> Characters = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Score> Scores = new List<Score>();
+    public List<Fade> Fade = new List<Fade>();
     private Sound _Sound;
     public string sceneTxtname { private get; set; }
 
@@ -221,6 +222,36 @@ public class SceneController
     {
         var character = CharaIcons.Find(c => c.Name == name);
         character.SetImage(ID);
+    }
+    //////////////////////////////////////////////////////////////////////
+
+    //フェード処理//////////////////////////////////////////////////
+    public void SetFade(string name)
+    {
+        Fade.ForEach(c => c.Destroy());
+        Fade = new List<Fade>();
+        AddFade(name);
+    }
+    public void AddFade(string name)
+    {
+        if (Fade.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("Fade") as GameObject;
+        var fadeObject = Object.Instantiate(prefab);
+        var fade = fadeObject.GetComponent<Fade>();
+
+        fade.Init(name);
+        Fade.Add(fade);
+        _imageSeq = DOTween.Sequence();
+
+        var cpos = new Vector3(-7, _gui.MainCamera.transform.position.y - 3, 0);
+        _imageSeq.Append(Fade[0].transform.DOMove(cpos, 0f))
+            .OnComplete(() => fade.Appear());
+    }
+    public void SetFadeImage(string name, string ID)
+    {
+        var fade = Fade.Find(c => c.Name == name);
+        fade.SetImage(ID);
     }
     //////////////////////////////////////////////////////////////////////
 

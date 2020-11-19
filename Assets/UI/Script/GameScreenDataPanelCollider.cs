@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameScreenDataPanelCollider : MonoBehaviour
 {
     [SerializeField] private GameObject DataPanel;
-
     private BoxCollider2D box;
 
     // Start is called before the first frame update

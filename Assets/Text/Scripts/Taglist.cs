@@ -1,7 +1,7 @@
 ﻿
 using System.Collections.Generic;
 using System;
-
+using UnityEngine;
 
 namespace Tag
 {
@@ -146,6 +146,27 @@ namespace Tag
                 }
             }
         }
+
+        public class Getscenario : ITag
+        {
+            public void Do(SceneController _sc, string line, Scene s)
+            {
+                line = line.Replace("Getscenario=", "");
+                _sc.sceneTxtname = line;
+                _sc.SetScene("001");
+                
+            }
+        }
+
+        public class Fade : ITag
+        {
+            public void Do(SceneController _sc, string line, Scene s)
+            {
+                line = line.Replace("Fade=", "");
+                _sc.SetFadeImage("Fade", line);
+            }
+        }
+
         public Type TagJudge(string className)
         {
             Type type = null;
@@ -183,6 +204,12 @@ namespace Tag
                     break;
                 case "Options":
                     type = typeof(Options);
+                    break;
+                case "Getscenario":
+                    type = typeof(Getscenario);                
+                    break;
+                case "Fade":
+                    type = typeof(Fade);
                     break;
             }
             return type;

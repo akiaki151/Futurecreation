@@ -12,7 +12,9 @@ public class SceneController
     public List<Character> Characters = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Score> Scores = new List<Score>();
+    public List<Fade> Fade = new List<Fade>();
     private Sound _Sound;
+    public string sceneTxtname { private get; set; }
 
     private GameController _gc;
     private GUIManager _gui;
@@ -24,7 +26,8 @@ public class SceneController
     private bool _isOptionsShowed;
     private string _tempText;
     private float _messageSpeed = 0.1f;
-    private bool charaAction = false;
+    private bool _charaAction = false;
+    
 
     public SceneController(GameController _gc)
     {
@@ -34,6 +37,7 @@ public class SceneController
         _sh = new SceneHolder(this);
         _sr = new SceneReader(this);
         _textSeq.Complete();
+        sceneTxtname = "";
     }
 
     public void WaitClick()
@@ -43,11 +47,11 @@ public class SceneController
             if (Input.GetMouseButtonDown(0))
             {
                 //  キャラの座標戻し
-                if (charaAction)
+                if (_charaAction)
                 {
                     var character = Characters.Find(c => c.Name == "Characters");
                     character.action = false;
-                    charaAction = false;
+                    _charaAction = false;
                 }
 
                 if (EventSystem.current.IsPointerOverGameObject())
@@ -91,7 +95,7 @@ public class SceneController
 
     public void SetScene(string id)
     {
-        _currentScene = _sh.Scenes.Find(s => s.ID == id);
+        _currentScene = _sh.Scenes.Find(s => s.ID == id+sceneTxtname);
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
         SetNextProcess();
@@ -153,7 +157,7 @@ public class SceneController
     public void ActionMove()
     {
         var character = Characters.Find(c => c.Name == "Characters");
-        charaAction = true;
+        _charaAction = true;
         character.Move();
     }
 
@@ -218,6 +222,36 @@ public class SceneController
     {
         var character = CharaIcons.Find(c => c.Name == name);
         character.SetImage(ID);
+    }
+    //////////////////////////////////////////////////////////////////////
+
+    //フェード処理//////////////////////////////////////////////////
+    public void SetFade(string name)
+    {
+        Fade.ForEach(c => c.Destroy());
+        Fade = new List<Fade>();
+        AddFade(name);
+    }
+    public void AddFade(string name)
+    {
+        if (Fade.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("Fade") as GameObject;
+        var fadeObject = Object.Instantiate(prefab);
+        var fade = fadeObject.GetComponent<Fade>();
+
+        fade.Init(name);
+        Fade.Add(fade);
+        _imageSeq = DOTween.Sequence();
+
+        var cpos = new Vector3(-7, _gui.MainCamera.transform.position.y - 3, 0);
+        _imageSeq.Append(Fade[0].transform.DOMove(cpos, 0f))
+            .OnComplete(() => fade.Appear());
+    }
+    public void SetFadeImage(string name, string ID)
+    {
+        var fade = Fade.Find(c => c.Name == name);
+        fade.SetImage(ID);
     }
     //////////////////////////////////////////////////////////////////////
 

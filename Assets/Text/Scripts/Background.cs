@@ -50,7 +50,7 @@ public class Background : MonoBehaviour {
     public void FadeIn()
     {
         _bgImage.color = new Color(1f, 1f, 1f, 0);
-        _bgImage.DOFade(1.0f, 0.2f);
+        _bgImage.DOFade(1.0f, 0.0f);
     }
 
     public void Destroy()

@@ -18,7 +18,9 @@ public class SceneReader
                                 "BGM",
                                 "Add",
                                 "Next",
-                                "Options"
+                                "Options",
+                                "Getscenario",
+                                "Fade"
                                 };
     
     public SceneReader(SceneController _sc)
@@ -28,6 +30,7 @@ public class SceneReader
         _sc.AddBackground("BackGrounds");
         _sc.AddCharaIcon("CharaIcons");
         _sc.AddCharacter("Characters");
+        _sc.AddFade("Fade");
         _sc.AddSound();
     }
 

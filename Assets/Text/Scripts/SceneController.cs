@@ -175,7 +175,7 @@ public class SceneController
     {
         if (Characters.Exists(c => c.Name == name)) return;
 
-        var prefab = Resources.Load("Character") as GameObject;
+        var prefab = Resources.Load("Prefabs/Character") as GameObject;
         var charactorObject = Object.Instantiate(prefab);
         var character = charactorObject.GetComponent<Character>();
 
@@ -206,7 +206,7 @@ public class SceneController
     {
         if (CharaIcons.Exists(c => c.Name == name)) return;
 
-        var prefab = Resources.Load("CharacterIcon") as GameObject;
+        var prefab = Resources.Load("Prefabs/CharacterIcon") as GameObject;
         var charactorObject = Object.Instantiate(prefab);
         var character = charactorObject.GetComponent<CharacterIcon>();
 
@@ -236,7 +236,7 @@ public class SceneController
     {
         if (Fade.Exists(c => c.Name == name)) return;
 
-        var prefab = Resources.Load("Fade") as GameObject;
+        var prefab = Resources.Load("Prefabs/Fade") as GameObject;
         var fadeObject = Object.Instantiate(prefab);
         var fade = fadeObject.GetComponent<Fade>();
 
@@ -266,7 +266,7 @@ public class SceneController
     {
         if (Backgrounds.Exists(c => c.Name == name)) return;
 
-        var prefab = Resources.Load("Background") as GameObject;
+        var prefab = Resources.Load("Prefabs/Background") as GameObject;
         var backgroundObject = Object.Instantiate(prefab);
         var background = backgroundObject.GetComponent<Background>();
 
@@ -289,7 +289,7 @@ public class SceneController
     public void AddScore(string name)
     {
         if (Scores.Exists(c => c.Name == name)) return;
-        var prefab = Resources.Load("CharaScore") as GameObject;
+        var prefab = Resources.Load("Prefabs/CharaScore") as GameObject;
         var scoreobject = Object.Instantiate(prefab);
         var score = scoreobject.GetComponent<Score>();
         score.Init(name);
@@ -306,7 +306,7 @@ public class SceneController
     //サウンド処理////////////////////////////////////////////////////////////
     public void AddSound()
     {
-        var prefab = Resources.Load("SoundManager") as GameObject;
+        var prefab = Resources.Load("Prefabs/SoundManager") as GameObject;
         var soundobject = Object.Instantiate(prefab);
         var sound = soundobject.GetComponent<Sound>();
         _Sound = sound;

@@ -1,5 +1,8 @@
 ﻿#scene=001
 #Background=fade_tex
+#Fade=fade_tex
+#Ico=a_icon
+#Chara=a_chara(10:0:1)
 #Setscenario=SelectScenario
 #Setscenario=csvTest
 #Setscenario=csvTest2

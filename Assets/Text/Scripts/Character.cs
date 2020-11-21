@@ -2,20 +2,22 @@
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
 
     private GameObject _characterObject;
-    private SpriteRenderer _characterImage;
+    private Image _characterImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private CanvasGroup _canvasGroup;
     private Vector3 _direction = new Vector3(-20f, 0f, 0f);
-    private float _speed =2.5f;
+    private float _speed =200.5f;
     public bool action = false;
     private Vector3 _position;
     private Vector3 _scale;
-
+    private Canvas canvas;
+    private CanvasScaler canvasscaler;
     public string Name { get; private set; }
 
     public void Init(string name)
@@ -24,8 +26,11 @@ public class Character : MonoBehaviour
         _scale = new Vector3(1f, 1f, 1f);
         this.Name = name;
         _characterObject = gameObject;
-        _characterImage = _characterObject.GetComponent<SpriteRenderer>();
+        _characterImage = _characterObject.GetComponent<Image>();
         gameObject.SetActive(false);
+        canvas = _characterObject.GetComponent<Canvas>();
+        canvasscaler = _characterObject.GetComponent<CanvasScaler>();
+        canvas.sortingOrder = 10;
         LoadImage();
     }
 

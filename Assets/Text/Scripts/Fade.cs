@@ -2,14 +2,15 @@
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
-
+using UnityEngine.UI;
 public class Fade : MonoBehaviour {
 
     private GameObject _fadeObject;
-    private SpriteRenderer _fadeImage;
+    private Image _fadeImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private CanvasGroup _canvasGroup;
-
+    private Canvas canvas;
+    private CanvasScaler canvasscaler;
     public string Name { get; private set; }
     
     void Start ()
@@ -21,8 +22,11 @@ public class Fade : MonoBehaviour {
     {
         this.Name = name;
         _fadeObject = gameObject;
-        _fadeImage = _fadeObject.GetComponent<SpriteRenderer>();
+        _fadeImage = _fadeObject.GetComponent<Image>();
         gameObject.SetActive(false);
+        canvas = _fadeObject.GetComponent<Canvas>();
+        canvasscaler = _fadeObject.GetComponent<CanvasScaler>();
+        canvas.sortingOrder = -999;
         LoadImage();
     }
 

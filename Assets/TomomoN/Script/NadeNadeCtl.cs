@@ -7,17 +7,9 @@ public class NadeNadeCtl : MonoBehaviour
     [SerializeField]
     private List<RoutePoint> routes = null;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+    
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    public Vector3 GetRoutesPoint(int index) { return routes[index].Point.position; }
+    public Vector3 GetStartPoint(int index) { return routes[index].StartPoint.position; }
+    public Vector3 GetEndPoint(int index) { return routes[index].EndPoint.position; }
+    public Vector3 GetCtlPoint(int index) { return routes[index].CtlPoint.position; }
 }

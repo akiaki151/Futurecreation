@@ -6,12 +6,22 @@ public class HandCtl : MonoBehaviour
 {
     public static bool isNadeNade = false;
 
-    private string NadeNadePointName;
+    const float maxDeg = 1.5f;
+    const float minDeg = -1.5f;
+
+    string NadeNadeRangeName;
+    Vector3 OldPosition;
+    float t = 0.0f;
 
     // Start is called before the first frame update
     void Start()
     {
+        this.transform.position = new Vector3(-8.2f, -3.2f, 0.0f);
+    }
 
+    void OnEnable()
+    {
+        this.transform.position = new Vector3(-8.2f, -3.2f, 0.0f);
     }
 
     // Update is called once per frame
@@ -21,76 +31,111 @@ public class HandCtl : MonoBehaviour
         {
             if (!isNadeNade)
             {
-                // 移動
+                // マウス座標取得
                 Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
                 //Z座標を0にする
                 handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
-
                 this.transform.position = handPosition;
             }
             else
             {
-                // なでなで処理
-                Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                GameObject nadenade = GameObject.Find("OnePicture");
-                Vector3 p1, p2;
+                /* なでなで中の処理 */
 
-                if (NadeNadePointName == "NadeNadeRange")
+                // マウス座標取得
+                Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+                NadeNadeCtl nadenade = GameObject.Find("BackGround").GetComponent<NadeNadeCtl>();
+                Vector3 startPos, endPos, ctlPos;
+
+
+                // どのなでなで位置か？
+                if (NadeNadeRangeName == "NadeNadeRange")
                 {
-                    p1 = nadenade.GetComponent<NadeNadeCtl>().GetRoutesPoint(0);
-                    p2 = nadenade.GetComponent<NadeNadeCtl>().GetRoutesPoint(1);
+                    startPos = nadenade.GetStartPoint(0);
+                    endPos = nadenade.GetEndPoint(0);
+                    ctlPos = nadenade.GetCtlPoint(0);
                 }
-                else if(NadeNadePointName == "NadeNadeRange (1)")
+                else if (NadeNadeRangeName == "NadeNadeRange (1)")
                 {
-                    p1 = nadenade.GetComponent<NadeNadeCtl>().GetRoutesPoint(2);
-                    p2 = nadenade.GetComponent<NadeNadeCtl>().GetRoutesPoint(3);
+                    startPos = nadenade.GetStartPoint(1);
+                    endPos = nadenade.GetEndPoint(1);
+                    ctlPos = nadenade.GetCtlPoint(1);
                 }
                 else
                 {
-                    p1 = nadenade.GetComponent<NadeNadeCtl>().GetRoutesPoint(4);
-                    p2 = nadenade.GetComponent<NadeNadeCtl>().GetRoutesPoint(5);
+                    startPos = nadenade.GetStartPoint(2);
+                    endPos = nadenade.GetEndPoint(2);
+                    ctlPos = nadenade.GetCtlPoint(2);
                 }
 
-                float deg = (p2.y - p1.y) / (p2.x - p1.x);
-                float seg = p2.y - (deg * p2.x);
 
-                if(-1.5f < deg && deg < 1.5f)
+
+                // 傾きの大きさによって撫でる感覚を変える
+                float deg = (endPos.y - startPos.y) / (endPos.x - startPos.x);
+                if (minDeg < deg && deg < maxDeg)
                 {
                     // 横長
-                    float handPosY = deg * handPosition.x + seg;
-                    float handPosX = (handPosY - seg) / deg;
-
-
-                    handPosition = new Vector3(handPosition.x, handPosY, 0.0f);
+                    t = (handPosition.x - startPos.x) / (endPos.x - startPos.x);
                 }
                 else
                 {
                     // 縦長
-                    float handPosY = deg * handPosition.x + seg;
-                    float handPosX = (handPosition.y - seg) / deg;
-
-
-                    handPosition = new Vector3(handPosX, handPosition.y, 0.0f);
+                    t = (handPosition.y - startPos.y) / (endPos.y - startPos.y);
                 }
+                t = Mathf.Clamp01(t);   // 値を0～1に収める
 
+
+                /* ベジェ曲線 */
+                Vector3 p0 = Vector3.Lerp(startPos, ctlPos, t);  // 始点と制御点で内分
+                Vector3 p1 = Vector3.Lerp(ctlPos, endPos, t);    // 制御点と終点で内分
+
+                handPosition = Vector3.Lerp(p0, p1, t);     // p0とp1で内分で曲線が求まる
+
+
+
+                // 1フレーム前の座標を保存
+                OldPosition = this.transform.position;
+
+                //Z座標を0にする
+                handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
                 this.transform.position = handPosition;
 
 
-                /* ↓ ---ここに撫でられた時のアクションを書く予定--- ↓ */
+                // マウス座標取得
+                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                if (minDeg < deg && deg < maxDeg)
+                {
+                    // 横長
+                    if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
+                    {
+                        HandCtl.isNadeNade = false;
+                        Debug.Log("はずれた");
+                    }
+                }
+                else
+                {
+                    // 縦長
+                    if (mousePosition.y > startPos.y || endPos.y > mousePosition.y)
+                    {
+                        HandCtl.isNadeNade = false;
+                        Debug.Log("はずれた");
+                    }
+                }
 
-
-
-                /* ↑ ---------------------------------------------- ↑ */
             }
         }
     }
+
+
+    public bool IsMovement() { return (OldPosition != this.transform.position); }
 
     
     void OnTriggerStay2D(Collider2D t)
     {
         HandCtl.isNadeNade = true;
-        NadeNadePointName = t.gameObject.name;
+        NadeNadeRangeName = t.gameObject.name;
         Debug.Log("撫でてます");
     }
     void OnTriggerExit2D(Collider2D t)

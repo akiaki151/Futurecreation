@@ -2,13 +2,14 @@
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class CharacterIcon : MonoBehaviour {
 
     private GameObject _charaIcoObject;
-    private SpriteRenderer _charaIcoImage;
+    private Image _charaIcoImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
-    private CanvasGroup _canvasGroup;
+    private GameObject canvas;
 
     public string Name { get; private set; }
     
@@ -21,7 +22,14 @@ public class CharacterIcon : MonoBehaviour {
     {
         this.Name = name;
         _charaIcoObject = gameObject;
-        _charaIcoImage = _charaIcoObject.GetComponent<SpriteRenderer>();
+        canvas = GameObject.Find("Canvas");
+        foreach (Transform child in canvas.transform)
+        {
+            if (child.name == "CharacterIcon")
+            {
+                _charaIcoImage = child.gameObject.GetComponent<Image>();
+            }
+        }
         gameObject.SetActive(false);
         LoadImage();
     }
@@ -44,7 +52,6 @@ public class CharacterIcon : MonoBehaviour {
     public void Appear()
     {
         _charaIcoObject.SetActive(true);
-        FadeIn();
     }
 
     public void FadeIn()

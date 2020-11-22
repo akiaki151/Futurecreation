@@ -1,5 +1,8 @@
 ﻿#scene=001
 #Background=fade_tex
+#Chara=del_chara(0:0:1)
+#Ico=del
+#Speaker=説明君
 #Setscenario=SelectScenario
 #Setscenario=csvTest
 #Setscenario=csvTest2

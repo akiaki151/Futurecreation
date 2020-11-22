@@ -2,19 +2,19 @@
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
 
     private GameObject _characterObject;
-    private SpriteRenderer _characterImage;
+    private Image _characterImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
-    private CanvasGroup _canvasGroup;
-    private Vector3 _direction = new Vector3(-20f, 0f, 0f);
-    private float _speed =2.5f;
+    private float _speed =1.0f;
     public bool action = false;
     private Vector3 _position;
     private Vector3 _scale;
+    private GameObject canvas;
 
     public string Name { get; private set; }
 
@@ -24,7 +24,14 @@ public class Character : MonoBehaviour
         _scale = new Vector3(1f, 1f, 1f);
         this.Name = name;
         _characterObject = gameObject;
-        _characterImage = _characterObject.GetComponent<SpriteRenderer>();
+        canvas = GameObject.Find("Canvas");
+        foreach (Transform child in canvas.transform)
+        {
+            if (child.name == "CharacterImage")
+            {
+                _characterImage = child.gameObject.GetComponent<Image>();
+            }
+        }
         gameObject.SetActive(false);
         LoadImage();
     }
@@ -57,19 +64,18 @@ public class Character : MonoBehaviour
         if (action)
         {
             float step = _speed * Time.deltaTime;
-            _characterObject.transform.position = Vector3.MoveTowards(transform.position, _direction, step);
+            _characterImage.rectTransform.position += new Vector3(-step, 0, 0);
         }
         else
         {
-            _characterObject.transform.position = _position;
-            _characterObject.transform.localScale = _scale;
+            _characterImage.rectTransform.position = _position;
+            _characterImage.rectTransform.localScale = _scale;
         }
     }
 
     public void Appear()
     {
         _characterObject.SetActive(true);
-        FadeIn();
     }
 
     public void FadeIn()

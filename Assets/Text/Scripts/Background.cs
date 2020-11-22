@@ -2,20 +2,18 @@
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
-using UnityEngine.UI;
 
 public class Background : MonoBehaviour {
 
     private GameObject _bgObject;
-    private Image _bgImage;
+    private SpriteRenderer _bgImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
-    private Canvas canvas;
-    private CanvasScaler canvasscaler;
+    private CanvasGroup _canvasGroup;
+
     public string Name { get; private set; }
     
     void Start ()
     {
-        
 
     }
 
@@ -23,11 +21,8 @@ public class Background : MonoBehaviour {
     {
         this.Name = name;
         _bgObject = gameObject;
-        _bgImage = _bgObject.GetComponent<Image>();
+        _bgImage = _bgObject.GetComponent<SpriteRenderer>();
         gameObject.SetActive(false);
-
-        canvas = _bgObject.GetComponent<Canvas>();
-        canvasscaler = _bgObject.GetComponent<CanvasScaler>();
         LoadImage();
     }
 
@@ -56,7 +51,6 @@ public class Background : MonoBehaviour {
     {
         _bgImage.color = new Color(1f, 1f, 1f, 0);
         _bgImage.DOFade(1.0f, 0.0f);
-        
     }
 
     public void Destroy()

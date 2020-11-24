@@ -11,7 +11,7 @@ public class SaveLoadScreenDataPanel : MonoBehaviour
     [SerializeField] private Sprite IsSaveData;
     [SerializeField] private string Time;
     [SerializeField] private string ChapterName;
-    [SerializeField] private string Comment;
+    private InputField Comment;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +28,8 @@ public class SaveLoadScreenDataPanel : MonoBehaviour
             transform.FindChild("Image").GetComponent<Image>().sprite = NoSaveData;
             transform.FindChild("Time").GetComponent<Text>().text = "";
             transform.FindChild("ChapterName").GetComponent<Text>().text = "";
-            transform.FindChild("Comment").GetComponent<Text>().text = "";
+            transform.FindChild("Comment").FindChild("Text").GetComponent<Text>().text = "";
+            transform.FindChild("Comment").FindChild("Placeholder").GetComponent<Text>().text = "";
         }
     }
 

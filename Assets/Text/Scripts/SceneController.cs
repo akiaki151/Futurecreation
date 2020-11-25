@@ -20,7 +20,7 @@ public class SceneController
     private GUIManager _gui;
     private SceneHolder _sh;
     private SceneReader _sr;
-    private Sequence _textSeq = DOTween.Sequence();
+    private Sequence _textSeq  = DOTween.Sequence();
     private Sequence _imageSeq = DOTween.Sequence();
     private Scene _currentScene;
     private bool _isOptionsShowed;
@@ -212,11 +212,6 @@ public class SceneController
 
         character.Init(name);
         CharaIcons.Add(character);
-        _imageSeq = DOTween.Sequence();
-
-        var cpos = new Vector3(-7, _gui.MainCamera.transform.position.y - 3, 0);
-        _imageSeq.Append(CharaIcons[0].transform.DOMove(cpos, 0f))
-            .OnComplete(() => character.Appear());
     }
     public void SetIcoImage(string name, string ID)
     {
@@ -242,11 +237,6 @@ public class SceneController
 
         fade.Init(name);
         Fade.Add(fade);
-        _imageSeq = DOTween.Sequence();
-
-        var cpos = new Vector3(-7, _gui.MainCamera.transform.position.y - 3, 0);
-        _imageSeq.Append(Fade[0].transform.DOMove(cpos, 0f))
-            .OnComplete(() => fade.Appear());
     }
     public void SetFadeImage(string name, string ID)
     {
@@ -272,11 +262,6 @@ public class SceneController
 
         background.Init(name);
         Backgrounds.Add(background);
-        _imageSeq = DOTween.Sequence();
-
-        var cpos = new Vector3(0, _gui.MainCamera.transform.position.y, 0);
-        _imageSeq.Append(Backgrounds[0].transform.DOMove(cpos, 0f))
-            .OnComplete(() => background.Appear());
     }
     public void SetBgImage(string name, string ID)
     {

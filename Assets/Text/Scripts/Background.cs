@@ -52,7 +52,6 @@ public class Background : MonoBehaviour {
     public void Appear()
     {
         _bgObject.SetActive(true);
-        //FadeIn();
     }
 
     public void FadeIn()

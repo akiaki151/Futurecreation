@@ -25,10 +25,10 @@ public class SceneReader
     {
         this._sc = _sc;
         _actions = _sc.Actions;
-        _sc.AddBackground("BackGrounds");
-        _sc.AddCharaIcon("CharaIcons");
-        _sc.AddCharacter("Characters");
-        _sc.AddFade("Fade");
+        _sc.SetBackground("BackGrounds");
+        _sc.SetCharaIcon("CharaIcons");
+        _sc.SetCharacter("Characters");
+        _sc.SetFade("Fade");
         _sc.AddSound();
     }
 

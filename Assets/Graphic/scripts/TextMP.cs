@@ -11,8 +11,9 @@ public class TextMP : MonoBehaviour
     private Vector3[] vec;
     private bool once;
     private int cnt;
-
+    public int i;
     private TMPAnimation action;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +34,10 @@ public class TextMP : MonoBehaviour
 
         // action =new TMPAnimation();
         action = GetComponent<TMPAnimation>();
-        
 
-        
+
+        action.i = i;
+        action.text = text;
     }
 
     // Update is called once per frame
@@ -84,7 +86,7 @@ public class TextMP : MonoBehaviour
         //    destVertices[vertexIndex + 1] += rotateCenterVertex;
         //    destVertices[vertexIndex + 2] += rotateCenterVertex;
         //    destVertices[vertexIndex + 3] += rotateCenterVertex;
-           
+
 
         //}
 
@@ -94,7 +96,8 @@ public class TextMP : MonoBehaviour
         //    text.UpdateGeometry(text.textInfo.meshInfo[i].mesh, i);
         //}
 
-         action.BundAnimation(text);
+        //action.BundAnimation(text);
+        action.Chin();
     }
 
 }

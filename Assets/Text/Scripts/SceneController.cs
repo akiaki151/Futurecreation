@@ -24,6 +24,7 @@ public class SceneController
     private Sequence _imageSeq = DOTween.Sequence();
     private Scene _currentScene;
     private bool _isOptionsShowed;
+    private bool _isSaveShowed;
     private string _tempText;
     private float _messageSpeed = 0.1f;
     private bool _charaAction = false;
@@ -58,7 +59,6 @@ public class SceneController
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-
                     if (collition2d != null)
                     {
                         var button = collition2d.gameObject.GetComponent<Button>();
@@ -66,10 +66,12 @@ public class SceneController
                     }
                 }
 
-                if (!_isOptionsShowed && !_imageSeq.IsPlaying())
+
+                if (!_isOptionsShowed && !_imageSeq.IsPlaying() &&!_isSaveShowed)
                 {
                     SetNextProcess();
                 }
+
             }
         }
     }
@@ -79,6 +81,18 @@ public class SceneController
         _gui.ButtonPanel.gameObject.SetActive(_isOptionsShowed);
         _gui.Delta.gameObject.SetActive
             (!_textSeq.IsPlaying() && !_isOptionsShowed && !_imageSeq.IsPlaying());
+        _gui.SaveButton.onClick.AddListener(SaveOnClick);
+        _gui.ReturnButton.onClick.AddListener(ReturnOnClick);
+        _gui.SavePanel.SetActive(_isSaveShowed);
+    }
+
+    public void SaveOnClick()
+    {   
+        _isSaveShowed = true;
+    }
+    public void ReturnOnClick()
+    {
+        _isSaveShowed = false;
     }
 
     public void SetNextProcess()
@@ -308,8 +322,7 @@ public class SceneController
         int flag2 = int.Parse(flag);
         _Sound.ChangeSE(num2, flag2);
     }
-    //////////////////////////////////////////////////////////////////////
-
+    //////////////////////////////////////////////////////////////////////\
     public void SetOptions(List<(string text, string nextScene)> options)
     {
         _isOptionsShowed = true;
@@ -333,6 +346,4 @@ public class SceneController
             UnityEngine.Object.Destroy(t.gameObject);
         }
     }
-
-
 }

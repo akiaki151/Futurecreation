@@ -25,7 +25,7 @@ public class Background : MonoBehaviour {
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
-            if (child.name == "Background")
+            if (child.name == Name)
             {
                 _bgImage = child.gameObject.GetComponent<Image>();
             }

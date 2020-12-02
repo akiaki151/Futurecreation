@@ -25,7 +25,7 @@ public class Fade : MonoBehaviour {
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
-            if (child.name == "Fade")
+            if (child.name == Name)
             {
                 _fadeImage = child.gameObject.GetComponent<Image>();
             }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using System.Collections.Generic;
 using System;
 using System.Reflection;
 
@@ -40,9 +39,10 @@ public class TMPAnimation : MonoBehaviour
 
     public int i { private get; set; }
 
-    public void Chin()
+    public void SetAnim()
     {
         Invoke(funcName[i], 0);
+        
     }
 
 
@@ -252,5 +252,6 @@ public class TMPAnimation : MonoBehaviour
 
         }
     }
+
 
 }

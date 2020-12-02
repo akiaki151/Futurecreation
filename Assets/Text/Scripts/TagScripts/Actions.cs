@@ -13,22 +13,10 @@
         switch (index)
         {
             case 0:
-                //gc.Sc.SetScene("004");
+                gc.Sc.SetScene("004");
                 break;
             case 1:
                 gc.Sc.ActionMove();
-                break;
-            case 2:
-                gc.Sc.SetScene("004");
-                break;
-            case 3:
-                gc.Sc.SetScene("004");
-                break;
-            case 4:
-                gc.Sc.SetScene("004");
-                break;
-            case 5:
-                gc.Sc.SetScene("004");
                 break;
             default:
                 break;

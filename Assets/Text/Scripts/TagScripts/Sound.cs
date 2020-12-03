@@ -57,6 +57,17 @@ public class Sound : MonoBehaviour
         }
     }
 
+    public void ChangeCharacterVoice(int num)
+    {
+        _bgm_index = num;
+        if (_bgm_index != 0)
+        {
+            _sources[2].clip = BGM[_bgm_index - 1];
+            _sources[2].Play();
+            _bgm_index = 0;
+        }
+    }
+
     public void Destroy()
     {
         Destroy(this);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SliderToText : MonoBehaviour
+public class VolumeSliderToText : MonoBehaviour
 {
     private InputField ValueInputField;
     private Slider ValueSlider;
@@ -18,7 +18,7 @@ public class SliderToText : MonoBehaviour
 
         ValueSlider.onValueChanged.AddListener(delegate { SliderTaskOnChanged(); });
 
-        ValueSlider.value = 50;
+        ValueSlider.value = Mathf.Abs(PlayerPrefs.GetInt(this.name)) / 40.0f * 100.0f;
 
         ValueInputField.text = ValueSlider.value.ToString();
     }
@@ -26,7 +26,7 @@ public class SliderToText : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void InputFieldTaskOnChanged()

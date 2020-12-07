@@ -81,18 +81,6 @@ public class SceneController
         _gui.ButtonPanel.gameObject.SetActive(_isOptionsShowed);
         _gui.Delta.gameObject.SetActive
             (!_textSeq.IsPlaying() && !_isOptionsShowed && !_imageSeq.IsPlaying());
-        _gui.SaveButton.onClick.AddListener(SaveOnClick);
-        _gui.ReturnButton.onClick.AddListener(ReturnOnClick);
-        _gui.SavePanel.SetActive(_isSaveShowed);
-    }
-
-    public void SaveOnClick()
-    {   
-        _isSaveShowed = true;
-    }
-    public void ReturnOnClick()
-    {
-        _isSaveShowed = false;
     }
 
     public void SetNextProcess()
@@ -132,21 +120,6 @@ public class SceneController
                     text,
                     text.Length * _messageSpeed
                 ).SetEase(Ease.Linear));
-        }
-    }
-
-    public void SetTMP(string text)
-    {
-        _tempText = text;
-        if (_textSeq.IsPlaying())
-        {
-            _textSeq.Complete();
-        }
-        else
-        {
-            _gui.TMP.text = "";
-            _gui.TMP.text = text;
-
         }
     }
 

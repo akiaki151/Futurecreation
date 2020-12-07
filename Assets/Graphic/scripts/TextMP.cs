@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class TextMP : MonoBehaviour
 {
-    private TextMeshPro text;
+    private TextMeshProUGUI text;
     public bool vertical;        //縦書きか
     private Vector3[] vec;
     private bool once;
@@ -17,7 +17,7 @@ public class TextMP : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       text = GetComponent<TextMeshPro>();
+       text = GetComponent<TextMeshProUGUI>();
 
 
 

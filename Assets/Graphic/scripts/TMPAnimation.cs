@@ -34,7 +34,7 @@ public class TMPAnimation : MonoBehaviour
 
     private float nowDegree;
 
-    public TextMeshPro text { private get; set; }
+    public TextMeshProUGUI text { private get; set; }
     private string[] funcName = { "BundAnimation", "UpAnimation", "RotateAnimation" };
 
     public int i { private get; set; }
@@ -77,7 +77,7 @@ public class TMPAnimation : MonoBehaviour
             
             x = ((velocity*Time.time) -( i* delay * 9.8f / (Time.time+0.001f)* (Time.time+0.0001f))/2)/frame;
 
-            anim = curve.Evaluate(x)/5.0f;
+            anim = curve.Evaluate(x)*3.0f;
             scale.x = scaleAnimationX.Evaluate(x);
             scale.y = scaleAnimationY.Evaluate(x);
             scale.z = 1.0f;
@@ -148,7 +148,7 @@ public class TMPAnimation : MonoBehaviour
 
             x = ((velocity * Time.time) - (i * delay * 9.8f / (Time.time + 0.001f) * (Time.time + 0.0001f)) / 2) / frame;
 
-            anim = curve.Evaluate(x) / 5.0f;
+            anim = curve.Evaluate(x)*3.0f;
             scale.x = scaleAnimationX.Evaluate(x);
             scale.y = scaleAnimationY.Evaluate(x);
             scale.z = 1.0f;
@@ -223,7 +223,7 @@ public class TMPAnimation : MonoBehaviour
 
             verts = text.textInfo.meshInfo[materialIndex].vertices;
 
-            Vector3 zeroDegreePoint = Vector3.up * 2.0f;
+            Vector3 zeroDegreePoint = Vector3.up * 40.0f;
             Vector3 moveVector = zeroDegreePoint - 0.5f * (verts[vertexIndex + 2] + verts[vertexIndex + 0]);
 
             verts[vertexIndex + 0] += moveVector;

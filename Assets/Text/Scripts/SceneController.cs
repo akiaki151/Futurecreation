@@ -7,43 +7,58 @@ using UnityEngine.UI;
 
 public class SceneController
 {
-    private GameController gc;
     public Actions Actions;
+    public List<CharacterIcon> CharaIcons = new List<CharacterIcon>();//このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Character> Characters = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
+    public List<Score> Scores = new List<Score>();
+    public List<Fade> Fade = new List<Fade>();
+    private Sound _Sound;
+    public string sceneTxtname { private get; set; }
 
-    private GUIManager gui;
-    private SceneHolder sh;
-    private SceneReader sr;
-    private string tempText;
+    private GameController _gc;
+    private GUIManager _gui;
+    private SceneHolder _sh;
+    private SceneReader _sr;
+    private Sequence _textSeq  = DOTween.Sequence();
+    private Sequence _imageSeq = DOTween.Sequence();
+    private Scene _currentScene;
+    private bool _isOptionsShowed;
+    private bool _isSaveShowed;
+    private string _tempText;
+    private float _messageSpeed = 0.1f;
+    private bool _charaAction = false;
+    
 
-    private Sequence textSeq = DOTween.Sequence();
-    private Sequence imageSeq = DOTween.Sequence();
-    private bool isOptionsShowed;
-    private float messageSpeed = 0.02f;
-
-    private Scene currentScene;
-    public List<Character> Characters = new List<Character>();
-
-    public SceneController(GameController gc)
+    public SceneController(GameController _gc)
     {
-        this.gc = gc;
-        gui = GameObject.Find("GUI").GetComponent<GUIManager>();
-        Actions = new Actions(gc);
-        sh = new SceneHolder(this);
-        sr = new SceneReader(this);
-        textSeq.Complete();
+        this._gc = _gc;
+        _gui = GameObject.Find("GUI").GetComponent<GUIManager>();
+        Actions = new Actions(_gc);
+        _sh = new SceneHolder(this);
+        _sr = new SceneReader(this);
+        _textSeq.Complete();
+        sceneTxtname = "";
     }
 
     public void WaitClick()
     {
-        if (currentScene != null)
+        if (_currentScene != null)
         {
             if (Input.GetMouseButtonDown(0))
             {
+                //  キャラの座標戻し
+                if (_charaAction)
+                {
+                    var character = Characters.Find(c => c.Name == "Characters");
+                    character.action = false;
+                    _charaAction = false;
+                }
+
                 if (EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-
                     if (collition2d != null)
                     {
                         var button = collition2d.gameObject.GetComponent<Button>();
@@ -51,131 +66,257 @@ public class SceneController
                     }
                 }
 
-                if (!isOptionsShowed && !imageSeq.IsPlaying())
+
+                if (!_isOptionsShowed && !_imageSeq.IsPlaying() &&!_isSaveShowed)
                 {
                     SetNextProcess();
                 }
+
             }
         }
     }
 
     public void SetComponents()
     {
-        gui.ButtonPanel.gameObject.SetActive(isOptionsShowed);
-        gui.Delta.gameObject.SetActive
-            (!textSeq.IsPlaying() && !isOptionsShowed && !imageSeq.IsPlaying());
+        _gui.ButtonPanel.gameObject.SetActive(_isOptionsShowed);
+        _gui.Delta.gameObject.SetActive
+            (!_textSeq.IsPlaying() && !_isOptionsShowed && !_imageSeq.IsPlaying());
     }
 
     public void SetNextProcess()
     {
-        if (textSeq.IsPlaying())
+        if (_textSeq.IsPlaying())
         {
-            SetText(tempText);
+            SetText(_tempText);
         }
         else
         {
-            sr.ReadLines(currentScene);
+            _sr.ReadLines(_currentScene);
         }
     }
 
     public void SetScene(string id)
     {
-        currentScene = sh.Scenes.Find(s => s.ID == id);
-        currentScene = currentScene.Clone();
-        if (currentScene == null) Debug.LogError("scenario not found");
+        _currentScene = _sh.Scenes.Find(s => s.ID == id+sceneTxtname);
+        _currentScene = _currentScene.Clone();
+        if (_currentScene == null) Debug.LogError("scenario not found");
         SetNextProcess();
     }
 
     public void SetText(string text)
     {
-        tempText = text;
-        if (textSeq.IsPlaying())
+        _tempText = text;
+        if (_textSeq.IsPlaying())
         {
-            textSeq.Complete();
+            _textSeq.Complete();
         }
         else
         {
-            gui.Text.text = "";
-            textSeq = DOTween.Sequence();
-            textSeq.Append
-                (gui.Text.DOText
+            _gui.Text.text = "";
+            _textSeq = DOTween.Sequence();
+            _textSeq.Append
+                (_gui.Text.DOText
                 (
                     text,
-                    text.Length * messageSpeed
+                    text.Length * _messageSpeed
                 ).SetEase(Ease.Linear));
         }
     }
 
     public void SetOptionsPanel()
     {
-        gui.ButtonPanel.gameObject.SetActive(isOptionsShowed);
+        _gui.ButtonPanel.gameObject.SetActive(_isOptionsShowed);
     }
 
     public void SetSpeaker(string name = "")
     {
-        gui.Speaker.text = name;
+        _gui.Speaker.text = name;
     }
 
-    public void SetCharactor(string name)
+
+    //特別なアクション処理//////////////////////////////////////////////////
+    public void Action(string num)
+    {
+        int num2 = int.Parse(num);
+        Actions.SelectAction(num2);
+    }
+
+    public void ActionMove()
+    {
+        var character = Characters.Find(c => c.Name == "Characters");
+        _charaAction = true;
+        character.Move();
+    }
+
+    /////////////////////////////////////////////////////////////////////
+
+
+    //キャラクター処理//////////////////////////////////////////////////
+    public void SetCharacter(string name)
     {
         Characters.ForEach(c => c.Destroy());
         Characters = new List<Character>();
-        AddCharactor(name);
+        AddCharacter(name);
     }
-
-    public void AddCharactor(string name)
+    public void AddCharacter(string name)
     {
         if (Characters.Exists(c => c.Name == name)) return;
 
-        var prefab = Resources.Load("Charactor") as GameObject;
+        var prefab = Resources.Load("Prefabs/Character") as GameObject;
         var charactorObject = Object.Instantiate(prefab);
         var character = charactorObject.GetComponent<Character>();
 
         character.Init(name);
         Characters.Add(character);
-        imageSeq = DOTween.Sequence();
+        _imageSeq = DOTween.Sequence();
 
-        for (int i = 0; i < Characters.Count; i++)
-        {
-            var pos = gui.MainCamera.ScreenToWorldPoint(Vector3.zero);
-            var pos2 = gui.MainCamera.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
-            var posWidth = pos2.x - pos.x;
-            var left = pos.x + (posWidth * (i + 1) / (Characters.Count + 1));
-            var cpos = new Vector3(0, gui.MainCamera.transform.position.y, 0);
-
-            imageSeq.Append(Characters[i].transform.DOMove(cpos, 0f))
-                .OnComplete(() => character.Appear());
-        }
-
+        var cpos = new Vector3(0, _gui.MainCamera.transform.position.y, 0);
+        _imageSeq.Append(Characters[0].transform.DOMove(cpos, 0f))
+            .OnComplete(() => character.Appear());
     }
 
-    public void SetImage(string name, string ID)
+    public void SetCharaImage(string name, string ID,float x,float y,float scale)
     {
         var character = Characters.Find(c => c.Name == name);
+        character.SetImage(ID,x,y,scale);
+    }
+    //////////////////////////////////////////////////////////////////////
+
+    //キャラアイコン処理//////////////////////////////////////////////////
+    public void SetCharaIcon(string name)
+    {
+        CharaIcons.ForEach(c => c.Destroy());
+        CharaIcons = new List<CharacterIcon>();
+        AddCharaIcon(name);
+    }
+    public void AddCharaIcon(string name)
+    {
+        if (CharaIcons.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("Prefabs/CharacterIcon") as GameObject;
+        var charactorObject = Object.Instantiate(prefab);
+        var character = charactorObject.GetComponent<CharacterIcon>();
+
+        character.Init(name);
+        CharaIcons.Add(character);
+    }
+    public void SetIcoImage(string name, string ID)
+    {
+        var character = CharaIcons.Find(c => c.Name == name);
         character.SetImage(ID);
     }
+    //////////////////////////////////////////////////////////////////////
 
+    //フェード処理//////////////////////////////////////////////////
+    public void SetFade(string name)
+    {
+        Fade.ForEach(c => c.Destroy());
+        Fade = new List<Fade>();
+        AddFade(name);
+    }
+    public void AddFade(string name)
+    {
+        if (Fade.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("Prefabs/Fade") as GameObject;
+        var fadeObject = Object.Instantiate(prefab);
+        var fade = fadeObject.GetComponent<Fade>();
+
+        fade.Init(name);
+        Fade.Add(fade);
+    }
+    public void SetFadeImage(string name, string ID)
+    {
+        var fade = Fade.Find(c => c.Name == name);
+        fade.SetImage(ID);
+    }
+    //////////////////////////////////////////////////////////////////////
+
+    //背景処理////////////////////////////////////////////////////////////
+    public void SetBackground(string name)
+    {
+        Backgrounds.ForEach(c => c.Destroy());
+        Backgrounds = new List<Background>();
+        AddBackground(name);
+    }
+    public void AddBackground(string name)
+    {
+        if (Backgrounds.Exists(c => c.Name == name)) return;
+
+        var prefab = Resources.Load("Prefabs/Background") as GameObject;
+        var backgroundObject = Object.Instantiate(prefab);
+        var background = backgroundObject.GetComponent<Background>();
+
+        background.Init(name);
+        Backgrounds.Add(background);
+    }
+    public void SetBgImage(string name, string ID)
+    {
+        var background = Backgrounds.Find(c => c.Name == name);
+        background.SetImage(ID);
+    }
+    //////////////////////////////////////////////////////////////////////
+
+    //スコア処理////////////////////////////////////////////////////////////
+    public void AddScore(string name)
+    {
+        if (Scores.Exists(c => c.Name == name)) return;
+        var prefab = Resources.Load("Prefabs/CharaScore") as GameObject;
+        var scoreobject = Object.Instantiate(prefab);
+        var score = scoreobject.GetComponent<Score>();
+        score.Init(name);
+        Scores.Add(score);
+    }
+    public void SetScore(string name, string num)
+    {
+        var score = Scores.Find(c => c.Name == name);
+        int num2 = int.Parse(num);
+        score.ChangeScore(num2);
+    }
+    //////////////////////////////////////////////////////////////////////
+
+    //サウンド処理////////////////////////////////////////////////////////////
+    public void AddSound()
+    {
+        var prefab = Resources.Load("Prefabs/SoundManager") as GameObject;
+        var soundobject = Object.Instantiate(prefab);
+        var sound = soundobject.GetComponent<Sound>();
+        _Sound = sound;
+        _Sound.Init();
+    }
+    public void ChangeBGM(string num)
+    {
+        int num2 = int.Parse(num);
+        _Sound.ChangeBGM(num2);
+    }
+    public void ChangeSE(string num, string flag)
+    {
+        int num2 = int.Parse(num);
+        int flag2 = int.Parse(flag);
+        _Sound.ChangeSE(num2, flag2);
+    }
+    //////////////////////////////////////////////////////////////////////\
     public void SetOptions(List<(string text, string nextScene)> options)
     {
-        isOptionsShowed = true;
+        _isOptionsShowed = true;
         foreach (var o in options)
         {
-            Button b = Object.Instantiate(gui.OptionButton);
+            Button b = Object.Instantiate(_gui.OptionButton);
             Text text = b.GetComponentInChildren<Text>();
             text.text = o.text;
             b.onClick.AddListener(() => onClickedOption(o.nextScene));
-            b.transform.SetParent(gui.ButtonPanel, false);
+            b.transform.SetParent(_gui.ButtonPanel, false);
         }
     }
 
     public void onClickedOption(string nextID = "")
     {
         SetScene(nextID);
-        isOptionsShowed = false;
-        foreach (Transform t in gui.ButtonPanel)
+        _isOptionsShowed = false;
+
+        foreach (Transform t in _gui.ButtonPanel)
         {
             UnityEngine.Object.Destroy(t.gameObject);
         }
     }
-
 }

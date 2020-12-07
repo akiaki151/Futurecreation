@@ -25,7 +25,7 @@ public class CharacterIcon : MonoBehaviour {
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
-            if (child.name == Name)
+            if (child.name == "CharacterIcon")
             {
                 _charaIcoImage = child.gameObject.GetComponent<Image>();
             }

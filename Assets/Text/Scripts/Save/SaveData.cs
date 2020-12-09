@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class PlayerData
+public class SaveData
 {
-    public string name;
-    public int level;
-    public List<int> statusList;
+    public string icon_name;
+    public string time;
+    public string text;
 
     public override string ToString()
     {

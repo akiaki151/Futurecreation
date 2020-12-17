@@ -15,6 +15,9 @@ public class HandGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 一旦処理を止めます
+        if (true) return;
+
         // ハートの数が一定数超えない場合returnする
         HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
         if (heart.GetHeartCount() > heart.GetMaxHeartCount())

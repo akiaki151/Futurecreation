@@ -46,7 +46,7 @@ public class HandCtl : MonoBehaviour
                 Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
 
-                NadeNadeCtl nadenade = GameObject.Find("BackGround").GetComponent<NadeNadeCtl>();
+                NadeNadeCtl nadenade = GameObject.Find("OnePicturePrefab").GetComponent<NadeNadeCtl>();
                 Vector3 startPos, endPos, ctlPos;
 
 

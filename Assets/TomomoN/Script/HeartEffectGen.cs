@@ -29,10 +29,14 @@ public class HeartEffectGen : MonoBehaviour
         HandCtl hand = GeneratePoint.GetComponent<HandCtl>();
         if (!hand.IsMovement()) return;
 
-        // ハートの数が一定数超えたか？
-        HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
-        if (heartCount > heart.GetMaxHeartCount()) return;
 
+        // 一旦処理を止めます
+        if (false)
+        {
+            // ハートの数が一定数超えたか？
+            HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
+            if (heartCount > heart.GetMaxHeartCount()) return;
+        }
 
 
         delta += Time.deltaTime;    // デルタを加算

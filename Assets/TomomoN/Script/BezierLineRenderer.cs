@@ -23,7 +23,9 @@ public class BezierLineRenderer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        Debug.Log(startPosition.position);
+        Debug.Log(endPosition.position);
+        Debug.Log(controlPoint.position);
     }
 
     // Update is called once per frame

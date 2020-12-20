@@ -798,6 +798,21 @@ PrefabInstance:
       propertyPath: middlePoints
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: startPosition
+      value: 
+      objectReference: {fileID: 419161513}
+    - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: endPosition
+      value: 
+      objectReference: {fileID: 486804185}
+    - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: controlPoint
+      value: 
+      objectReference: {fileID: 1647952681}
     - target: {fileID: 4604936638820546222, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
       propertyPath: m_AnchoredPosition.x

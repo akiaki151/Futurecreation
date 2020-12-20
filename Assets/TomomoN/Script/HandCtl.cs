@@ -27,6 +27,9 @@ public class HandCtl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 1フレーム前の座標を保存
+        OldPosition = this.transform.position;
+
         if (Input.GetMouseButton(0))    // 仮（条件によって変更）
         {
             if (!isNadeNade)
@@ -94,10 +97,7 @@ public class HandCtl : MonoBehaviour
                 handPosition = Vector3.Lerp(p0, p1, t);     // p0とp1で内分で曲線が求まる
 
 
-
-                // 1フレーム前の座標を保存
-                OldPosition = this.transform.position;
-
+                
                 //Z座標を0にする
                 handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
                 this.transform.position = handPosition;

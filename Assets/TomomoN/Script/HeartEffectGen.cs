@@ -26,7 +26,7 @@ public class HeartEffectGen : MonoBehaviour
         if (!HandCtl.isNadeNade) return;
 
         // 手が動いているか？
-        HandCtl hand = GeneratePoint.GetComponent<HandCtl>();
+        HandCtl hand = GeneratePoint.transform.GetChild(0).GetComponent<HandCtl>();
         if (!hand.IsMovement()) return;
 
 
@@ -46,7 +46,7 @@ public class HeartEffectGen : MonoBehaviour
 
             // 生成
             GameObject effect = Instantiate(HeartEffect) as GameObject;
-            effect.transform.position = new Vector3(GeneratePoint.transform.position.x, GeneratePoint.transform.position.y, 0.06f);
+            effect.transform.position = new Vector3(GeneratePoint.transform.GetChild(0).position.x, GeneratePoint.transform.GetChild(0).position.y, 0.06f);
             effect.transform.Rotate(0.0f, 0.0f, 0.0f);
 
             // 子オブジェクトにセットする

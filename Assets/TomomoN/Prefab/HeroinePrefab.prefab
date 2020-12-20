@@ -100,9 +100,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1104b4dde9dacc49ae0aefc54f5676e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 8862565343065393079}
-  endPosition: {fileID: 4721626607172390035}
-  controlPoint: {fileID: 4329738227265910300}
+  routePoint:
+    StartPoint: {fileID: 8862565343065393079}
+    EndPoint: {fileID: 4721626607172390035}
+    CtlPoint: {fileID: 4329738227265910300}
   middlePoints: 10
   considerDistance: 1
   distanceEffect: 0.2
@@ -231,6 +232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2493373036634545729}
   - component: {fileID: 5823671539006546052}
+  - component: {fileID: 1183741032854422619}
   m_Layer: 5
   m_Name: NadeNadeRange (2)
   m_TagString: Untagged
@@ -287,6 +289,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &1183741032854422619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3502348340567929412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3ba2cae05946442b49b8b5840aa8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3641650839339826341
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,6 +362,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2865528390797504042}
   - component: {fileID: 6165301564234928367}
+  - component: {fileID: 904625271359482242}
   m_Layer: 5
   m_Name: NadeNadeRange (1)
   m_TagString: Untagged
@@ -404,6 +419,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &904625271359482242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3874375722354164271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3ba2cae05946442b49b8b5840aa8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4299773751104874639
 GameObject:
   m_ObjectHideFlags: 0
@@ -657,9 +684,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1104b4dde9dacc49ae0aefc54f5676e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 3343134211322861518}
-  endPosition: {fileID: 1521526736759037162}
-  controlPoint: {fileID: 7533760323226838629}
+  routePoint:
+    StartPoint: {fileID: 3343134211322861518}
+    EndPoint: {fileID: 1521526736759037162}
+    CtlPoint: {fileID: 7533760323226838629}
   middlePoints: 10
   considerDistance: 1
   distanceEffect: 0.2
@@ -929,6 +957,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8503120948531072568}
   - component: {fileID: 309284424573956349}
+  - component: {fileID: 1338875545579607719}
   m_Layer: 5
   m_Name: NadeNadeRange
   m_TagString: Untagged
@@ -985,6 +1014,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &1338875545579607719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7206266970436133437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3ba2cae05946442b49b8b5840aa8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7355122318682189020
 GameObject:
   m_ObjectHideFlags: 0
@@ -1136,9 +1177,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1104b4dde9dacc49ae0aefc54f5676e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 3115199743441069989}
-  endPosition: {fileID: 1172017763143888001}
-  controlPoint: {fileID: 7913687019530065422}
+  routePoint:
+    StartPoint: {fileID: 3115199743441069989}
+    EndPoint: {fileID: 1172017763143888001}
+    CtlPoint: {fileID: 7913687019530065422}
   middlePoints: 10
   considerDistance: 1
   distanceEffect: 0.2

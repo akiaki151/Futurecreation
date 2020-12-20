@@ -404,7 +404,7 @@ PrefabInstance:
         type: 3}
       propertyPath: GeneratePoint
       value: 
-      objectReference: {fileID: 1498977785}
+      objectReference: {fileID: 700619639}
     - target: {fileID: 1858175616597535898, guid: 5d8728c50569b6142927e5b4315f532d,
         type: 3}
       propertyPath: HeartEffect
@@ -543,6 +543,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8d8e73e5e270f03409849c923906260e, type: 3}
+--- !u!1 &700619639 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2061941550790561760, guid: 8d8e73e5e270f03409849c923906260e,
+    type: 3}
+  m_PrefabInstance: {fileID: 700619638}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1152886843 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8535928862561674266, guid: 12c966676fb9ceb419de89a05f3d6972,
@@ -647,12 +653,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1498977785 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3237131567527381846, guid: 8d8e73e5e270f03409849c923906260e,
-    type: 3}
-  m_PrefabInstance: {fileID: 700619638}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1629501404 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 328968530999819658, guid: 12c966676fb9ceb419de89a05f3d6972,

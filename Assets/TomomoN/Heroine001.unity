@@ -371,7 +371,7 @@ PrefabInstance:
         type: 3}
       propertyPath: GeneratePoint
       value: 
-      objectReference: {fileID: 2036152959}
+      objectReference: {fileID: 1312335629}
     - target: {fileID: 1858175616597535898, guid: 5d8728c50569b6142927e5b4315f532d,
         type: 3}
       propertyPath: HeartEffect
@@ -751,6 +751,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1312335629 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2061941550790561760, guid: 8d8e73e5e270f03409849c923906260e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8585092}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1605490064
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -783,6 +789,11 @@ PrefabInstance:
       propertyPath: radius
       value: 0.25
       objectReference: {fileID: 0}
+    - target: {fileID: 2384621788101628708, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
       propertyPath: considerDistance
@@ -791,7 +802,7 @@ PrefabInstance:
     - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
       propertyPath: distanceEffect
-      value: 0.08
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
@@ -811,6 +822,21 @@ PrefabInstance:
     - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
       propertyPath: controlPoint
+      value: 
+      objectReference: {fileID: 1647952681}
+    - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: routePoint.StartPoint
+      value: 
+      objectReference: {fileID: 419161513}
+    - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: routePoint.EndPoint
+      value: 
+      objectReference: {fileID: 486804185}
+    - target: {fileID: 4279774815311039613, guid: 12c966676fb9ceb419de89a05f3d6972,
+        type: 3}
+      propertyPath: routePoint.CtlPoint
       value: 
       objectReference: {fileID: 1647952681}
     - target: {fileID: 4604936638820546222, guid: 12c966676fb9ceb419de89a05f3d6972,
@@ -992,12 +1018,12 @@ PrefabInstance:
     - target: {fileID: 8719106019387541253, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 460
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 8719106019387541253, guid: 12c966676fb9ceb419de89a05f3d6972,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 350
+      value: 386
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 12c966676fb9ceb419de89a05f3d6972, type: 3}
@@ -1006,12 +1032,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8719106019387541253, guid: 12c966676fb9ceb419de89a05f3d6972,
     type: 3}
   m_PrefabInstance: {fileID: 1605490064}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2036152959 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3237131567527381846, guid: 8d8e73e5e270f03409849c923906260e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8585092}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &2054893943 stripped
 RectTransform:

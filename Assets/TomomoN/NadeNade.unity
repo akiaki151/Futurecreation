@@ -338,7 +338,7 @@ PrefabInstance:
         type: 3}
       propertyPath: GeneratePoint
       value: 
-      objectReference: {fileID: 1965645291465699485}
+      objectReference: {fileID: 1778108617}
     - target: {fileID: 7845590420350620911, guid: 5d8728c50569b6142927e5b4315f532d,
         type: 3}
       propertyPath: m_Name
@@ -700,6 +700,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1778108617 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2061941550790561760, guid: 8d8e73e5e270f03409849c923906260e,
+    type: 3}
+  m_PrefabInstance: {fileID: 4011517562542570443}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &841031822494465807 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4323512836426024132, guid: 8d8e73e5e270f03409849c923906260e,
@@ -711,12 +717,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4721626607172390035, guid: 89fc433989f0834468a2848c0604d500,
     type: 3}
   m_PrefabInstance: {fileID: 6088548260276538317}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1965645291465699485 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3237131567527381846, guid: 8d8e73e5e270f03409849c923906260e,
-    type: 3}
-  m_PrefabInstance: {fileID: 4011517562542570443}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &3350948993927662714 stripped
 RectTransform:
@@ -1107,6 +1107,36 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 9052978697276751104, guid: 89fc433989f0834468a2848c0604d500,
+        type: 3}
+      propertyPath: routePoint.StartPoint
+      value: 
+      objectReference: {fileID: 9170938299717151848}
+    - target: {fileID: 9052978697276751104, guid: 89fc433989f0834468a2848c0604d500,
+        type: 3}
+      propertyPath: routePoint.EndPoint
+      value: 
+      objectReference: {fileID: 4917096884137928524}
+    - target: {fileID: 9052978697276751104, guid: 89fc433989f0834468a2848c0604d500,
+        type: 3}
+      propertyPath: routePoint.CtlPoint
+      value: 
+      objectReference: {fileID: 4156204565780143555}
+    - target: {fileID: 9219372282329527965, guid: 89fc433989f0834468a2848c0604d500,
+        type: 3}
+      propertyPath: routePoint.StartPoint
+      value: 
+      objectReference: {fileID: 3350948993927662714}
+    - target: {fileID: 9219372282329527965, guid: 89fc433989f0834468a2848c0604d500,
+        type: 3}
+      propertyPath: routePoint.EndPoint
+      value: 
+      objectReference: {fileID: 1583094435217934174}
+    - target: {fileID: 9219372282329527965, guid: 89fc433989f0834468a2848c0604d500,
+        type: 3}
+      propertyPath: routePoint.CtlPoint
+      value: 
+      objectReference: {fileID: 7523421060872945105}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89fc433989f0834468a2848c0604d500, type: 3}
 --- !u!224 &7523421060872945105 stripped

@@ -151,9 +151,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1104b4dde9dacc49ae0aefc54f5676e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startPosition: {fileID: 9170938299567749843}
-  endPosition: {fileID: 4917096884256928247}
-  controlPoint: {fileID: 4156204565899135864}
+  routePoint:
+    StartPoint: {fileID: 9170938299567749843}
+    EndPoint: {fileID: 4917096884256928247}
+    CtlPoint: {fileID: 4156204565899135864}
   middlePoints: 10
   considerDistance: 1
   distanceEffect: 0.2
@@ -282,6 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8339180528275813212}
   - component: {fileID: 139984846198001049}
+  - component: {fileID: 679179193922239757}
   m_Layer: 5
   m_Name: NadeNadeRange
   m_TagString: Untagged
@@ -338,6 +340,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
+--- !u!114 &679179193922239757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042031485454557017}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b3ba2cae05946442b49b8b5840aa8bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7677327172104603026
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,7 +28,8 @@ public class SceneController
     private string _tempText;
     private float _messageSpeed = 0.1f;
     private bool _charaAction = false;
-    
+    private GameObject canvas;
+    private GameObject targetGameObject;
 
     public SceneController(GameController _gc)
     {
@@ -39,6 +40,16 @@ public class SceneController
         _sr = new SceneReader(this);
         _textSeq.Complete();
         sceneTxtname = "";
+
+        //ここはセーブのウィンドウが開いているか開いていないかでテキストのクリックを止める処理
+        canvas = GameObject.Find("Canvas");
+        foreach (Transform child in canvas.transform)
+        {
+            if (child.name == "SaveLoadWindow")
+            {
+                targetGameObject = child.gameObject;
+            }
+        }
     }
 
     public void WaitClick()
@@ -55,14 +66,14 @@ public class SceneController
                     _charaAction = false;
                 }
 
+                //ここでタップ判定(テキストを進めていいのかどうか)
                 if (EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-                    if (collition2d != null)
+                    if (collition2d != null|| targetGameObject.activeSelf)
                     {
-                        var button = collition2d.gameObject.GetComponent<Button>();
-                        if (button != null) return;
+                        return;
                     }
                 }
 

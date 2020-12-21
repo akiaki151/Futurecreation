@@ -1329,6 +1329,7 @@ GameObject:
   - component: {fileID: 98297288}
   - component: {fileID: 98297287}
   - component: {fileID: 98297286}
+  - component: {fileID: 98297289}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -1348,7 +1349,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -1446,6 +1447,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 98297284}
   m_CullTransparentMesh: 0
+--- !u!61 &98297289
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 98297284}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &115371532
 GameObject:
   m_ObjectHideFlags: 0
@@ -2628,6 +2655,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DataPanel (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -3836,6 +3878,7 @@ GameObject:
   - component: {fileID: 224551080}
   - component: {fileID: 224551079}
   - component: {fileID: 224551078}
+  - component: {fileID: 224551081}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -3855,7 +3898,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -3942,6 +3985,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 224551076}
   m_CullTransparentMesh: 0
+--- !u!61 &224551081
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224551076}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &227915651
 GameObject:
   m_ObjectHideFlags: 0
@@ -6272,6 +6341,7 @@ GameObject:
   - component: {fileID: 362946121}
   - component: {fileID: 362946120}
   - component: {fileID: 362946119}
+  - component: {fileID: 362946122}
   m_Layer: 5
   m_Name: QuickSaveButton
   m_TagString: Untagged
@@ -6291,7 +6361,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6378,6 +6448,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 362946117}
   m_CullTransparentMesh: 0
+--- !u!61 &362946122
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 362946117}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &368870133
 GameObject:
   m_ObjectHideFlags: 0
@@ -9122,6 +9218,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -9457,6 +9568,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -9472,6 +9584,22 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -10751,6 +10879,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DataPanel (10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -13197,6 +13340,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -14003,6 +14161,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -14053,6 +14226,7 @@ GameObject:
   - component: {fileID: 783144657}
   - component: {fileID: 783144656}
   - component: {fileID: 783144655}
+  - component: {fileID: 783144659}
   m_Layer: 5
   m_Name: QuickLoad
   m_TagString: Untagged
@@ -14159,6 +14333,32 @@ RectTransform:
   m_AnchoredPosition: {x: 400, y: -500}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &783144659
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783144654}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 200, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &787436785
 GameObject:
   m_ObjectHideFlags: 0
@@ -16229,6 +16429,7 @@ GameObject:
   - component: {fileID: 889875952}
   - component: {fileID: 889875951}
   - component: {fileID: 889875950}
+  - component: {fileID: 889875953}
   m_Layer: 5
   m_Name: SettingButton
   m_TagString: Untagged
@@ -16346,6 +16547,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 889875948}
   m_CullTransparentMesh: 0
+--- !u!61 &889875953
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889875948}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1001 &892536005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16473,6 +16700,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -16523,6 +16765,7 @@ GameObject:
   - component: {fileID: 902829423}
   - component: {fileID: 902829422}
   - component: {fileID: 902829421}
+  - component: {fileID: 902829425}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -16640,6 +16883,32 @@ RectTransform:
   m_AnchoredPosition: {x: 700, y: -500}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &902829425
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902829420}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 200, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &902885051
 GameObject:
   m_ObjectHideFlags: 0
@@ -17867,6 +18136,7 @@ GameObject:
   - component: {fileID: 975149231}
   - component: {fileID: 975149230}
   - component: {fileID: 975149229}
+  - component: {fileID: 975149232}
   m_Layer: 5
   m_Name: LockButton
   m_TagString: Untagged
@@ -17886,7 +18156,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 1
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -17973,6 +18243,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 975149227}
   m_CullTransparentMesh: 0
+--- !u!61 &975149232
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 975149227}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &984407384
 GameObject:
   m_ObjectHideFlags: 0
@@ -18248,6 +18544,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DataPanel (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -18812,6 +19123,7 @@ GameObject:
   - component: {fileID: 1035380218}
   - component: {fileID: 1035380217}
   - component: {fileID: 1035380216}
+  - component: {fileID: 1035380219}
   m_Layer: 5
   m_Name: TitleButton
   m_TagString: Untagged
@@ -18831,7 +19143,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -18918,6 +19230,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1035380214}
   m_CullTransparentMesh: 0
+--- !u!61 &1035380219
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035380214}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &1036168019
 GameObject:
   m_ObjectHideFlags: 0
@@ -19701,6 +20039,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -20446,6 +20799,7 @@ GameObject:
   - component: {fileID: 1111869758}
   - component: {fileID: 1111869757}
   - component: {fileID: 1111869756}
+  - component: {fileID: 1111869759}
   m_Layer: 5
   m_Name: LoadButton
   m_TagString: Untagged
@@ -20465,7 +20819,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -20552,6 +20906,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111869754}
   m_CullTransparentMesh: 0
+--- !u!61 &1111869759
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1111869754}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &1120410945
 GameObject:
   m_ObjectHideFlags: 0
@@ -21116,6 +21496,7 @@ GameObject:
   - component: {fileID: 1140323940}
   - component: {fileID: 1140323939}
   - component: {fileID: 1140323938}
+  - component: {fileID: 1140323942}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -21222,6 +21603,32 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -500}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &1140323942
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140323937}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 200, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &1143040465
 GameObject:
   m_ObjectHideFlags: 0
@@ -28564,15 +28971,15 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2024076286}
-  - {fileID: 975149228}
   - {fileID: 98297285}
   - {fileID: 1111869755}
   - {fileID: 362946118}
   - {fileID: 1754387866}
   - {fileID: 1827033442}
   - {fileID: 224551077}
-  - {fileID: 889875949}
   - {fileID: 1035380215}
+  - {fileID: 889875949}
+  - {fileID: 975149228}
   m_Father: {fileID: 1933134935}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -31907,6 +32314,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -32256,6 +32678,7 @@ GameObject:
   - component: {fileID: 1751046263}
   - component: {fileID: 1751046262}
   - component: {fileID: 1751046261}
+  - component: {fileID: 1751046265}
   m_Layer: 5
   m_Name: Save
   m_TagString: Untagged
@@ -32373,6 +32796,32 @@ RectTransform:
   m_AnchoredPosition: {x: -200, y: -504}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!61 &1751046265
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751046260}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 200, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &1754387865
 GameObject:
   m_ObjectHideFlags: 0
@@ -32385,6 +32834,7 @@ GameObject:
   - component: {fileID: 1754387869}
   - component: {fileID: 1754387868}
   - component: {fileID: 1754387867}
+  - component: {fileID: 1754387870}
   m_Layer: 5
   m_Name: QuickLoadButton
   m_TagString: Untagged
@@ -32404,7 +32854,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -32491,6 +32941,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754387865}
   m_CullTransparentMesh: 0
+--- !u!61 &1754387870
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1754387865}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &1759858756
 GameObject:
   m_ObjectHideFlags: 0
@@ -33683,6 +34159,7 @@ GameObject:
   - component: {fileID: 1827033445}
   - component: {fileID: 1827033444}
   - component: {fileID: 1827033443}
+  - component: {fileID: 1827033446}
   m_Layer: 5
   m_Name: AutoButton
   m_TagString: Untagged
@@ -33702,7 +34179,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1533430412}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -33789,6 +34266,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1827033441}
   m_CullTransparentMesh: 0
+--- !u!61 &1827033446
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827033441}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 100, y: 100}
+  m_EdgeRadius: 0
 --- !u!1 &1833433612
 GameObject:
   m_ObjectHideFlags: 0
@@ -36710,6 +37213,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DataPanel (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
@@ -39370,6 +39888,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DataPanel (9)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2936172393427341167, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_FontData.m_MaxSize
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 2936172393830486640, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}

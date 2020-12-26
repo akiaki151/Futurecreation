@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SceneController
+public class SceneController : MonoBehaviour
 {
     public Actions Actions;
     public List<CharacterIcon> CharaIcons = new List<CharacterIcon>();//このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
@@ -15,7 +15,8 @@ public class SceneController
     public List<Fade> Fade = new List<Fade>();
     private Sound _Sound;
     public string sceneTxtname { private get; set; }
-
+    public string sceneLoadName {  get; private set; }//ロードで必要なもの
+    public int loadnum = 0;
     private GameController _gc;
     private GUIManager _gui;
     private SceneHolder _sh;
@@ -30,6 +31,8 @@ public class SceneController
     private bool _charaAction = false;
     private GameObject canvas;
     private GameObject targetGameObject;
+    private string name="";
+    private string id = "";
 
     public SceneController(GameController _gc)
     {
@@ -40,12 +43,11 @@ public class SceneController
         _sr = new SceneReader(this);
         _textSeq.Complete();
         sceneTxtname = "";
-
         //ここはセーブのウィンドウが開いているか開いていないかでテキストのクリックを止める処理
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
-            if (child.name == "SaveLoadWindow")
+            if (child.name == "SaveWindow"|| child.name == "LoadWindow")
             {
                 targetGameObject = child.gameObject;
             }
@@ -71,18 +73,30 @@ public class SceneController
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-                    if (collition2d != null|| targetGameObject.activeSelf)
+                    if (collition2d != null || targetGameObject.activeSelf)
                     {
                         return;
                     }
                 }
 
 
-                if (!_isOptionsShowed && !_imageSeq.IsPlaying() &&!_isSaveShowed)
+                if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
                 {
                     SetNextProcess();
                 }
 
+            }
+            if (Input.GetMouseButtonDown(2))
+            {
+                loadnum = _currentScene.Index-1;
+                sceneLoadName = name;
+                this.id = sceneTxtname;
+            }
+            if (Input.GetMouseButtonDown(1))
+            {
+                LoadScene(sceneLoadName);
+                _currentScene.LoadLine(loadnum);
+                sceneTxtname = id;
             }
         }
     }
@@ -98,7 +112,7 @@ public class SceneController
     {
         if (_textSeq.IsPlaying())
         {
-            SetText(_tempText);
+            SetText(_tempText);        
         }
         else
         {
@@ -108,10 +122,18 @@ public class SceneController
 
     public void SetScene(string id)
     {
-        _currentScene = _sh.Scenes.Find(s => s.ID == id+sceneTxtname);
+        _currentScene = _sh.Scenes.Find(s => s.ID == id + sceneTxtname);      
+        name = id + sceneTxtname;
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
         SetNextProcess();
+    }
+
+    public void LoadScene(string LoadName)
+    {    
+       _currentScene = _sh.Scenes.Find(s => s.ID == LoadName);
+        _currentScene = _currentScene.Clone();
+        if (_currentScene == null) Debug.LogError("scenario not found");
     }
 
     public void SetText(string text)

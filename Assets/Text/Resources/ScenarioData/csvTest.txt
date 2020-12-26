@@ -1,4 +1,8 @@
 ﻿#scene=001
+#Setscenario=SelectScenario
+#Setscenario=csvTest
+#Setscenario=csvTest2
+#Setscenario=csvTest3
 #BGM=1
 #Ico=a_icon
 #Chara=a_chara(10:0:1)

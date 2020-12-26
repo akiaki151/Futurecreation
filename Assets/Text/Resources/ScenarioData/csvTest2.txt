@@ -1,4 +1,8 @@
 ﻿#scene=001
+#Setscenario=SelectScenario
+#Setscenario=csvTest
+#Setscenario=csvTest2
+#Setscenario=csvTest3
 #SE=0
 #BGM=2
 #Ico=b_icon
@@ -22,6 +26,10 @@
 #Next=002
 
 #scene=002
+#Setscenario=SelectScenario
+#Setscenario=csvTest
+#Setscenario=csvTest2
+#Setscenario=csvTest3
 #BGM=4
 #Score=A君
 #Score=C君

@@ -10,9 +10,6 @@ public class SaveLoadDataManager : MonoBehaviour
 
     [SerializeField] private Button SaveButton, LoadButton, QuickLoadButton, ChangeCommentButton, ReturnButton;
 
-    [SerializeField] private Sprite PageTitleSave, PageTitleLoad, PageTitleQuickLoad;
-    [SerializeField] private Sprite BackgroundSave, BackgroundLoad, BackgroundQuickLoad;
-
     [SerializeField] private ColorBlock SelectedButtonColor;
     [SerializeField] private ColorBlock UnselectedButtonColor;
 

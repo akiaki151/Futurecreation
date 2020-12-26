@@ -137,7 +137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -173,10 +173,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 0}
+    m_HighlightedColor: {r: 0.5019608, g: 0.5019608, b: 0.5019608, a: 0.2509804}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -286,6 +286,7 @@ GameObject:
   - component: {fileID: 1973585396867397777}
   - component: {fileID: 1973585396867397776}
   - component: {fileID: 1973585396867397790}
+  - component: {fileID: 4492160483619462475}
   m_Layer: 5
   m_Name: DataPanel
   m_TagString: Untagged
@@ -376,6 +377,22 @@ MonoBehaviour:
   ChapterName: 
   PageManager: {fileID: 0}
   PageNum: 0
+--- !u!114 &4492160483619462475
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973585396867397778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: cf8270bcee71be64aa4cdbf15d6ea4c8, type: 3}
+  LoadImage: {fileID: 21300000, guid: b589220d04998b344b2f1f23334a0720, type: 3}
+  QLoadImage: {fileID: 21300000, guid: e4c31c4f2b5bf8242a7925e8df16a6a7, type: 3}
+  CurrentIndex: 0
 --- !u!1 &1973585397050195764
 GameObject:
   m_ObjectHideFlags: 0

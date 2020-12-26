@@ -1089,7 +1089,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -5825,6 +5825,7 @@ GameObject:
   - component: {fileID: 363733699}
   - component: {fileID: 363733698}
   - component: {fileID: 363733697}
+  - component: {fileID: 363733700}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -5942,6 +5943,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 363733695}
   m_CullTransparentMesh: 0
+--- !u!114 &363733700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363733695}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: e13c47be9b3b47542a86b30803f139e7, type: 3}
+  LoadImage: {fileID: 21300000, guid: a484b755bcdcffe4986b19a93dfd0d8a, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 25125b9049f0a134b87093df82bf06e9, type: 3}
+  CurrentIndex: 0
 --- !u!1 &372471029
 GameObject:
   m_ObjectHideFlags: 0
@@ -6110,6 +6127,7 @@ GameObject:
   - component: {fileID: 389324028}
   - component: {fileID: 389324027}
   - component: {fileID: 389324026}
+  - component: {fileID: 389324029}
   m_Layer: 5
   m_Name: ChangeComment
   m_TagString: Untagged
@@ -6227,6 +6245,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389324024}
   m_CullTransparentMesh: 0
+--- !u!114 &389324029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 389324024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: dfa82f1f14bec8b49a2660b88c0c1937, type: 3}
+  LoadImage: {fileID: 21300000, guid: ca11701e896b089479d70714f4152cff, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 12cb44568524fb2479ba700a00b6191e, type: 3}
+  CurrentIndex: 0
 --- !u!1 &391320084
 GameObject:
   m_ObjectHideFlags: 0
@@ -9715,6 +9749,7 @@ GameObject:
   - component: {fileID: 562007370}
   - component: {fileID: 562007369}
   - component: {fileID: 562007368}
+  - component: {fileID: 562007371}
   m_Layer: 5
   m_Name: QuickLoad
   m_TagString: Untagged
@@ -9832,6 +9867,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 562007366}
   m_CullTransparentMesh: 0
+--- !u!114 &562007371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 562007366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: e4cfbeeef3480fc4aaf3d06cfe5eb0a3, type: 3}
+  LoadImage: {fileID: 21300000, guid: e0e65a33f3953de4db43890e670d5117, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 557fce12d0844134988d1115f238fa23, type: 3}
+  CurrentIndex: 0
 --- !u!1001 &562168473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9882,7 +9933,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -11268,6 +11319,7 @@ GameObject:
   - component: {fileID: 641305155}
   - component: {fileID: 641305157}
   - component: {fileID: 641305156}
+  - component: {fileID: 641305158}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -11331,6 +11383,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 641305154}
   m_CullTransparentMesh: 0
+--- !u!114 &641305158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 641305154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: 136645cdfd2aa3349bf805a35419126e, type: 3}
+  LoadImage: {fileID: 21300000, guid: 1065bd3b954c8de4b904609183a2868e, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 2c07965a3e1468e49a87307b10d6d0fd, type: 3}
+  CurrentIndex: 0
 --- !u!1 &651887995
 GameObject:
   m_ObjectHideFlags: 0
@@ -11887,6 +11955,7 @@ GameObject:
   - component: {fileID: 683477798}
   - component: {fileID: 683477797}
   - component: {fileID: 683477796}
+  - component: {fileID: 683477799}
   m_Layer: 5
   m_Name: Load
   m_TagString: Untagged
@@ -12004,6 +12073,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 683477794}
   m_CullTransparentMesh: 0
+--- !u!114 &683477799
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683477794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: fd97e58b18cf9c740adc66dc4a23e684, type: 3}
+  LoadImage: {fileID: 21300000, guid: 95b16f740c8944d4eabbc8129a495e61, type: 3}
+  QLoadImage: {fileID: 21300000, guid: e528e2085cfad674487a33db45a9763b, type: 3}
+  CurrentIndex: 0
 --- !u!1 &696625104
 GameObject:
   m_ObjectHideFlags: 0
@@ -12160,7 +12245,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -13027,6 +13112,7 @@ GameObject:
   - component: {fileID: 762209120}
   - component: {fileID: 762209119}
   - component: {fileID: 762209118}
+  - component: {fileID: 762209121}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -13144,6 +13230,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 762209116}
   m_CullTransparentMesh: 0
+--- !u!114 &762209121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762209116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: 124bfbe5cadc5b140a2b808e945f464f, type: 3}
+  LoadImage: {fileID: 21300000, guid: e34be1bd45143e64f9beab385d029b11, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 13939426bb56b1f42b306ecb02861c4c, type: 3}
+  CurrentIndex: 0
 --- !u!1 &767430194
 GameObject:
   m_ObjectHideFlags: 0
@@ -13641,7 +13743,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -15177,7 +15279,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -16451,7 +16553,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -19958,7 +20060,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -21116,6 +21218,7 @@ GameObject:
   - component: {fileID: 1222411441}
   - component: {fileID: 1222411440}
   - component: {fileID: 1222411439}
+  - component: {fileID: 1222411442}
   m_Layer: 5
   m_Name: Save
   m_TagString: Untagged
@@ -21233,6 +21336,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1222411437}
   m_CullTransparentMesh: 0
+--- !u!114 &1222411442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222411437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: 2a53e820fe488474c88403742ea0b245, type: 3}
+  LoadImage: {fileID: 21300000, guid: 8ff84efd0e6a3ad4b825f13335b28912, type: 3}
+  QLoadImage: {fileID: 21300000, guid: fd9db432b2c766241ae8dd88ea5676cd, type: 3}
+  CurrentIndex: 0
 --- !u!1 &1238514570
 GameObject:
   m_ObjectHideFlags: 0
@@ -21779,6 +21898,7 @@ GameObject:
   - component: {fileID: 1265274541}
   - component: {fileID: 1265274543}
   - component: {fileID: 1265274542}
+  - component: {fileID: 1265274544}
   m_Layer: 5
   m_Name: PageTitle
   m_TagString: Untagged
@@ -21824,7 +21944,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: afae584b53e562f4c9c2f3f0f3686011, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7b16fc4656de0fd4fb79891b08de32b3, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -21842,6 +21962,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1265274540}
   m_CullTransparentMesh: 0
+--- !u!114 &1265274544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1265274540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: 7b16fc4656de0fd4fb79891b08de32b3, type: 3}
+  LoadImage: {fileID: 21300000, guid: c0b52d9144670a443bdb9cb37ed32ebc, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 5a50ce3899300504fa957b380d25e33b, type: 3}
+  CurrentIndex: 0
 --- !u!1 &1269281283
 GameObject:
   m_ObjectHideFlags: 0
@@ -23799,6 +23935,7 @@ GameObject:
   - component: {fileID: 1350423408}
   - component: {fileID: 1350423407}
   - component: {fileID: 1350423406}
+  - component: {fileID: 1350423409}
   m_Layer: 5
   m_Name: 1
   m_TagString: Untagged
@@ -23916,6 +24053,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350423404}
   m_CullTransparentMesh: 0
+--- !u!114 &1350423409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350423404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: d62155b6bd598034c982db80970cb33c, type: 3}
+  LoadImage: {fileID: 21300000, guid: 9cd358eff1911924895b838bc162c8a5, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 6eff27fc02b0ef541a3e098bbf921b81, type: 3}
+  CurrentIndex: 0
 --- !u!1 &1358396118
 GameObject:
   m_ObjectHideFlags: 0
@@ -23981,12 +24134,6 @@ MonoBehaviour:
   QuickLoadButton: {fileID: 562007368}
   ChangeCommentButton: {fileID: 389324026}
   ReturnButton: {fileID: 1428769657}
-  PageTitleSave: {fileID: 0}
-  PageTitleLoad: {fileID: 0}
-  PageTitleQuickLoad: {fileID: 0}
-  BackgroundSave: {fileID: 0}
-  BackgroundLoad: {fileID: 0}
-  BackgroundQuickLoad: {fileID: 0}
   SelectedButtonColor:
     m_NormalColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
@@ -25022,6 +25169,7 @@ GameObject:
   - component: {fileID: 1428769659}
   - component: {fileID: 1428769658}
   - component: {fileID: 1428769657}
+  - component: {fileID: 1428769660}
   m_Layer: 5
   m_Name: Return
   m_TagString: Untagged
@@ -25139,6 +25287,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1428769655}
   m_CullTransparentMesh: 0
+--- !u!114 &1428769660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1428769655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: c5bdcc4da6f247240adfd0569f596b2c, type: 3}
+  LoadImage: {fileID: 21300000, guid: 532d26cb213140f40b855639e2fc9e4a, type: 3}
+  QLoadImage: {fileID: 21300000, guid: 9171877113d354e4583f27b89ed5aa77, type: 3}
+  CurrentIndex: 0
 --- !u!1 &1436823537
 GameObject:
   m_ObjectHideFlags: 0
@@ -26605,7 +26769,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -28662,7 +28826,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -29274,7 +29438,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -32139,7 +32303,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -32947,7 +33111,7 @@ PrefabInstance:
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397779, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
@@ -37058,6 +37222,7 @@ GameObject:
   - component: {fileID: 1996521635}
   - component: {fileID: 1996521637}
   - component: {fileID: 1996521636}
+  - component: {fileID: 1996521638}
   m_Layer: 5
   m_Name: ExplanationWindow
   m_TagString: Untagged
@@ -37122,6 +37287,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1996521634}
   m_CullTransparentMesh: 0
+--- !u!114 &1996521638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1996521634}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa34c7dbd4205a7498c0777899e79a75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SaveImage: {fileID: 21300000, guid: 5966ec122a1a48c479992f88a90f40a9, type: 3}
+  LoadImage: {fileID: 21300000, guid: 61d663cc998ed0349817fed43f987752, type: 3}
+  QLoadImage: {fileID: 21300000, guid: a6d734b6b8465f444b0d8d45f48cd931, type: 3}
+  CurrentIndex: 0
 --- !u!1 &2004487272
 GameObject:
   m_ObjectHideFlags: 0

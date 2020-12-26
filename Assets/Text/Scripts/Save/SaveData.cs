@@ -8,6 +8,7 @@ public class SaveData
     public string icon_name;
     public string time;
     public string text;
+    public int savetext;
 
     public override string ToString()
     {

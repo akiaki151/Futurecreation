@@ -11,6 +11,7 @@ public class Save : MonoBehaviour
     private SaveData saveData;
     private DataBank bank;
     private GameObject canvas;
+    public int Savetext;
 
     void Start()
     {
@@ -103,7 +104,8 @@ public class Save : MonoBehaviour
         {
             icon_name = _charaIcoImage.sprite.name,
             time = TodayNow.Year.ToString() + "/" + TodayNow.Month.ToString() + "/" + TodayNow.Day.ToString() + "\n" + DateTime.Now.ToShortTimeString(),
-            text = _Text.text
+            text = _Text.text,
+            savetext = Savetext
         };
 
         bank.Store(gameObject.name, saveData);

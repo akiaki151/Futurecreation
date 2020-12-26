@@ -21,6 +21,10 @@
 ]
 
 #scene=003
+#Setscenario=SelectScenario
+#Setscenario=csvTest
+#Setscenario=csvTest2
+#Setscenario=csvTest3
 #SE=2
 #Ico=c_icon
 #Chara=c_chara(0:0:1)

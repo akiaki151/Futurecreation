@@ -6,13 +6,12 @@ using UnityEngine.UI;
 public class SaveLoadDataManager : MonoBehaviour
 {
     [SerializeField] private GameObject SaveLoadWindow;
-    //[SerializeField] private GameObject GeneralSettingPanel, TextSettingPanel, SoundSettingPanel, ShortcutSettingPanel, DialougeSettingPanel, ControlSettingPanel;
+    [SerializeField] private GameObject PageTitle;
 
-    [SerializeField] private Button SaveButton, LoadButton, QuickLoadButton, ToTitleButton, ToGameButton;
-    [SerializeField] private Button Page_1, Page_2, Page_3, Page_4, Page_5, Page_6, Page_7, Page_8;
-    [SerializeField] private Button CopySelectedDataButton, MoveSelectedDataButton;
+    [SerializeField] private Button SaveButton, LoadButton, QuickLoadButton, ChangeCommentButton, ReturnButton;
 
-    [SerializeField] private Text PageTitle;
+    [SerializeField] private Sprite PageTitleSave, PageTitleLoad, PageTitleQuickLoad;
+    [SerializeField] private Sprite BackgroundSave, BackgroundLoad, BackgroundQuickLoad;
 
     [SerializeField] private ColorBlock SelectedButtonColor;
     [SerializeField] private ColorBlock UnselectedButtonColor;
@@ -23,8 +22,8 @@ public class SaveLoadDataManager : MonoBehaviour
         SAVE,
         LOAD,
         QUICKLOAD,
-        TOTITLE,
-        TOGAME
+        CHANGECOMMENT,
+        RETURN
     }
 
     private int CurrentSaveLoadIndex;
@@ -34,12 +33,104 @@ public class SaveLoadDataManager : MonoBehaviour
     void Start()
     {
         this.gameObject.SetActive(false);
+
+        CurrentSaveLoadIndex = NextSaveLoadIndex = 0;
+
+        ColorBlock newColor = UnselectedButtonColor;
+
+        newColor.highlightedColor = UnselectedButtonColor.highlightedColor;
+        newColor.normalColor = UnselectedButtonColor.normalColor;
+        newColor.pressedColor = UnselectedButtonColor.pressedColor;
+        newColor.selectedColor = UnselectedButtonColor.selectedColor;
+        newColor.disabledColor = UnselectedButtonColor.disabledColor;
+        SaveButton.colors = newColor;
+        LoadButton.colors = newColor;
+        QuickLoadButton.colors = newColor;
+        ChangeCommentButton.colors = newColor;
+        ReturnButton.colors = newColor;
+
+        newColor = SelectedButtonColor;
+
+        newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+        newColor.normalColor = SelectedButtonColor.normalColor;
+        newColor.pressedColor = SelectedButtonColor.pressedColor;
+        newColor.selectedColor = SelectedButtonColor.selectedColor;
+        newColor.disabledColor = SelectedButtonColor.disabledColor;
+        SaveButton.colors = newColor;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Escape)) SaveLoadWindow.SetActive(false);
+
+        if (CurrentSaveLoadIndex == NextSaveLoadIndex) return;
+        CurrentSaveLoadIndex = NextSaveLoadIndex;
+
+        ColorBlock newColor = UnselectedButtonColor;
+
+        newColor.highlightedColor = UnselectedButtonColor.highlightedColor;
+        newColor.normalColor = UnselectedButtonColor.normalColor;
+        newColor.pressedColor = UnselectedButtonColor.pressedColor;
+        newColor.selectedColor = UnselectedButtonColor.selectedColor;
+        newColor.disabledColor = UnselectedButtonColor.disabledColor;
+        SaveButton.colors = newColor;
+        LoadButton.colors = newColor;
+        QuickLoadButton.colors = newColor;
+        ChangeCommentButton.colors = newColor;
+        ReturnButton.colors = newColor;
+
+        switch (CurrentSaveLoadIndex)
+        {
+            case 1:
+                newColor = SelectedButtonColor;
+
+                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+                newColor.normalColor = SelectedButtonColor.normalColor;
+                newColor.pressedColor = SelectedButtonColor.pressedColor;
+                newColor.selectedColor = SelectedButtonColor.selectedColor;
+                newColor.disabledColor = SelectedButtonColor.disabledColor;
+                SaveButton.colors = newColor;
+
+                //PageTitle.GetComponent<Image>().sprite = PageTitleSave;
+
+                break;
+            case 2:
+                newColor = SelectedButtonColor;
+
+                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+                newColor.normalColor = SelectedButtonColor.normalColor;
+                newColor.pressedColor = SelectedButtonColor.pressedColor;
+                LoadButton.colors = newColor;
+
+                //PageTitle.GetComponent<Image>().sprite = PageTitleSave;
+
+                break;
+            case 3:
+                newColor = SelectedButtonColor;
+
+                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+                newColor.normalColor = SelectedButtonColor.normalColor;
+                newColor.pressedColor = SelectedButtonColor.pressedColor;
+                newColor.selectedColor = SelectedButtonColor.selectedColor;
+                newColor.disabledColor = SelectedButtonColor.disabledColor;
+                QuickLoadButton.colors = newColor;
+
+                //PageTitle.GetComponent<Image>().sprite = PageTitleSave;
+
+                break;
+            case 4:
+                newColor = SelectedButtonColor;
+
+                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+                newColor.normalColor = SelectedButtonColor.normalColor;
+                newColor.pressedColor = SelectedButtonColor.pressedColor;
+                newColor.selectedColor = SelectedButtonColor.selectedColor;
+                newColor.disabledColor = SelectedButtonColor.disabledColor;
+                ChangeCommentButton.colors = newColor;
+
+                break;
+        }
     }
 
     public void SetSaveLoadIndex(int index)

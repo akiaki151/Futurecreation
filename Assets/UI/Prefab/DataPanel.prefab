@@ -195,7 +195,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1973585396378608170}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8433119103014867191}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1973585396794586690
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,7 +296,7 @@ GameObject:
   - component: {fileID: 1973585396867397779}
   - component: {fileID: 1973585396867397777}
   - component: {fileID: 1973585396867397776}
-  - component: {fileID: 1973585396867397790}
+  - component: {fileID: 8433119103014867191}
   - component: {fileID: 4492160483619462475}
   m_Layer: 5
   m_Name: DataPanel
@@ -356,7 +367,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1973585396867397790
+--- !u!114 &8433119103014867191
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -365,18 +376,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1973585396867397778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f53e69b4ef14ec42ae1bd8f5a8faf97, type: 3}
+  m_Script: {fileID: 11500000, guid: ea3a9b0ca563d6449979593f64f0c942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BaseDataNumber: 1
-  DataNumber: 1
-  SaveData: 1
-  NoSaveData: {fileID: 21300000, guid: 835583eb4a4056f4697c0d7f5c1a653e, type: 3}
-  IsSaveData: {fileID: 21300000, guid: 7085e033404bca94db4f240be944252f, type: 3}
-  Time: 
-  ChapterName: 
-  PageManager: {fileID: 0}
-  PageNum: 0
+  Savetext: 0
 --- !u!114 &4492160483619462475
 MonoBehaviour:
   m_ObjectHideFlags: 0

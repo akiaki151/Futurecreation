@@ -128,6 +128,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1905001773}
     m_Modifications:
+    - target: {fileID: 1973585396378608173, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973585396378608173, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1973585396378608173, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397778, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_Name
@@ -268,7 +283,8 @@ PrefabInstance:
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1973585396867397790, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1 &9164852
 GameObject:
@@ -621,6 +637,7 @@ GameObject:
   - component: {fileID: 20924830}
   - component: {fileID: 20924829}
   - component: {fileID: 20924828}
+  - component: {fileID: 20924831}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -738,6 +755,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20924826}
   m_CullTransparentMesh: 0
+--- !u!65 &20924831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 20924826}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &25453363
 GameObject:
   m_ObjectHideFlags: 0
@@ -5639,6 +5669,7 @@ GameObject:
   - component: {fileID: 320128591}
   - component: {fileID: 320128590}
   - component: {fileID: 320128589}
+  - component: {fileID: 320128592}
   m_Layer: 5
   m_Name: LoadButton
   m_TagString: Untagged
@@ -5756,6 +5787,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320128587}
   m_CullTransparentMesh: 0
+--- !u!65 &320128592
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320128587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &325043538
 GameObject:
   m_ObjectHideFlags: 0
@@ -6054,7 +6098,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &339190259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7435,7 +7478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &397338801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9000,7 +9042,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &464401686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13872,7 +13913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &824835224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15162,6 +15202,7 @@ GameObject:
   - component: {fileID: 897749717}
   - component: {fileID: 897749716}
   - component: {fileID: 897749715}
+  - component: {fileID: 897749718}
   m_Layer: 5
   m_Name: LockButton
   m_TagString: Untagged
@@ -15268,6 +15309,32 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 897749713}
   m_CullTransparentMesh: 0
+--- !u!61 &897749718
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 897749713}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60}
+  m_EdgeRadius: 0
 --- !u!1 &901700520
 GameObject:
   m_ObjectHideFlags: 0
@@ -15335,7 +15402,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &901700524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18720,7 +18786,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &1181205636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23878,6 +23943,7 @@ GameObject:
   - component: {fileID: 1453215121}
   - component: {fileID: 1453215120}
   - component: {fileID: 1453215119}
+  - component: {fileID: 1453215122}
   m_Layer: 5
   m_Name: AutoButton
   m_TagString: Untagged
@@ -23984,6 +24050,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1453215117}
   m_CullTransparentMesh: 0
+--- !u!65 &1453215122
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1453215117}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1462376155
 GameObject:
   m_ObjectHideFlags: 0
@@ -26069,6 +26148,7 @@ GameObject:
   - component: {fileID: 1565590290}
   - component: {fileID: 1565590289}
   - component: {fileID: 1565590288}
+  - component: {fileID: 1565590291}
   m_Layer: 5
   m_Name: QuickLoadButton
   m_TagString: Untagged
@@ -26186,6 +26266,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1565590286}
   m_CullTransparentMesh: 0
+--- !u!65 &1565590291
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1565590286}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1572464245
 GameObject:
   m_ObjectHideFlags: 0
@@ -27462,7 +27555,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &1682408167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28515,7 +28607,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00068114814, y: -0.00026142746}
+  m_AnchoredPosition: {x: 0.0018110703, y: -0.00026142746}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1717433571
@@ -29473,6 +29565,7 @@ GameObject:
   - component: {fileID: 1790195950}
   - component: {fileID: 1790195949}
   - component: {fileID: 1790195948}
+  - component: {fileID: 1790195951}
   m_Layer: 5
   m_Name: TitleButton
   m_TagString: Untagged
@@ -29579,6 +29672,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1790195946}
   m_CullTransparentMesh: 0
+--- !u!65 &1790195951
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790195946}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1792324818
 GameObject:
   m_ObjectHideFlags: 0
@@ -29743,6 +29849,7 @@ GameObject:
   - component: {fileID: 1797358815}
   - component: {fileID: 1797358814}
   - component: {fileID: 1797358813}
+  - component: {fileID: 1797358816}
   m_Layer: 5
   m_Name: SettingButton
   m_TagString: Untagged
@@ -29860,6 +29967,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797358811}
   m_CullTransparentMesh: 0
+--- !u!65 &1797358816
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797358811}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1808666079
 GameObject:
   m_ObjectHideFlags: 0
@@ -31296,7 +31416,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AudioMixerObj: {fileID: 24100000, guid: a282300d3f20cad4d983b6efb967352b, type: 2}
 --- !u!114 &1880741126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31627,6 +31746,11 @@ PrefabInstance:
         type: 3}
       propertyPath: BaseDataNumber
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4492160483619462475, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: CurrentIndex
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
@@ -33884,6 +34008,7 @@ GameObject:
   - component: {fileID: 1987543749}
   - component: {fileID: 1987543748}
   - component: {fileID: 1987543747}
+  - component: {fileID: 1987543750}
   m_Layer: 5
   m_Name: QuickSaveButton
   m_TagString: Untagged
@@ -34001,6 +34126,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1987543745}
   m_CullTransparentMesh: 0
+--- !u!65 &1987543750
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987543745}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1989535782
 GameObject:
   m_ObjectHideFlags: 0
@@ -34475,8 +34613,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 902885053}
   m_HandleRect: {fileID: 902885052}
   m_Direction: 0
-  m_Value: 1
-  m_Size: 0.99999404
+  m_Value: 0
+  m_Size: 0.99999267
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -35991,6 +36129,7 @@ GameObject:
   - component: {fileID: 2145055325}
   - component: {fileID: 2145055324}
   - component: {fileID: 2145055323}
+  - component: {fileID: 2145055326}
   m_Layer: 5
   m_Name: ExitButton
   m_TagString: Untagged
@@ -36097,6 +36236,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2145055321}
   m_CullTransparentMesh: 0
+--- !u!65 &2145055326
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2145055321}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 60, y: 60, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2146644384
 GameObject:
   m_ObjectHideFlags: 0

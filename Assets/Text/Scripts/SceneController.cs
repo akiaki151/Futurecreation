@@ -47,7 +47,7 @@ public class SceneController : MonoBehaviour
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
-            if (child.name == "SaveWindow"|| child.name == "LoadWindow")
+            if (child.name == "SaveLoadWindow")
             {
                 targetGameObject = child.gameObject;
             }

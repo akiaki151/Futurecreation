@@ -298,6 +298,7 @@ GameObject:
   - component: {fileID: 1973585396867397776}
   - component: {fileID: 8433119103014867191}
   - component: {fileID: 4492160483619462475}
+  - component: {fileID: 4748879573951480683}
   m_Layer: 5
   m_Name: DataPanel
   m_TagString: Untagged
@@ -396,6 +397,27 @@ MonoBehaviour:
   LoadImage: {fileID: 21300000, guid: b589220d04998b344b2f1f23334a0720, type: 3}
   QLoadImage: {fileID: 21300000, guid: e4c31c4f2b5bf8242a7925e8df16a6a7, type: 3}
   CurrentIndex: 0
+--- !u!114 &4748879573951480683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973585396867397778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f53e69b4ef14ec42ae1bd8f5a8faf97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BaseDataNumber: 0
+  DataNumber: 0
+  SaveData: 0
+  NoSaveData: {fileID: 21300000, guid: f182d4901aaba6a4e829f60799821abe, type: 3}
+  IsSaveData: {fileID: 21300000, guid: c3dd67c4e1b2a9447bbd2039e3c4f147, type: 3}
+  Time: 
+  ChapterName: 
+  PageManager: {fileID: 0}
+  PageNum: 0
 --- !u!1 &1973585397050195764
 GameObject:
   m_ObjectHideFlags: 0

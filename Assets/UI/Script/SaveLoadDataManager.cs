@@ -23,7 +23,7 @@ public class SaveLoadDataManager : MonoBehaviour
         RETURN
     }
 
-    private int CurrentSaveLoadIndex;
+    public int CurrentSaveLoadIndex;
     private int NextSaveLoadIndex;
 
     // Start is called before the first frame update

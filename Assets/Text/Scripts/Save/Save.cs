@@ -65,6 +65,58 @@ public class Save : MonoBehaviour
         _comment.text = saveData.text;
     }
 
+    public void SaveChangePanel()
+    {
+        bank = DataBank.Open();
+        //Debug.Log($"save path of bank is { bank.SavePath }");
+
+        //セーブデータが存在しないならば作成せよのIF文
+        bank.Load<SaveData>(gameObject.name);
+        saveData = bank.Get<SaveData>(gameObject.name);
+        if (saveData == null)
+        {
+            saveData = new SaveData()
+            {
+                icon_name = "silhouette",
+                time = "YYYY/MM/DD\nah:mm",
+                text = "セーブデータがありません"
+            };
+
+            bank.Store(gameObject.name, saveData);
+
+            bank.SaveAll();
+
+            saveData = bank.Get<SaveData>(gameObject.name);
+            //bank.Clear();
+        }
+
+
+        foreach (Transform child in this.transform)
+        {
+            if (child.name == "Image")
+            {
+                _charaIcoImage = child.gameObject.GetComponent<Image>();
+            }
+            else if (child.name == "Time")
+            {
+                _time = child.gameObject.GetComponent<Text>();
+            }
+            else if (child.name == "Comment")
+            {
+                foreach (Transform child2 in child.transform)
+                {
+                    if (child2.name == "Placeholder")
+                    {
+                        _comment = child2.gameObject.GetComponent<Text>();
+                    }
+                }
+            }
+        }
+        _charaIcoImage.sprite = Resources.Load<Sprite>("Image/CharaIcons/" + saveData.icon_name);
+        _time.text = saveData.time;
+        _comment.text = saveData.text;
+    }
+
     void Update()
     {
     }

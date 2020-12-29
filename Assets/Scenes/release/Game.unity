@@ -268,6 +268,11 @@ PrefabInstance:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7689882041140880151, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: m_Colors.m_NormalColor.r
@@ -779,7 +784,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &25453363
 GameObject:
@@ -2113,6 +2118,11 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397790, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: BaseDataNumber
       value: 3
@@ -5824,7 +5834,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &325043538
 GameObject:
@@ -6124,6 +6134,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &339190259
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7009,6 +7020,11 @@ PrefabInstance:
       propertyPath: BaseDataNumber
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1 &373893207
@@ -7504,6 +7520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &397338801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9068,6 +9085,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &464401686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10717,6 +10735,11 @@ PrefabInstance:
       value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397790, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: BaseDataNumber
       value: 11
@@ -13179,6 +13202,11 @@ PrefabInstance:
       propertyPath: BaseDataNumber
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1 &758642625
@@ -13939,6 +13967,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &824835224
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15428,6 +15457,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &901700524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16210,6 +16240,11 @@ PrefabInstance:
       propertyPath: BaseDataNumber
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1001 &944377404
@@ -16335,6 +16370,11 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1973585396867397790, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: BaseDataNumber
       value: 6
@@ -18812,6 +18852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &1181205636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19010,6 +19051,11 @@ PrefabInstance:
     - target: {fileID: 1973585396867397790, guid: 836a83d400cb4ff41a9cd9e345a97840,
         type: 3}
       propertyPath: DataNumber
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
       value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -23640,6 +23686,11 @@ PrefabInstance:
       propertyPath: DataNumber
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1 &1438872537
@@ -24100,7 +24151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1462376155
 GameObject:
@@ -25874,6 +25925,11 @@ PrefabInstance:
       propertyPath: BaseDataNumber
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1 &1550677414
@@ -26329,7 +26385,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 808, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1572464245
 GameObject:
@@ -27607,6 +27663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &1682408167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28381,6 +28438,7 @@ MonoBehaviour:
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
+  CurrentSaveLoadIndex: 0
 --- !u!1 &1707684980
 GameObject:
   m_ObjectHideFlags: 0
@@ -28659,7 +28717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.0008407426, y: -0.00026142746}
+  m_AnchoredPosition: {x: 0.00012375867, y: -0.00026142746}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1717433571
@@ -29748,7 +29806,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1792324818
 GameObject:
@@ -30056,7 +30114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1808666079
 GameObject:
@@ -31494,6 +31552,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e43305ee723f3e40821a2f551360501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AudioMixerObj: {fileID: 0}
 --- !u!114 &1880741126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31829,6 +31888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: CurrentIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
@@ -34228,7 +34292,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1989535782
 GameObject:
@@ -36048,6 +36112,11 @@ PrefabInstance:
       propertyPath: DataNumber
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4748879573951480683, guid: 836a83d400cb4ff41a9cd9e345a97840,
+        type: 3}
+      propertyPath: BaseDataNumber
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 836a83d400cb4ff41a9cd9e345a97840, type: 3}
 --- !u!1 &2119116406
@@ -36351,7 +36420,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &2146644384
 GameObject:

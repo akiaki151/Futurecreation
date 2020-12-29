@@ -6,9 +6,15 @@ using UnityEngine;
 public class SaveData
 {
     public string icon_name;
+    public string chara_name;
+    public string bg_name;
     public string time;
     public string text;
-    public int savetext;
+    public string speakertext;
+    public int    savetext;
+    public string sceneLoadName;
+    public int    loadnum;
+    public string id;
 
     public override string ToString()
     {

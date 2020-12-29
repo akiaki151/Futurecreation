@@ -15,7 +15,7 @@ public class SceneController : MonoBehaviour
     public List<Fade> Fade = new List<Fade>();
     private Sound _Sound;
     public string sceneTxtname { private get; set; }
-    public string sceneLoadName {  get; private set; }//ロードで必要なもの
+    public string sceneLoadName {  get; set; }//ロードで必要なもの
     public int loadnum = 0;
     private GameController _gc;
     private GUIManager _gui;
@@ -31,13 +31,14 @@ public class SceneController : MonoBehaviour
     private bool _charaAction = false;
     private GameObject canvas;
     private GameObject targetGameObject;
-    private string name="";
-    private string id = "";
-
+    private string _name="";
+    public string ID = "";
+   
     public SceneController(GameController _gc)
     {
         this._gc = _gc;
         _gui = GameObject.Find("GUI").GetComponent<GUIManager>();
+        
         Actions = new Actions(_gc);
         _sh = new SceneHolder(this);
         _sr = new SceneReader(this);
@@ -75,6 +76,9 @@ public class SceneController : MonoBehaviour
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
                     if (collition2d != null || targetGameObject.activeSelf)
                     {
+                        loadnum = _currentScene.Index - 1;
+                        sceneLoadName = _name;
+                        ID = sceneTxtname;
                         return;
                     }
                 }
@@ -85,19 +89,7 @@ public class SceneController : MonoBehaviour
                     SetNextProcess();
                 }
 
-            }
-            if (Input.GetMouseButtonDown(2))
-            {
-                loadnum = _currentScene.Index-1;
-                sceneLoadName = name;
-                this.id = sceneTxtname;
-            }
-            if (Input.GetMouseButtonDown(1))
-            {
-                LoadScene(sceneLoadName);
-                _currentScene.LoadLine(loadnum);
-                sceneTxtname = id;
-            }
+            }       
         }
     }
 
@@ -123,17 +115,20 @@ public class SceneController : MonoBehaviour
     public void SetScene(string id)
     {
         _currentScene = _sh.Scenes.Find(s => s.ID == id + sceneTxtname);      
-        name = id + sceneTxtname;
+        _name = id + sceneTxtname;
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
         SetNextProcess();
     }
 
-    public void LoadScene(string LoadName)
+    public void LoadScene(string LoadName, int num, string id)
     {    
-       _currentScene = _sh.Scenes.Find(s => s.ID == LoadName);
+        _currentScene = _sh.Scenes.Find(s => s.ID == LoadName);
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
+        _currentScene.LoadLine(num);
+        sceneTxtname = id;
+        SetNextProcess();
     }
 
     public void SetText(string text)

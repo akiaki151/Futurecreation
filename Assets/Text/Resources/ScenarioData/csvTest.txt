@@ -5,7 +5,7 @@
 #Setscenario=csvTest3
 #BGM=1
 #Ico=a_icon
-#Chara=a_chara(10:0:1)
+#Chara=a_chara(0:0:1)
 #Background=bg1_tex
 #Speaker=A君
 {アクション処理の動作をテストします}

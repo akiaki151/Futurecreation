@@ -784,7 +784,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &25453363
 GameObject:
@@ -5834,7 +5834,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &325043538
 GameObject:
@@ -24151,7 +24151,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1462376155
 GameObject:
@@ -26385,7 +26385,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 808, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1572464245
 GameObject:
@@ -28438,6 +28438,7 @@ MonoBehaviour:
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
+  CurrentSaveLoadIndex: 0
 --- !u!1 &1707684980
 GameObject:
   m_ObjectHideFlags: 0
@@ -28716,7 +28717,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00081338675, y: -0.00026142746}
+  m_AnchoredPosition: {x: 0.00012375867, y: -0.00026142746}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1717433571
@@ -29805,7 +29806,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1792324818
 GameObject:
@@ -30113,7 +30114,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1808666079
 GameObject:
@@ -34291,7 +34292,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &1989535782
 GameObject:
@@ -34768,7 +34769,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 902885052}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999267
+  m_Size: 0.99999404
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -36419,7 +36420,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 80, y: 80}
+  m_Size: {x: 60, y: 60}
   m_EdgeRadius: 0
 --- !u!1 &2146644384
 GameObject:

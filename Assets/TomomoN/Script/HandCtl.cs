@@ -30,101 +30,133 @@ public class HandCtl : MonoBehaviour
         // 1フレーム前の座標を保存
         OldPosition = this.transform.position;
 
-        if (Input.GetMouseButton(0))    // 仮（条件によって変更）
+        //if (Input.GetMouseButton(0))    // 仮（条件によって変更）
+        //{
+        //}
+        if (!isNadeNade)
         {
-            if (!isNadeNade)
-            {
-                // マウス座標取得
-                Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            // マウス座標取得
+            Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-                //Z座標を0にする
-                handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
-                this.transform.position = handPosition;
+            //Z座標を0にする
+            handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
+            this.transform.position = handPosition;
+        }
+        else
+        {
+            /* なでなで中の処理 */
+
+            // マウス座標取得
+            Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+
+            NadeNadeCtl nadenade = GameObject.Find("OnePicturePrefab").GetComponent<NadeNadeCtl>();
+            Vector3 startPos, endPos, ctlPos;
+
+
+            // どのなでなで位置か？
+            if (NadeNadeRangeName == "NadeNadeRange")
+            {
+                startPos = nadenade.GetStartPoint(0);
+                endPos = nadenade.GetEndPoint(0);
+                ctlPos = nadenade.GetCtlPoint(0);
+            }
+            else if (NadeNadeRangeName == "NadeNadeRange (1)")
+            {
+                startPos = nadenade.GetStartPoint(1);
+                endPos = nadenade.GetEndPoint(1);
+                ctlPos = nadenade.GetCtlPoint(1);
             }
             else
             {
-                /* なでなで中の処理 */
-
-                // マウス座標取得
-                Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-
-                NadeNadeCtl nadenade = GameObject.Find("OnePicturePrefab").GetComponent<NadeNadeCtl>();
-                Vector3 startPos, endPos, ctlPos;
+                startPos = nadenade.GetStartPoint(2);
+                endPos = nadenade.GetEndPoint(2);
+                ctlPos = nadenade.GetCtlPoint(2);
+            }
 
 
-                // どのなでなで位置か？
-                if (NadeNadeRangeName == "NadeNadeRange")
+
+            // 傾きの大きさによって撫でる感覚を変える
+            float deg = (endPos.y - startPos.y) / (endPos.x - startPos.x);
+            if (minDeg < deg && deg < maxDeg)
+            {
+                // 横長
+                t = (handPosition.x - startPos.x) / (endPos.x - startPos.x);
+            }
+            else
+            {
+                // 縦長
+                t = (handPosition.y - startPos.y) / (endPos.y - startPos.y);
+            }
+            t = Mathf.Clamp01(t);   // 値を0～1に収める
+
+
+            /* ベジェ曲線 */
+            Vector3 p0 = Vector3.Lerp(startPos, ctlPos, t);  // 始点と制御点で内分
+            Vector3 p1 = Vector3.Lerp(ctlPos, endPos, t);    // 制御点と終点で内分
+
+            handPosition = Vector3.Lerp(p0, p1, t);     // p0とp1で内分で曲線が求まる
+
+
+
+            //Z座標を0にする
+            handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
+            this.transform.position = handPosition;
+
+
+            // マウス座標取得
+            Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            if (minDeg < deg && deg < maxDeg)
+            {
+                // 横長
+                if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
                 {
-                    startPos = nadenade.GetStartPoint(0);
-                    endPos = nadenade.GetEndPoint(0);
-                    ctlPos = nadenade.GetCtlPoint(0);
+                    HandCtl.isNadeNade = false;
+                    Debug.Log("はずれた");
                 }
-                else if (NadeNadeRangeName == "NadeNadeRange (1)")
+                if (startPos.y < endPos.y)
                 {
-                    startPos = nadenade.GetStartPoint(1);
-                    endPos = nadenade.GetEndPoint(1);
-                    ctlPos = nadenade.GetCtlPoint(1);
-                }
-                else
-                {
-                    startPos = nadenade.GetStartPoint(2);
-                    endPos = nadenade.GetEndPoint(2);
-                    ctlPos = nadenade.GetCtlPoint(2);
-                }
-
-
-
-                // 傾きの大きさによって撫でる感覚を変える
-                float deg = (endPos.y - startPos.y) / (endPos.x - startPos.x);
-                if (minDeg < deg && deg < maxDeg)
-                {
-                    // 横長
-                    t = (handPosition.x - startPos.x) / (endPos.x - startPos.x);
-                }
-                else
-                {
-                    // 縦長
-                    t = (handPosition.y - startPos.y) / (endPos.y - startPos.y);
-                }
-                t = Mathf.Clamp01(t);   // 値を0～1に収める
-
-
-                /* ベジェ曲線 */
-                Vector3 p0 = Vector3.Lerp(startPos, ctlPos, t);  // 始点と制御点で内分
-                Vector3 p1 = Vector3.Lerp(ctlPos, endPos, t);    // 制御点と終点で内分
-
-                handPosition = Vector3.Lerp(p0, p1, t);     // p0とp1で内分で曲線が求まる
-
-
-                
-                //Z座標を0にする
-                handPosition = new Vector3(handPosition.x, handPosition.y, 0.0f);
-                this.transform.position = handPosition;
-
-
-                // マウス座標取得
-                Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if (minDeg < deg && deg < maxDeg)
-                {
-                    // 横長
-                    if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
+                    if (mousePosition.y < startPos.y || endPos.y < mousePosition.y)
                     {
                         HandCtl.isNadeNade = false;
                         Debug.Log("はずれた");
                     }
                 }
-                else
+                if (startPos.y > endPos.y)
                 {
-                    // 縦長
                     if (mousePosition.y > startPos.y || endPos.y > mousePosition.y)
                     {
                         HandCtl.isNadeNade = false;
                         Debug.Log("はずれた");
                     }
                 }
-
             }
+            else
+            {
+                // 縦長
+                if (mousePosition.y > startPos.y || endPos.y > mousePosition.y)
+                {
+                    HandCtl.isNadeNade = false;
+                    Debug.Log("はずれた");
+                }
+                if (startPos.x < endPos.x)
+                {
+                    if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
+                    {
+                        HandCtl.isNadeNade = false;
+                        Debug.Log("はずれた");
+                    }
+                }
+                if (startPos.x > endPos.x)
+                {
+                    if (mousePosition.x > startPos.x || endPos.x > mousePosition.x)
+                    {
+                        HandCtl.isNadeNade = false;
+                        Debug.Log("はずれた");
+                    }
+                }
+            }
+
         }
     }
 

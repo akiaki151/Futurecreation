@@ -119,7 +119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3645458702565799053
 RectTransform:
   m_ObjectHideFlags: 0
@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 8339180528275813212}
   - component: {fileID: 139984846198001049}
   - component: {fileID: 679179193922239757}
+  - component: {fileID: 8654259353715913722}
   m_Layer: 5
   m_Name: NadeNadeRange
   m_TagString: Untagged
@@ -347,11 +348,37 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7042031485454557017}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b3ba2cae05946442b49b8b5840aa8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!68 &8654259353715913722
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042031485454557017}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -50, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 0.5, y: 0}
+  - {x: 50, y: 0}
 --- !u!1 &7677327172104603026
 GameObject:
   m_ObjectHideFlags: 0

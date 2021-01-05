@@ -29,9 +29,7 @@ public class SaveLoadDataManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        this.gameObject.SetActive(false);
-
-        CurrentSaveLoadIndex = NextSaveLoadIndex = 0;
+        CurrentSaveLoadIndex = 0;
 
         ColorBlock newColor = UnselectedButtonColor;
 

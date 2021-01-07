@@ -68,7 +68,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            _characterImage.rectTransform.position = _position;
+            _characterImage.rectTransform.localPosition = _position;
             _characterImage.rectTransform.localScale = _scale;
         }
     }

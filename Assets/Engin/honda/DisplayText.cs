@@ -23,10 +23,12 @@ public class DisplayText : MonoBehaviour
     }
     void Start()
     {
+        SelectTextFile tFile = GameObject.Find("SelectTextFile").GetComponent<SelectTextFile>();
+        tFile.LoadTextFile();
         LoadText();
         DisplayName(m_dropdown.value);
         SelectText(m_dropdown.value);
-        Backlog m_bl = GameObject.Find("BackLogCanvas").GetComponent<Backlog>();
+        Backlog m_bl = GameObject.Find("BackLog").GetComponent<Backlog>();
         m_bl.DisplayBack();
         InputText m_Input = GameObject.Find("InputMenu").GetComponent<InputText>();
         m_Input.Init();
@@ -146,9 +148,7 @@ public class DisplayText : MonoBehaviour
         float x, y, scale;
         float.TryParse(sx, out x);
         float.TryParse(sy, out y);
-        Debug.Log(ss);
         float.TryParse(ss, out scale);
-        Debug.Log(scale);
         obj.GetComponent<Button>().transform.localPosition = new Vector3(x, y, -1.0f);
         obj.GetComponent<Button>().transform.localScale = new Vector3(scale, scale, 1.0f);
     }
@@ -158,9 +158,9 @@ public class DisplayText : MonoBehaviour
     }
     private void SelectLineNum()
     {
-        if (GameObject.Find("BackLogCanvas") != null)
+        if (GameObject.Find("BackLog") != null)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && m_dropdown.value >= 1)
+            if (Input.GetKeyDown(KeyCode.RightArrow) && m_dropdown.value >= 1)
             {
                 serch_num--;
                 List<int> display_textNum = new List<int>();
@@ -178,7 +178,7 @@ public class DisplayText : MonoBehaviour
                     m_dropdown.value = i;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) && m_dropdown.value < Engin_Const.line_size - 1)
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && m_dropdown.value < Engin_Const.line_size - 1)
             {
                 List<int> display_textNum = new List<int>();
                 for (int i = 0; i < Engin_Const.line_size; i++)
@@ -208,13 +208,13 @@ public class DisplayText : MonoBehaviour
     }
     private void SelectLine()
     {
-        if (GameObject.Find("BackLogCanvas") != null)
+        if (GameObject.Find("BackLog") != null)
         {
-            if (Input.GetKeyDown(KeyCode.UpArrow) && m_dropdown.value >= 1)
+            if (Input.GetKeyDown(KeyCode.RightArrow) && m_dropdown.value >= 1)
             {
                 m_dropdown.value--;
             }
-            if (Input.GetKeyDown(KeyCode.DownArrow) && m_dropdown.value < Engin_Const.line_size - 1)
+            if (Input.GetKeyDown(KeyCode.LeftArrow) && m_dropdown.value < Engin_Const.line_size - 1)
             {
                 m_dropdown.value++;
             }

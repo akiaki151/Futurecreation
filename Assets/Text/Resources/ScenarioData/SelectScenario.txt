@@ -4,7 +4,7 @@
 #Ico=del
 #Speaker=説明君
 #Setscenario=SelectScenario
-#Setscenario=csvTest
+#Setscenario=rina
 #Setscenario=csvTest2
 #Setscenario=csvTest3
 {ここはシナリオ.txtを一括で読み込む場所です！}
@@ -18,7 +18,7 @@
 
 #scene=002
 #Fade=fade_tex
-#Getscenario=csvTest
+#Getscenario=rina
 #scene=003
 #Fade=fade_tex
 #Getscenario=csvTest2

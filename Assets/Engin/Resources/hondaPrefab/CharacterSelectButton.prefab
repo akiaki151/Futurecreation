@@ -68,8 +68,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
-  m_PreserveAspect: 0
+  m_Type: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 0.4292453, g: 0.8274119, b: 1, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d0a2fcf8fce745a3c9f7263f7ab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ImageBar: {fileID: 0}
   m_Log: {fileID: 0}
   m_InputPanel: {fileID: 0}
   m_ElementPanel: {fileID: 0}
   m_TextCreatCanvas: {fileID: 0}
   m_CharacterProperty: {fileID: 0}
+  m_Dialogue: {fileID: 0}
+  m_SetScene_File: {fileID: 0}

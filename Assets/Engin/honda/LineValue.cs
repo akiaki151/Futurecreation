@@ -15,4 +15,9 @@ public class LineValue : MonoBehaviour
         DisplayText m_dt = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
         m_dt.SetTextLineNum(value);
     }
+
+    public int GetLine()
+    {
+        return value;
+    }
 }

@@ -166,9 +166,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 972d0a2fcf8fce745a3c9f7263f7ab35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ImageBar: {fileID: 0}
   m_Log: {fileID: 0}
   m_InputPanel: {fileID: 0}
   m_ElementPanel: {fileID: 0}
   m_TextCreatCanvas: {fileID: 0}
   m_CharacterProperty: {fileID: 0}
+  m_Dialogue: {fileID: 0}
+  m_SetScene_File: {fileID: 0}

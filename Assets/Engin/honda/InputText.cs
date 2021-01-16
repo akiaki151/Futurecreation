@@ -4,29 +4,32 @@ using UnityEngine.UI;
 using System.Text;
 using System.IO;
 using Const_e;
+using UnityEngine.SceneManagement;
+//using UnityEngine.
 
 public class InputText : MonoBehaviour
 {
+    public GameObject m_Log;
+    public GameObject m_InputPanel;
+    public GameObject m_ElementPanel;
+    public GameObject m_TextCreatCanvas;
+    public GameObject m_CharacterProperty;
+    public GameObject m_Dialogue;
+    public GameObject m_SetScene_File;
+
     private InputField m_InputText;
     private GameObject[] selectbutton = new GameObject[50];
     private Dropdown m_dropdown;
     private Button m_CharImage;
     private Image m_IconImage;
     private Image m_BgImage;
-    public GameObject m_ImageBar;
-    public GameObject m_Log;
-    public GameObject m_InputPanel;
-    public GameObject m_ElementPanel;
-    public GameObject m_TextCreatCanvas;
-    public GameObject m_CharacterProperty;
-    //private List<string> csvData = new List<string>();
     private string[] csvData = new string[Engin_Const.line_size];
     private string path;
+
     private string fileName = "Data/csvTest.txt";
     private string stock;
     private int filecount;
-
-    // Start is called before the first frame update
+    
     public void Init()
     {
         Load();
@@ -97,7 +100,7 @@ public class InputText : MonoBehaviour
         FileData(TextData, m_dropdown.value + 1);
         DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
         m_tc.ClearText();
-        Backlog m_bl = GameObject.Find("BackLogCanvas").GetComponent<Backlog>();
+        Backlog m_bl = GameObject.Find("BackLog").GetComponent<Backlog>();
         m_bl.ImportLog();
     }
     public void SpeakerName()
@@ -134,13 +137,15 @@ public class InputText : MonoBehaviour
     }
     public void SEInput()
     {
-        string m_SE = GameObject.Find("SENameFile").GetComponentInChildren<Text>().text;
+        //string m_SE = GameObject.Find("SENameFile").GetComponentInChildren<Text>().text;
+        string m_SE = GetComponent<LineValue>().GetLine().ToString();
         m_SE = m_SE.Replace("SE : ", "");
         InputTagData("#SE=", m_SE);
     }
     public void BGMInput()
     {
-        string m_BGM = GameObject.Find("BGMNameFile").GetComponentInChildren<Text>().text;
+        //string m_BGM = GameObject.Find("BGMNameFile").GetComponentInChildren<Text>().text;
+        string m_BGM = GetComponent<LineValue>().GetLine().ToString();
         m_BGM = m_BGM.Replace("BGM : ", "");
         InputTagData("#BGM=", m_BGM);
     }
@@ -149,10 +154,59 @@ public class InputText : MonoBehaviour
         Dropdown Anime = GameObject.Find("CharaAnimeDropdown").GetComponent<Dropdown>();
         InputTagData("#Action=", Anime.options[Anime.value].text);
     }
-    public void OpenBar()
+    public void SceneSetInput()
     {
-        if (!m_ImageBar.activeSelf)
-            m_ImageBar.SetActive(true);
+        InputField SceneTag = GameObject.Find("InputScene").GetComponent<InputField>();
+        string TextData = "#scene=" + SceneTag.text;
+
+        m_dropdown = GameObject.Find("TextNum").GetComponentInChildren<Dropdown>();
+        FileData(TextData, m_dropdown.value + 1);
+
+        DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
+        m_tc.ClearText();
+        Backlog m_bl = GameObject.Find("BackLog").GetComponent<Backlog>();
+        m_bl.ImportLog();
+        SceneTag.text = "";
+    }
+    public void NextSceneInput()
+    {
+        InputField NextTag = GameObject.Find("LoadSceneInput").GetComponent<InputField>();
+        string TextData = "#Next=" + NextTag.text;
+
+        m_dropdown = GameObject.Find("TextNum").GetComponentInChildren<Dropdown>();
+        FileData(TextData, m_dropdown.value + 1);
+
+        DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
+        m_tc.ClearText();
+        Backlog m_bl = GameObject.Find("BackLog").GetComponent<Backlog>();
+        m_bl.ImportLog();
+        NextTag.text = "";
+    }
+    public void SetFileInput()
+    {
+        Dropdown SceneTag = GameObject.Find("SetFileDropdown").GetComponent<Dropdown>();
+        string TextData = "#Setscenario=" + SceneTag.options[SceneTag.value].text;
+
+        m_dropdown = GameObject.Find("TextNum").GetComponentInChildren<Dropdown>();
+        FileData(TextData, m_dropdown.value + 1);
+
+        DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
+        m_tc.ClearText();
+        Backlog m_bl = GameObject.Find("BackLog").GetComponent<Backlog>();
+        m_bl.ImportLog();
+    }
+    public void NextFileInput()
+    {
+        Dropdown SceneTag = GameObject.Find("LoadFileDropdown").GetComponent<Dropdown>();
+        string TextData = "#Getscenario=" + SceneTag.options[SceneTag.value].text;
+
+        m_dropdown = GameObject.Find("TextNum").GetComponentInChildren<Dropdown>();
+        FileData(TextData, m_dropdown.value + 1);
+
+        DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
+        m_tc.ClearText();
+        Backlog m_bl = GameObject.Find("BackLog").GetComponent<Backlog>();
+        m_bl.ImportLog();
     }
     public void OpenBackLog()
     {
@@ -169,18 +223,18 @@ public class InputText : MonoBehaviour
         GameObject parent = GameObject.Find("Content");
         DirectoryInfo directory = new DirectoryInfo("Assets/Text/Resources/Image/" + sarch_path + "/");
         FileInfo[] files = new FileInfo[50];
-        if(sarch_path.Contains("CharaIcons") || sarch_path.Contains("Characters"))
+        //if(sarch_path.Contains("CharaIcons") || sarch_path.Contains("Characters"))
             files = directory.GetFiles("*.png");
-        else
-            files = directory.GetFiles("*.jpg");
+        //else
+        //    files = directory.GetFiles("*.jpg");
         string[] afterFile = new string[files.Length];
         filecount = files.Length;
         for (int i = 0; i < files.Length; i++)
         {
-            if (sarch_path.Contains("CharaIcons") || sarch_path.Contains("Characters"))
+            //if (sarch_path.Contains("CharaIcons") || sarch_path.Contains("Characters"))
                 afterFile[i] = files[i].Name.Replace(".png", "");
-            else if (sarch_path.Contains("BackGrounds"))
-                afterFile[i] = files[i].Name.Replace(".jpg", "");
+            //else if (sarch_path.Contains("BackGrounds"))
+            //    afterFile[i] = files[i].Name.Replace(".jpg", "");
             Sprite sprite = Resources.Load<Sprite>("Image/" + sarch_path + "/" + afterFile[i]);
             selectbutton[i] = Instantiate(obj) as GameObject;
             selectbutton[i].GetComponent<Button>().image.sprite = sprite;
@@ -206,6 +260,7 @@ public class InputText : MonoBehaviour
             selectbutton[i] = Instantiate(obj) as GameObject;
             selectbutton[i].GetComponent<Button>().GetComponentInChildren<Text>().text = afterFile[i];
             selectbutton[i].transform.SetParent(parent.transform, false);
+            selectbutton[i].GetComponent<LineValue>().SetValue(i);
         }
     }
     public void Sarchiconfolder()
@@ -311,6 +366,51 @@ public class InputText : MonoBehaviour
         Backlog m_bl = GameObject.Find("BackLogCanvas").GetComponent<Backlog>();
         m_bl.ImportLog();
     }
+
+    public void DeleteLine()
+    {
+        Load();
+
+        int num = 0;
+        //各情報を格納
+        string str = "";
+        m_dropdown = GameObject.Find("TextNum").GetComponentInChildren<Dropdown>();
+
+        //変更された情報の書き出し
+        GameObject NowFile = GameObject.Find("NowTextFile");
+        fileName = NowFile.GetComponent<Image>().GetComponentInChildren<Text>().text + ".txt";
+        path = Application.persistentDataPath + "/Data/" + fileName;
+        StreamWriter sw = new StreamWriter(path, false, Encoding.UTF8);
+        for (int i = 0; i < Engin_Const.line_size; i++)
+        {
+            if (m_dropdown.value != i)
+            {
+                sw.WriteLine(csvData[num]);
+                num++;
+            }
+            else if (m_dropdown.value == i)
+            {
+                if (csvData[m_dropdown.value] != "")
+                {
+                    sw.WriteLine(str);
+                    num++;
+                }
+                else if (csvData[m_dropdown.value] == "")
+                {
+                    var list = new List<string>();
+                    list.AddRange(csvData);
+                    list.RemoveAt(m_dropdown.value);
+                    csvData = list.ToArray();
+                }
+            }
+        }
+        sw.Close();
+
+        DisplayText m_tc = GameObject.Find("TextContlloer").GetComponent<DisplayText>();
+        m_tc.ClearText();
+        Backlog m_bl = GameObject.Find("BackLogCanvas").GetComponent<Backlog>();
+        m_bl.ImportLog();
+    }
     public void OpenCharacterProperty()
     {
         if (!m_CharacterProperty.activeSelf)
@@ -319,5 +419,29 @@ public class InputText : MonoBehaviour
     public void CloseCharacterProperty()
     {
         m_CharacterProperty.SetActive(false);
+    }
+    public void OpenDialog()
+    {
+        if(!m_Dialogue.activeSelf)
+        {
+            m_Dialogue.SetActive(true);
+        }
+    }
+    public void CloseDialog()
+    {
+        m_Dialogue.SetActive(false);
+    }
+    public void OpenSetScene()
+    {
+        if (!m_SetScene_File.activeSelf)
+            m_SetScene_File.SetActive(true);
+    }
+    public void CloseSetScene()
+    {
+        m_SetScene_File.SetActive(false);
+    }
+    public void SceneDebug()
+    {
+        SceneManager.LoadSceneAsync("Scenes/debug/Text");
     }
 }

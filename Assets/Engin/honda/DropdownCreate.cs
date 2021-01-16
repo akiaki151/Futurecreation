@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Const_e;
 
 public class DropdownCreate : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class DropdownCreate : MonoBehaviour
         m_dropdown.ClearOptions();
 
         List<string> list = new List<string>();
-        for(int i=1; i <= 500; i++)
+        for(int i=1; i <= Engin_Const.line_size; i++)
         {
             list.Add("" + i);
         }

@@ -19,6 +19,7 @@ public class Status : MonoBehaviour
         float.TryParse(GameObject.Find("X_InputPos").GetComponent<InputField>().text, out x_pos);
         float.TryParse(GameObject.Find("Y_InputPos").GetComponent<InputField>().text, out y_pos);
         GameObject.Find("CharacterButton").GetComponent<RectTransform>().localPosition = new Vector3(x_pos, y_pos, -1);
+        Debug.Log(GameObject.Find("CharacterButton").GetComponent<RectTransform>().localPosition);
     }
     public void SetScale()
     {

@@ -7,10 +7,10 @@ using System.Text;
 
 public class SelectTextFile : MonoBehaviour
 {
-    void Start()
-    {
-        LoadTextFile();
-    }
+    //void Start()
+    //{
+    //    LoadTextFile();
+    //}
 
     public void LoadTextFile()
     {

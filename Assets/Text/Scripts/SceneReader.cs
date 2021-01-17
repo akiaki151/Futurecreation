@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using UnityEngine;
 public class SceneReader 
 {
     private SceneController _sc;
@@ -18,8 +18,9 @@ public class SceneReader
                                 "Next",
                                 "Options",
                                 "Getscenario",
-                                "Fade"
+                                //"Fade"
                                 };
+    private string _fadetag = "Fade";
     
     public SceneReader(SceneController _sc)
     {
@@ -40,28 +41,39 @@ public class SceneReader
         var list = new List<string>();
         list.AddRange(_taglist);
         var _tagFactory = new Taglist();
-        
+
         if (line.Contains("#"))
         {
             while (true)
             {
                 if (!line.Contains("#")) break;
-                line = line.Replace("#", ""); 
+                line = line.Replace("#", "");
                 foreach (string tag in list)
                 {
                     if (line.Contains(tag))
                     {
 
-                        _tagFactory.CreateTag(tag).Do(_sc,line,s);
-                        
+                        _tagFactory.CreateTag(tag).Do(_sc, line, s);
+
                     }
                 }
-               
                 s.GoNextLine();
                 if (s.IsFinished()) break;
                 line = s.GetCurrentLine();
             }
         }
+        if (line.Contains("*"))
+        {
+            line = line.Replace("*", "");
+
+            if (line.Contains(_fadetag))
+            {
+                _tagFactory.CreateTag(_fadetag).Do(_sc, line, s);
+            }
+            s.GoNextLine();
+            line = s.GetCurrentLine();
+        }
+
         if (line.Contains('{'))
         {
             line = line.Replace("{", "");

@@ -12,7 +12,8 @@ public class SceneController : MonoBehaviour
     public List<Character> Characters = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Score> Scores = new List<Score>();
-    public List<Fade> Fade = new List<Fade>();
+    public List<Fade> _Fade = new List<Fade>();
+    public Fade fade;
     private Sound _Sound;
     public string sceneTxtname { private get; set; }
     public string sceneLoadName {  get; set; }//ロードで必要なもの
@@ -88,8 +89,12 @@ public class SceneController : MonoBehaviour
                 {
                     SetNextProcess();
                 }
-
-            }       
+            }
+        }
+        if (_Fade.Find(c => c.GetActive()) && !fade._playfade)
+        {
+            SetNextProcess();
+            fade.DisApp();
         }
     }
 
@@ -104,7 +109,7 @@ public class SceneController : MonoBehaviour
     {
         if (_textSeq.IsPlaying())
         {
-            SetText(_tempText);        
+            SetText(_tempText);
         }
         else
         {
@@ -114,15 +119,15 @@ public class SceneController : MonoBehaviour
 
     public void SetScene(string id)
     {
-        _currentScene = _sh.Scenes.Find(s => s.ID == id + sceneTxtname);      
+        _currentScene = _sh.Scenes.Find(s => s.ID == id + sceneTxtname);
         _name = id + sceneTxtname;
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
-        SetNextProcess();
+            SetNextProcess();
     }
 
     public void LoadScene(string LoadName, int num, string id)
-    {    
+    {
         _currentScene = _sh.Scenes.Find(s => s.ID == LoadName);
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
@@ -238,25 +243,26 @@ public class SceneController : MonoBehaviour
     //フェード処理//////////////////////////////////////////////////
     public void SetFade(string name)
     {
-        Fade.ForEach(c => c.Destroy());
-        Fade = new List<Fade>();
+        _Fade.ForEach(c => c.Destroy());
+        _Fade = new List<Fade>();
         AddFade(name);
     }
     public void AddFade(string name)
     {
-        if (Fade.Exists(c => c.Name == name)) return;
+        if (_Fade.Exists(c => c.Name == name)) return;
 
         var prefab = Resources.Load("Prefabs/Fade") as GameObject;
         var fadeObject = Object.Instantiate(prefab);
         var fade = fadeObject.GetComponent<Fade>();
 
         fade.Init(name);
-        Fade.Add(fade);
+        _Fade.Add(fade);
     }
-    public void SetFadeImage(string name, string ID)
+    public void SetFadeImage(string name, string f_ID, string b_ID)
     {
-        var fade = Fade.Find(c => c.Name == name);
-        fade.SetImage(ID);
+        fade = _Fade.Find(c => c.Name == name);
+        fade.Appear();
+        fade.SetImage(f_ID, b_ID);
     }
     //////////////////////////////////////////////////////////////////////
 

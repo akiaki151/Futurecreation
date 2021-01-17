@@ -1,5 +1,6 @@
 ﻿#scene=001
 #Background=fade_tex
+*Fade=6:rina_room1
 #Chara=del_chara(0:0:1)
 #Ico=del
 #Speaker=説明君
@@ -17,7 +18,7 @@
 ]
 
 #scene=002
-#Fade=fade_tex
+*Fade=8:rina_road1
 #Getscenario=csvTest
 #scene=003
 #Fade=fade_tex

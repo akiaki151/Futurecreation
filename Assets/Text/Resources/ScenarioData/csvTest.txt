@@ -4,8 +4,8 @@
 #Setscenario=csvTest2
 #Setscenario=csvTest3
 #BGM=1
-#Ico=a_icon
-#Chara=a_chara(0:0:1)
+#Ico=rina_01_icon
+#Chara=妹_立ち絵_ 泣き(0:0:1)
 #Background=bg1_tex
 #Speaker=A君
 {アクション処理の動作をテストします}

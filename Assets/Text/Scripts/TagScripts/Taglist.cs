@@ -162,7 +162,8 @@ public class Taglist
         public void Do(SceneController _sc, string line, Scene s)
         {
             line = line.Replace("Fade=", "");
-            _sc.SetFadeImage("Fade", line);
+            var splitted = line.Split(':');
+            _sc.SetFadeImage("Fade", splitted[0], splitted[1]);
         }
     }
 }

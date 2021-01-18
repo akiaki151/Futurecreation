@@ -20,7 +20,9 @@ public class SceneReader
                                 "Getscenario",
                                 //"Fade"
                                 };
-    private string _fadetag = "Fade";
+    private string[] _fadetag = {"FadeIn",
+                                "FadeOut"
+    };
     
     public SceneReader(SceneController _sc)
     {
@@ -40,6 +42,8 @@ public class SceneReader
         var text = "";
         var list = new List<string>();
         list.AddRange(_taglist);
+        var fade_list = new List<string>();
+        fade_list.AddRange(_fadetag);
         var _tagFactory = new Taglist();
 
         if (line.Contains("#"))
@@ -65,10 +69,12 @@ public class SceneReader
         if (line.Contains("*"))
         {
             line = line.Replace("*", "");
-
-            if (line.Contains(_fadetag))
+            foreach (string tag in fade_list)
             {
-                _tagFactory.CreateTag(_fadetag).Do(_sc, line, s);
+                if (line.Contains(tag))
+                {
+                    _tagFactory.CreateTag(tag).Do(_sc, line, s);
+                }
             }
             s.GoNextLine();
             line = s.GetCurrentLine();

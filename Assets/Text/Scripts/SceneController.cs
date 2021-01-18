@@ -90,11 +90,14 @@ public class SceneController : MonoBehaviour
                     SetNextProcess();
                 }
             }
-        }
-        if (_Fade.Find(c => c.GetActive()) && !fade._playfade)
-        {
-            SetNextProcess();
-            fade.DisApp();
+            if (_Fade.Find(c => c.GetActive()) && fade._playInfade)
+            {
+                if (!fade._playOutfade)
+                {
+                    SetNextProcess();
+                    fade._playOutfade = true;
+                }
+            }
         }
     }
 
@@ -258,11 +261,18 @@ public class SceneController : MonoBehaviour
         fade.Init(name);
         _Fade.Add(fade);
     }
-    public void SetFadeImage(string name, string f_ID, string b_ID)
+    public void SetFadeInImage(string name, string ID)
     {
         fade = _Fade.Find(c => c.Name == name);
         fade.Appear();
-        fade.SetImage(f_ID, b_ID);
+        fade.SetInImage(ID);
+    }
+    public void SetFadeOutImage(string name, string ID)
+    {
+        fade = _Fade.Find(c => c.Name == name);
+        fade.Appear();
+        fade.SetOutImage(ID);
+        Debug.Log("通った");
     }
     //////////////////////////////////////////////////////////////////////
 

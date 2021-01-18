@@ -11,7 +11,7 @@ public class SoundSetting : MonoBehaviour
 
     private void Awake()
     {
-        slider = transform.FindChild("Slider").GetComponent<Slider>();
+        slider = transform.Find("Slider").GetComponentInChildren<Slider>();
 
         slider.value = Mathf.Abs(PlayerPrefs.GetInt(this.name)) / 40.0f * 100.0f;
 

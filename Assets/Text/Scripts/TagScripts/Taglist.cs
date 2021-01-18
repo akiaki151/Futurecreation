@@ -157,13 +157,21 @@ public class Taglist
         }
     }
 
-    public class Fade : ITag
+    public class FadeIn : ITag
     {
         public void Do(SceneController _sc, string line, Scene s)
         {
-            line = line.Replace("Fade=", "");
-            var splitted = line.Split(':');
-            _sc.SetFadeImage("Fade", splitted[0], splitted[1]);
+            line = line.Replace("FadeIn=", "");
+            _sc.SetFadeInImage("Fade", line);
+        }
+    }
+
+    public class FadeOut : ITag
+    {
+        public void Do(SceneController _sc, string line, Scene s)
+        {
+            line = line.Replace("FadeOut=", "");
+            _sc.SetFadeOutImage("Fade", line);
         }
     }
 }

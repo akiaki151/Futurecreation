@@ -5,7 +5,6 @@ using System.Text;
 using System.IO;
 using Const_e;
 using UnityEngine.SceneManagement;
-//using UnityEngine.
 
 public class InputText : MonoBehaviour
 {

@@ -10,13 +10,12 @@ public class Fade : MonoBehaviour
 
     private GameObject _fadeObject;
     private Image _fadeImage;
-    private Image _backImage;
-    private Sprite _backsprite;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private GameObject canvas;
 
     public string Name { get; private set; }
-    public bool _playfade { get; set; }
+    public bool _playInfade { get; set; }
+    public bool _playOutfade { get; set; }
 
     void Start()
     {
@@ -34,10 +33,6 @@ public class Fade : MonoBehaviour
             {
                 _fadeImage = child.gameObject.GetComponent<Image>();
             }
-            if (child.name == "Background")
-            {
-                _backImage = child.gameObject.GetComponent<Image>();
-            }
         }
         gameObject.SetActive(false);
         LoadImage();
@@ -52,13 +47,15 @@ public class Fade : MonoBehaviour
         }
     }
 
-    public void SetImage(string imageID, string BackimageID)
+    public void SetInImage(string imageID)
     {
         _fadeImage.sprite = _sprites[imageID];
-        StartCoroutine(FadeStart());
-        _backsprite = Resources.Load<Sprite>("Image/" + "Backgrounds/" + BackimageID);
-        //FadeIn();
-        //FadeOut();
+        StartCoroutine(FadeInStart());
+    }
+    public void SetOutImage(string imageID)
+    {
+        _fadeImage.sprite = _sprites[imageID];
+        StartCoroutine(FadeOutStart());
     }
 
     public void Appear()
@@ -92,15 +89,19 @@ public class Fade : MonoBehaviour
         Destroy(this);
     }
 
-    public IEnumerator FadeStart()
+    public IEnumerator FadeInStart()
     {
-        _playfade = true;
+        _playInfade = false;
         _fadeImage.material = Resources.Load<Material>("Materials/FadeIn");
         yield return FadeAnime(_fadeImage.material, 1);
-        _backImage.sprite = _backsprite;
+        _playInfade = true;
+        _playOutfade = false;
+    }
+    public IEnumerator FadeOutStart()
+    {
         _fadeImage.material = Resources.Load<Material>("Materials/FadeOut");
         yield return FadeAnime(_fadeImage.material, 1);
-        _playfade = false;
+        _playOutfade = false;
     }
 
     private IEnumerator FadeAnime(Material material, float time)

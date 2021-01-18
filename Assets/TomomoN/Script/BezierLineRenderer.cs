@@ -5,7 +5,7 @@ using UnityEngine;
 public class BezierLineRenderer : MonoBehaviour
 {
     [SerializeField]
-    private RoutePoint routePoint;
+    private RoutePoint routePoint = null;
     [SerializeField]
     private int middlePoints = 10;
 

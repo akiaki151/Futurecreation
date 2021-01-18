@@ -284,7 +284,7 @@ GameObject:
   - component: {fileID: 8339180528275813212}
   - component: {fileID: 139984846198001049}
   - component: {fileID: 679179193922239757}
-  - component: {fileID: 8654259353715913722}
+  - component: {fileID: 2997117607031486453}
   m_Layer: 5
   m_Name: NadeNadeRange
   m_TagString: Untagged
@@ -353,8 +353,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3ba2cae05946442b49b8b5840aa8bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!68 &8654259353715913722
-EdgeCollider2D:
+--- !u!60 &2997117607031486453
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -367,18 +367,22 @@ EdgeCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
   m_Points:
-  - {x: -50, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 0.5, y: 0}
-  - {x: 50, y: 0}
+    m_Paths:
+    - - {x: 0, y: 1}
+      - {x: -0.95105654, y: 0.30901697}
+      - {x: -0.5877852, y: -0.80901706}
+      - {x: 0.58778536, y: -0.80901694}
+      - {x: 0.9510565, y: 0.30901712}
 --- !u!1 &7677327172104603026
 GameObject:
   m_ObjectHideFlags: 0

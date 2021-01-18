@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HeartEffectGen : MonoBehaviour
 {
-    public GameObject GeneratePoint;
-    public GameObject HeartEffect;
+    public GameObject GeneratePoint = null;
+    public GameObject HeartEffect = null;
 
     const int maxHeartCount = 20;
 

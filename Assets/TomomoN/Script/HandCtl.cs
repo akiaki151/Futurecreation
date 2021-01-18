@@ -109,6 +109,7 @@ public class HandCtl : MonoBehaviour
             if (minDeg < deg && deg < maxDeg)
             {
                 // 横長
+                Debug.Log("横長");
                 if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
                 {
                     HandCtl.isNadeNade = false;

@@ -18,6 +18,7 @@ public class Save : MonoBehaviour
     private GameController _gc;
     private SaveLoadDataManager _sldm;
 
+
     void Start()
     {
         _gc = GameObject.Find("GameController").GetComponent<GameController>();
@@ -136,7 +137,6 @@ public class Save : MonoBehaviour
 
     public void OnClickSaveLoad()
     {
-        Debug.Log(_sldm.CurrentSaveLoadIndex);
         if (_sldm.CurrentSaveLoadIndex == 2)
         {
             LoadOn();
@@ -209,20 +209,22 @@ public class Save : MonoBehaviour
 
         DateTime TodayNow = DateTime.Now;
 
+       
+
         saveData = new SaveData()
         {
-            chara_name  = _charaImage.sprite.name,
+            chara_name = _charaImage.sprite.name,
             speakertext = _speakerText.text,
-            bg_name     = _bgImage.sprite.name,
-            icon_name   = _charaIcoImage.sprite.name,
+            bg_name = _bgImage.sprite.name,
+            icon_name = _charaIcoImage.sprite.name,
             time = TodayNow.Year.ToString() + "/" + TodayNow.Month.ToString() + "/" + TodayNow.Day.ToString() + "\n" + DateTime.Now.ToShortTimeString(),
             text = _Text.text,
             savetext = Savetext,
             sceneLoadName = _gc.Sc.sceneLoadName,
             loadnum = _gc.Sc.loadnum,
-            id = _gc.Sc.ID
+            id = _gc.Sc.ID,
+            options = _gc.Sc.Save_options
         };
-
         bank.Store(gameObject.name, saveData);
         bank.SaveAll();
         saveData = bank.Get<SaveData>(gameObject.name);
@@ -318,6 +320,8 @@ public class Save : MonoBehaviour
         bank = DataBank.Open();
         bank.Load<SaveData>(gameObject.name);
         saveData = bank.Get<SaveData>(gameObject.name);
-        _gc.Sc.LoadScene(saveData.sceneLoadName, saveData.loadnum, saveData.id);
+        _gc.Sc.LoadScene(saveData.sceneLoadName, saveData.loadnum, saveData.id, saveData.options);
+
+        
     }
 }

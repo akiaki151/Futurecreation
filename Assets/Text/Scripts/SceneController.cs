@@ -25,7 +25,7 @@ public class SceneController : MonoBehaviour
     private Sequence _textSeq  = DOTween.Sequence();
     private Sequence _imageSeq = DOTween.Sequence();
     private Scene _currentScene;
-    private bool _isOptionsShowed;
+    public  bool _isOptionsShowed;
     private bool _isSaveShowed;
     private string _tempText;
     private float _messageSpeed = 0.1f;
@@ -34,7 +34,8 @@ public class SceneController : MonoBehaviour
     private GameObject targetGameObject;
     private string _name="";
     public string ID = "";
-   
+    public string Save_options;
+
     public SceneController(GameController _gc)
     {
         this._gc = _gc;
@@ -80,6 +81,7 @@ public class SceneController : MonoBehaviour
                         loadnum = _currentScene.Index - 1;
                         sceneLoadName = _name;
                         ID = sceneTxtname;
+                        
                         return;
                     }
                 }
@@ -87,7 +89,8 @@ public class SceneController : MonoBehaviour
 
                 if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
                 {
-                    SetNextProcess();
+                    Save_options = "";
+                    SetNextProcess();      
                 }
             }
             if (_Fade.Find(c => c.GetActive()) && fade._playInfade)
@@ -128,15 +131,48 @@ public class SceneController : MonoBehaviour
         if (_currentScene == null) Debug.LogError("scenario not found");
             SetNextProcess();
     }
+    // 文字の出現回数をカウント
+    public static int CountChar(string s, char c)
+    {
+        return s.Length - s.Replace(c.ToString(), "").Length;
+    }
 
-    public void LoadScene(string LoadName, int num, string id)
+    public void LoadScene(string LoadName, int num, string id,string line)
     {
         _currentScene = _sh.Scenes.Find(s => s.ID == LoadName);
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
         _currentScene.LoadLine(num);
         sceneTxtname = id;
-        SetNextProcess();
+        if (line != ""&& line !=null)
+        {
+            int i = 0;
+            var options = new List<(string, string)>();
+            while (true)
+            {
+                if (i< CountChar(line, ';'))
+                {
+                    var splitted = line.Split(';');
+
+                    var splitted2 = splitted[i].Split(':');
+                   
+                    options.Add((splitted2[0], splitted2[1]));          
+                    i++;
+                }
+                else
+                {
+                    _gui.ButtonPanel.gameObject.SetActive(true);
+                    SetOptions(options);
+                    SetNextProcess();
+                    break;
+                }
+            }          
+        }
+        else
+        {
+            _isOptionsShowed = false;
+            SetNextProcess();
+        }
     }
 
     public void SetText(string text)
@@ -338,18 +374,28 @@ public class SceneController : MonoBehaviour
         int flag2 = int.Parse(flag);
         _Sound.ChangeSE(num2, flag2);
     }
-    //////////////////////////////////////////////////////////////////////\
+    //////////////////////////////////////////////////////////////////////
     public void SetOptions(List<(string text, string nextScene)> options)
     {
-        _isOptionsShowed = true;
-        foreach (var o in options)
+        if (!_isOptionsShowed)
         {
-            Button b = Object.Instantiate(_gui.OptionButton);
-            Text text = b.GetComponentInChildren<Text>();
-            text.text = o.text;
-            b.onClick.AddListener(() => onClickedOption(o.nextScene));
-            b.transform.SetParent(_gui.ButtonPanel, false);
+            _isOptionsShowed = true;
+            foreach (var o in options)
+            {
+                Button b = Object.Instantiate(_gui.OptionButton);
+                Text text = b.GetComponentInChildren<Text>();
+                text.text = o.text;
+                b.onClick.AddListener(() => onClickedOption(o.nextScene));
+                b.transform.SetParent(_gui.ButtonPanel, false);
+            }
         }
+    }
+
+    public void Save_Options(string data)
+    {
+        
+        Save_options += data;
+        Debug.Log(Save_options);
     }
 
     public void onClickedOption(string nextID = "")

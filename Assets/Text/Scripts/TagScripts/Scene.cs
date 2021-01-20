@@ -40,6 +40,5 @@ public class Scene
     public void GoNextLine()
     {
         Index++;
-        Debug.Log(Index);
     }
 }

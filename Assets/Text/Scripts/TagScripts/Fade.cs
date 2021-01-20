@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class Fade : MonoBehaviour
 {
-
     private GameObject _fadeObject;
     private Image _fadeImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
@@ -47,14 +46,18 @@ public class Fade : MonoBehaviour
         }
     }
 
-    public void SetInImage(string imageID)
+    public void SetInImage(string imageID, int colorID)
     {
         _fadeImage.sprite = _sprites[imageID];
+        _fadeImage.material = Resources.Load<Material>("Materials/FadeIn");
+        _fadeImage.material.color = new Color(colorID, colorID, colorID, 0);
         StartCoroutine(FadeInStart());
     }
-    public void SetOutImage(string imageID)
+    public void SetOutImage(string imageID, int colorID)
     {
         _fadeImage.sprite = _sprites[imageID];
+        _fadeImage.material = Resources.Load<Material>("Materials/FadeOut");
+        _fadeImage.material.color = new Color(colorID, colorID, colorID, 1);
         StartCoroutine(FadeOutStart());
     }
 
@@ -92,14 +95,12 @@ public class Fade : MonoBehaviour
     public IEnumerator FadeInStart()
     {
         _playInfade = false;
-        _fadeImage.material = Resources.Load<Material>("Materials/FadeIn");
         yield return FadeAnime(_fadeImage.material, 1);
         _playInfade = true;
         _playOutfade = false;
     }
     public IEnumerator FadeOutStart()
     {
-        _fadeImage.material = Resources.Load<Material>("Materials/FadeOut");
         yield return FadeAnime(_fadeImage.material, 1);
         _playOutfade = false;
     }

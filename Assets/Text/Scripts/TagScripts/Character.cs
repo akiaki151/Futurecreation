@@ -34,6 +34,7 @@ public class Character : MonoBehaviour
         }
         gameObject.SetActive(false);
         LoadImage();
+        _characterImage.color = new Color(1f, 1f, 1f, 1f);
     }
 
     public void LoadImage()
@@ -52,7 +53,7 @@ public class Character : MonoBehaviour
         _position.y = y;
         _scale.x = scale;
         _scale.y = scale;
-        FadeIn();
+        //FadeIn();
     }
 
     public void Move()

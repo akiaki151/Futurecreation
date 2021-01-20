@@ -6,7 +6,7 @@ namespace Const_e
 {
     public class Engin_Const : MonoBehaviour
     {
-        public const int line_size = 3000;
+        public const int line_size = 500;
     }
 
 }

@@ -21,10 +21,11 @@ public class GifCtl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HeartEffect.GetHeartCount() > 20)
+        if(HeartEffect.GetHeartCount() == 20)
         {
             OnePicture.SetActive(false);
             GifImage.Play();
+            HeartEffect.SetHeartCount(0);
         }
     }
 }

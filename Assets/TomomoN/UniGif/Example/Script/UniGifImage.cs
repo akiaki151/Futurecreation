@@ -145,6 +145,7 @@ public class UniGifImage : MonoBehaviour
                 m_gifTextureIndex++;
                 if (m_gifTextureIndex >= m_gifTextureList.Count)
                 {
+                    loopCount = 1;
                     m_gifTextureIndex = 0;
 
                     if (loopCount > 0)
@@ -152,6 +153,7 @@ public class UniGifImage : MonoBehaviour
                         m_nowLoopCount++;
                         if (m_nowLoopCount >= loopCount)
                         {
+                            loopCount = 0;
                             Stop();
                             return;
                         }
@@ -296,6 +298,7 @@ public class UniGifImage : MonoBehaviour
     /// </summary>
     public void Play()
     {
+        Debug.Log("Play");
         if (nowState != State.Ready)
         {
             Debug.LogWarning("State is not READY.");

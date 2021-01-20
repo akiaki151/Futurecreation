@@ -55,6 +55,8 @@ public class Sound : MonoBehaviour
             _sources[1].Play();
             _bgm_index = 0;
         }
+        else
+            _sources[1].Stop();
     }
 
     public void ChangeCharacterVoice(int num)

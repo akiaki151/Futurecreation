@@ -261,18 +261,17 @@ public class SceneController : MonoBehaviour
         fade.Init(name);
         _Fade.Add(fade);
     }
-    public void SetFadeInImage(string name, string ID)
+    public void SetFadeInImage(string name, string ID, int COLOR)
     {
         fade = _Fade.Find(c => c.Name == name);
         fade.Appear();
-        fade.SetInImage(ID);
+        fade.SetInImage(ID, COLOR);
     }
-    public void SetFadeOutImage(string name, string ID)
+    public void SetFadeOutImage(string name, string ID, int COLOR)
     {
         fade = _Fade.Find(c => c.Name == name);
         fade.Appear();
-        fade.SetOutImage(ID);
-        Debug.Log("通った");
+        fade.SetOutImage(ID, COLOR);
     }
     //////////////////////////////////////////////////////////////////////
 

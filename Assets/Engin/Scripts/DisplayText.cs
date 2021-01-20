@@ -160,7 +160,7 @@ public class DisplayText : MonoBehaviour
     {
         if (GameObject.Find("BackLog") != null)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow) && m_dropdown.value >= 1)
+            if (Input.GetKeyDown(KeyCode.DownArrow) && m_dropdown.value >= 1)
             {
                 serch_num--;
                 List<int> display_textNum = new List<int>();
@@ -178,7 +178,7 @@ public class DisplayText : MonoBehaviour
                     m_dropdown.value = i;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && m_dropdown.value < Engin_Const.line_size - 1)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && m_dropdown.value < Engin_Const.line_size - 1)
             {
                 List<int> display_textNum = new List<int>();
                 for (int i = 0; i < Engin_Const.line_size; i++)
@@ -210,11 +210,11 @@ public class DisplayText : MonoBehaviour
     {
         if (GameObject.Find("BackLog") != null)
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow) && m_dropdown.value >= 1)
+            if (Input.GetKeyDown(KeyCode.UpArrow) && m_dropdown.value >= 1)
             {
                 m_dropdown.value--;
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) && m_dropdown.value < Engin_Const.line_size - 1)
+            if (Input.GetKeyDown(KeyCode.DownArrow) && m_dropdown.value < Engin_Const.line_size - 1)
             {
                 m_dropdown.value++;
             }

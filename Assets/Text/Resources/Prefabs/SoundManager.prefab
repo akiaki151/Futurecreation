@@ -47,12 +47,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BGM:
-  - {fileID: 8300000, guid: ec131dc7ee8e60d4584be081fb3dd9e7, type: 3}
+  - {fileID: 8300000, guid: dd3f52ff7540438458940d4793dbadd5, type: 3}
   - {fileID: 8300000, guid: 39913cd4080f1044388a2aa047b60835, type: 3}
   - {fileID: 8300000, guid: 85ab0617828c9364db55723e7cb65d3c, type: 3}
   - {fileID: 8300000, guid: ce555b94fb982b84bb013a9299354feb, type: 3}
   SE:
-  - {fileID: 8300000, guid: 9aeb5131e1ecc214e93e01bd5f19ea31, type: 3}
+  - {fileID: 8300000, guid: 1d990b952f1ef8e4da8cf8f6806d07af, type: 3}
   - {fileID: 8300000, guid: eb31242366c338a44b08f09914519597, type: 3}
   - {fileID: 8300000, guid: cd67dd3c556a7744b845d98a285276b3, type: 3}
 --- !u!82 &6406009282132548247

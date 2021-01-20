@@ -27,6 +27,8 @@ public class HandCtl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (FadeManager_TomomoN.IsFadeIn()) return;
+
         // 1フレーム前の座標を保存
         OldPosition = this.transform.position;
 
@@ -109,7 +111,6 @@ public class HandCtl : MonoBehaviour
             if (minDeg < deg && deg < maxDeg)
             {
                 // 横長
-                Debug.Log("横長");
                 if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
                 {
                     HandCtl.isNadeNade = false;

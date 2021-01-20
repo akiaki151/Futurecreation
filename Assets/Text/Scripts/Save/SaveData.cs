@@ -15,6 +15,7 @@ public class SaveData
     public string sceneLoadName;
     public int    loadnum;
     public string id;
+    public string options;
 
     public override string ToString()
     {

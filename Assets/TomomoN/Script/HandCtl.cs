@@ -1,9 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HandCtl : MonoBehaviour
 {
+    public Sprite ChangeImage001;
+    public Sprite ChangeImage002;
+
+    Image Imageinfo;
     public static bool isNadeNade = false;
 
     const float maxDeg = 1.5f;
@@ -17,11 +22,13 @@ public class HandCtl : MonoBehaviour
     void Start()
     {
         this.transform.position = new Vector3(-8.2f, -3.2f, 0.0f);
+        Imageinfo = this.GetComponent<Image>();
     }
 
     void OnEnable()
     {
         this.transform.position = new Vector3(-8.2f, -3.2f, 0.0f);
+        Imageinfo = this.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -111,14 +118,14 @@ public class HandCtl : MonoBehaviour
             if (minDeg < deg && deg < maxDeg)
             {
                 // 横長
-                if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
+                if (mousePosition.x < startPos.x - 1.0f || endPos.x + 1.0f < mousePosition.x)
                 {
                     HandCtl.isNadeNade = false;
                     Debug.Log("はずれた");
                 }
                 if (startPos.y < endPos.y)
                 {
-                    if (mousePosition.y < startPos.y || endPos.y < mousePosition.y)
+                    if (mousePosition.y < startPos.y - 1.0f || endPos.y + 2.0f < mousePosition.y)
                     {
                         HandCtl.isNadeNade = false;
                         Debug.Log("はずれた");
@@ -126,7 +133,7 @@ public class HandCtl : MonoBehaviour
                 }
                 if (startPos.y > endPos.y)
                 {
-                    if (mousePosition.y > startPos.y || endPos.y > mousePosition.y)
+                    if (mousePosition.y > startPos.y + 2.0f || endPos.y - 1.0f > mousePosition.y)
                     {
                         HandCtl.isNadeNade = false;
                         Debug.Log("はずれた");
@@ -168,13 +175,27 @@ public class HandCtl : MonoBehaviour
     
     void OnTriggerStay2D(Collider2D t)
     {
-        HandCtl.isNadeNade = true;
-        NadeNadeRangeName = t.gameObject.name;
-        Debug.Log("撫でてます");
+        if (t.gameObject.name == "Button")
+        {
+            Imageinfo.sprite = ChangeImage002;
+        }
+        else
+        {
+            HandCtl.isNadeNade = true;
+            NadeNadeRangeName = t.gameObject.name;
+            Debug.Log("撫でてます");
+        }
     }
     void OnTriggerExit2D(Collider2D t)
     {
-        HandCtl.isNadeNade = false;
-        Debug.Log("はずれた");
+        if (t.gameObject.name == "Button")
+        {
+            Imageinfo.sprite = ChangeImage001;
+        }
+        else
+        {
+            HandCtl.isNadeNade = false;
+            Debug.Log("はずれた");
+        }
     }
 }

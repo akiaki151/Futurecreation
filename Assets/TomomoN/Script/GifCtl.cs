@@ -11,6 +11,8 @@ public class GifCtl : MonoBehaviour
     UniGifImage GifImage = null;
     HeartEffectGen HeartEffect = null;
 
+    //bool bGifPlaying = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,11 +23,20 @@ public class GifCtl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(HeartEffect.GetHeartCount() == 20)
+        // ハートの数が一定数超えない場合returnする
+        HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
+        if (heart.GetHeartCount() > heart.GetMaxHeartCount())
         {
             OnePicture.SetActive(false);
             GifImage.Play();
-            HeartEffect.SetHeartCount(0);
+        }
+        else
+        {
+            OnePicture.SetActive(true);
+
         }
     }
+
+
+    //public void SetGifPlaying(bool bPlaying) { bGifPlaying = bPlaying; }
 }

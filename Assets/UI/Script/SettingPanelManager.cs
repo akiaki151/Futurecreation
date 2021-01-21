@@ -52,6 +52,14 @@ public class SettingPanelManager : MonoBehaviour
         newColor.selectedColor = SelectedButtonColor.selectedColor;
         newColor.disabledColor = SelectedButtonColor.disabledColor;
         GeneralSettingButton.colors = newColor;
+
+        GeneralSettingPanel.SetActive(true);
+        TextSettingPanel.SetActive(false);
+        SoundSettingPanel.SetActive(false);
+        ShortcutSettingPanel.SetActive(false);
+        DialougeSettingPanel.SetActive(false);
+
+        SettingWindow.SetActive(false);
     }
 
     // Update is called once per frame

@@ -173,6 +173,7 @@ public class SceneController : MonoBehaviour
             _isOptionsShowed = false;
             SetNextProcess();
         }
+        targetGameObject.SetActive(false);
     }
 
     public void SetText(string text)

@@ -10,8 +10,6 @@ public class SettingPanelManager : MonoBehaviour
 
     [SerializeField] private Button GeneralSettingButton, TextSettingButton, SoundSettingButton, ShortcutSettingButton, DialougeSettingButton;
 
-    [SerializeField] private Text PageTitle;
-
     [SerializeField] private ColorBlock SelectedButtonColor;
     [SerializeField] private ColorBlock UnselectedButtonColor;
 
@@ -95,8 +93,6 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 GeneralSettingButton.colors = newColor;
 
-                PageTitle.text = "簡単設定";
-
                 GeneralSettingPanel.SetActive(true);
 
                 break;
@@ -107,8 +103,6 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.normalColor = SelectedButtonColor.normalColor;
                 newColor.pressedColor = SelectedButtonColor.pressedColor;
                 TextSettingButton.colors = newColor;
-
-                PageTitle.text = "テキスト設定";
 
                 TextSettingPanel.SetActive(true);
 
@@ -123,8 +117,6 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 SoundSettingButton.colors = newColor;
 
-                PageTitle.text = "サウンド設定";
-
                 SoundSettingPanel.SetActive(true);
 
                 break;
@@ -138,8 +130,6 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 ShortcutSettingButton.colors = newColor;
 
-                PageTitle.text = "ショートカット設定";
-
                 ShortcutSettingPanel.SetActive(true);
 
                 break;
@@ -152,8 +142,6 @@ public class SettingPanelManager : MonoBehaviour
                 newColor.selectedColor = SelectedButtonColor.selectedColor;
                 newColor.disabledColor = SelectedButtonColor.disabledColor;
                 DialougeSettingButton.colors = newColor;
-
-                PageTitle.text = "ダイアログ設定";
 
                 DialougeSettingPanel.SetActive(true);
 

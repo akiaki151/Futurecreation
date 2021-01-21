@@ -367,14 +367,12 @@ public class SceneController : MonoBehaviour
     }
     public void ChangeBGM(string num)
     {
-        int num2 = int.Parse(num);
-        _Sound.ChangeBGM(num2);
+        _Sound.ChangeBGM(num);
     }
     public void ChangeSE(string num, string flag)
     {
-        int num2 = int.Parse(num);
         int flag2 = int.Parse(flag);
-        _Sound.ChangeSE(num2, flag2);
+        _Sound.ChangeSE(num, flag2);
     }
     //////////////////////////////////////////////////////////////////////
     public void SetOptions(List<(string text, string nextScene)> options)

@@ -7,7 +7,7 @@ public class HeartEffectGen : MonoBehaviour
     public GameObject GeneratePoint = null;
     public GameObject HeartEffect = null;
 
-    const int maxHeartCount = 20;
+    const int maxHeartCount = 15;
 
     float span = 0.08f;
     float delta = 0.0f;
@@ -31,17 +31,20 @@ public class HeartEffectGen : MonoBehaviour
 
 
         // 一旦処理を止めます
-        if (false)
-        {
-            // ハートの数が一定数超えたか？
-            HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
-            if (heartCount > heart.GetMaxHeartCount()) return;
-        }
+        //if (false)
+        //{
+        //}
+        // ハートの数が一定数超えたか？
+        HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
+        if (heartCount > heart.GetMaxHeartCount()) return;
 
 
         delta += Time.deltaTime;    // デルタを加算
         if (delta > span)
         {
+            AudioSource audio = this.GetComponent<AudioSource>();
+            audio.Play();
+
             delta = 0.0f;   // デルタをリセット
 
             // 生成

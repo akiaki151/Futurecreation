@@ -145,7 +145,15 @@ public class UniGifImage : MonoBehaviour
                 m_gifTextureIndex++;
                 if (m_gifTextureIndex >= m_gifTextureList.Count)
                 {
-                    loopCount = 1;
+                    UniGifImage onePicture = GameObject.Find("RawImage").GetComponent<UniGifImage>();
+                    if(onePicture.m_loadOnStartUrl == "sister.gif")
+                    {
+                        loopCount = 1;
+                    }
+                    else
+                    {
+                        loopCount = 3;
+                    }
                     m_gifTextureIndex = 0;
 
                     if (loopCount > 0)
@@ -153,6 +161,12 @@ public class UniGifImage : MonoBehaviour
                         m_nowLoopCount++;
                         if (m_nowLoopCount >= loopCount)
                         {
+                            // ハートの数が一定数超えない場合returnする
+                            HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
+                            heart.SetHeartCount(0);
+                            // GifCtlをもらう
+                            //GifCtl gifCtl = GameObject.Find("GifControl").GetComponent<GifCtl>();
+                            //gifCtl.SetGifPlaying(false);
                             loopCount = 0;
                             Stop();
                             return;
@@ -298,7 +312,6 @@ public class UniGifImage : MonoBehaviour
     /// </summary>
     public void Play()
     {
-        Debug.Log("Play");
         if (nowState != State.Ready)
         {
             Debug.LogWarning("State is not READY.");

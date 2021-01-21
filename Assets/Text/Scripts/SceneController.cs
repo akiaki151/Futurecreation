@@ -55,6 +55,7 @@ public class SceneController : MonoBehaviour
                 targetGameObject = child.gameObject;
             }
         }
+        targetGameObject.SetActive(false);
     }
 
     public void WaitClick()

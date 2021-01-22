@@ -254,6 +254,7 @@ public class SceneController : MonoBehaviour
     {
         var character = Characters.Find(c => c.Name == name);
         character.SetImage(ID,x,y,scale);
+
     }
     //////////////////////////////////////////////////////////////////////
 

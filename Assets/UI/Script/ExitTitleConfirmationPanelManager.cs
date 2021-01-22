@@ -57,15 +57,17 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
         {
             case 1:
                 panel.GetComponent<TwoOptionButton>().SetIndex(1);
-                canvas = GameObject.Find("Canvas");
                 foreach (Transform child in canvas.transform)
                 {
                     for (int i = 0; i < 20; i++)
                     {
-                        if (child.name != "TitleWindow")
+                        if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow")
                         {
-                            targetGameObject = child.gameObject;
-                            targetGameObject.SetActive(false);
+                            child.gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            child.gameObject.SetActive(true);
                         }
                     }
                 }

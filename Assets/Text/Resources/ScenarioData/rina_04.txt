@@ -1,4 +1,16 @@
 #scene=001
+#Setscenario=SelectScenario
+#Setscenario=rina_01
+#Setscenario=rina_02
+#Setscenario=rina_03
+#Setscenario=rina_04
+#Setscenario=rina_05
+#Setscenario=rina_06
+#Setscenario=karen_01
+#Setscenario=karen_02
+#Setscenario=karen_03
+#Setscenario=karen_04
+#Setscenario=karen_05
 #Speaker=
 {成沢泰子――}
 {利奈の母親は、利奈が保育園に入園した当初から仕事の都合で帰りが遅くなることが多かった。}

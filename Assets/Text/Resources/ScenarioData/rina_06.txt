@@ -1,4 +1,16 @@
 ﻿#scene=001
+#Setscenario=SelectScenario
+#Setscenario=rina_01
+#Setscenario=rina_02
+#Setscenario=rina_03
+#Setscenario=rina_04
+#Setscenario=rina_05
+#Setscenario=rina_06
+#Setscenario=karen_01
+#Setscenario=karen_02
+#Setscenario=karen_03
+#Setscenario=karen_04
+#Setscenario=karen_05
 #Background=rina_room1
 #Ico=rina_08_icon
 #Chara=妹_立ち絵_恥じらい(0:-400:1.8)

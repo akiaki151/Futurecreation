@@ -21,4 +21,13 @@ public class GameController : MonoBehaviour
         Sc.SetScene("001");
     }
 
+    public void SetSelect1Scene()
+    {
+        Sc.SetScene("002");
+    }
+
+    public void SetSelect2Scene()
+    {
+        Sc.SetScene("003");
+    }
 }

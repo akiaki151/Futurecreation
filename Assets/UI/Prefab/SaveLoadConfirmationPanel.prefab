@@ -217,7 +217,7 @@ GameObject:
   - component: {fileID: 2200709280508272697}
   - component: {fileID: 3903259244797621052}
   m_Layer: 5
-  m_Name: SaveLoadConfirmationPanel
+  m_Name: ConfirmationPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -323,9 +323,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SaveImage: {fileID: 21300000, guid: c73883cbc0630fc40829e34e7873efcf, type: 3}
-  LoadImage: {fileID: 21300000, guid: 5d27ec90f035907468864e0e0411ac8c, type: 3}
-  CurrentIndex: 0
-  NextIndex: 0
+  LoadImage: {fileID: 0}
+  TitleImage: {fileID: 0}
+  ExitImage: {fileID: 0}
 --- !u!1 &2200709280772473064
 GameObject:
   m_ObjectHideFlags: 0

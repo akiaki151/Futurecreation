@@ -1,5 +1,4 @@
-﻿#scene=001
-#Action=2
+#scene=001
 #Setscenario=SelectScenario
 #Setscenario=rina_01
 #Setscenario=rina_02
@@ -12,12 +11,9 @@
 #Setscenario=karen_03
 #Setscenario=karen_04
 #Setscenario=karen_05
-#Setscenario=karen_test
-#scene=002
-#Action=4
-*FadeIn=8:1
-#Getscenario=karen_test
-#scene=003
-#Action=4
-*FadeIn=8:1
-#Getscenario=rina_01
+#Background=genkan_01
+#BGM=everyday01
+#Speaker=ゲーム開発者
+{現在制作中！！！}
+#Getscenario=SelectScenario
+#BGM=0

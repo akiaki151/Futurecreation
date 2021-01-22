@@ -94,6 +94,8 @@ public class SceneController : MonoBehaviour
                     SetNextProcess();      
                 }
             }
+            if(Input.GetKey(KeyCode.LeftControl))
+                SetNextProcess();
             if (_Fade.Find(c => c.GetActive()) && fade._playInfade)
             {
                 if (!fade._playOutfade)

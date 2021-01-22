@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+using System;
 
 public class GameController : MonoBehaviour
 {
     public SceneController Sc;
-
+    private GameObject canvas;
     void Start()
     {
         Sc = new SceneController(this);
@@ -39,6 +41,26 @@ public class GameController : MonoBehaviour
 
     public void SetSelect3Scene()
     {
+        canvas = GameObject.Find("Canvas");
+        foreach (Transform child in canvas.transform)
+        {
+            if (child.name == "TextWindow")
+            {
+                foreach (Transform child2 in child.transform)
+                {
+                    if (child2.name == "TextPanel")
+                    {
+                        foreach (Transform child3 in child2.transform)
+                        {
+                            if (child3.name == "Text")
+                            {
+                                child3.gameObject.GetComponent<Text>().text="";
+                            }
+                        }
+                    }
+                }
+            }
+        }
         Sc.SetScene("111");
     }
 

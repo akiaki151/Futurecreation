@@ -1,4 +1,11 @@
 ﻿#scene=001
+#Speaker=""
+#Chara=del_chara
+#Ico=del
+#Background=bg_del
+#BGM=""
+#SE=""
+#Speaker=
 #Action=2
 #Setscenario=SelectScenario
 #Setscenario=rina_01

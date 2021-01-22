@@ -21,9 +21,14 @@ public class SaveLoadConfirmationPanelManager : MonoBehaviour
     private Save save;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         CurrentIndex = NextIndex = 0;
+        this.gameObject.SetActive(false);
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame

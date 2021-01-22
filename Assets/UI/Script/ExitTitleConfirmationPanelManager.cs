@@ -26,11 +26,15 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
     private Save save;
 
     // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        CurrentIndex = 0;
+        CurrentIndex = NextIndex = 0;
         Button_1 = this.GetComponentsInChildren<Button>()[0];
         Button_1.onClick.AddListener(TaskOnClick);
+    }
+    void Start()
+    {
+        
     }
 
     // Update is called once per frame
@@ -56,18 +60,19 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
         switch (CurrentIndex)
         {
             case 1:
+                canvas = GameObject.Find("Canvas");
                 panel.GetComponent<TwoOptionButton>().SetIndex(1);
                 foreach (Transform child in canvas.transform)
                 {
                     for (int i = 0; i < 20; i++)
                     {
-                        if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow")
+                        if (child.name == "TitleWindow")
                         {
-                            child.gameObject.SetActive(false);
+                            child.gameObject.SetActive(true);
                         }
                         else
                         {
-                            child.gameObject.SetActive(true);
+                            child.gameObject.SetActive(false);
                         }
                     }
                 }

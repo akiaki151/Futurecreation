@@ -87,7 +87,6 @@ public class SceneController : MonoBehaviour
                     }
                 }
 
-
                 if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
                 {
                     Save_options = "";

@@ -1,4 +1,16 @@
 #scene=001
+#Setscenario=SelectScenario
+#Setscenario=rina_01
+#Setscenario=rina_02
+#Setscenario=rina_03
+#Setscenario=rina_04
+#Setscenario=rina_05
+#Setscenario=rina_06
+#Setscenario=karen_01
+#Setscenario=karen_02
+#Setscenario=karen_03
+#Setscenario=karen_04
+#Setscenario=karen_05
 #Speaker=
 {灰色。}
 {見渡す限りの灰色が、視界いっぱいに広がっていた。}

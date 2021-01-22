@@ -64,12 +64,16 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
                     {
                         if (child.name != "TitleWindow")
                         {
-                            targetGameObject = child.gameObject;
-                            targetGameObject.SetActive(false);
+                            child.gameObject.SetActive(false);
+                        }
+                        else
+                        {
+                            child.gameObject.SetActive(true);
                         }
                     }
                 }
-                panel.gameObject.SetActive(false);
+        
+        panel.gameObject.SetActive(false);
                 break;
             case 2:
                 panel.GetComponent<TwoOptionButton>().SetIndex(1);

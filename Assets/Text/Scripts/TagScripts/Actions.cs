@@ -1,6 +1,11 @@
-﻿public class Actions
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+
+public class Actions
 {
     GameController gc;
+    private GameObject canvas;
+    private GameObject targetGameObject;
 
     public Actions(GameController gc)
     {
@@ -18,6 +23,12 @@
             case 1:
                 gc.Sc.ActionMove();
                 break;
+            case 2:
+                Title();
+                break;
+            case 3:
+                SceneManager.LoadScene("Heroine001");
+                break;
             default:
                 break;
         }
@@ -26,5 +37,21 @@
     public void Updata()
     {
 
+    }
+
+    private void Title()
+    {
+        canvas = GameObject.Find("Canvas");
+        foreach (Transform child in canvas.transform)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                if (child.name != "TitleWindow")
+                {
+                    targetGameObject = child.gameObject;
+                    targetGameObject.SetActive(false);
+                }
+            }
+        }
     }
 }

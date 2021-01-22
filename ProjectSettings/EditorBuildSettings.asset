@@ -11,4 +11,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/debug/Text.unity
+    guid: 5c012a1d8561aee4b96e19dc763a75bb
+  - enabled: 1
+    path: Assets/TomomoN/Heroine001.unity
+    guid: 8afd82cd0f0bafa4daf2e79fb8e0e293
   m_configObjects: {}

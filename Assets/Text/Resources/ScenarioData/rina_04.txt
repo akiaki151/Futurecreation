@@ -443,3 +443,7 @@
 {欲に塗れていた。}
 *FadeIn=8:0
 #Getscenario=rina_05
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

@@ -146,7 +146,6 @@ public class Save : MonoBehaviour
             SaveOn();
             return;
         }
-       
     }
 
     private void SaveOn()

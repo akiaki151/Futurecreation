@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -26,8 +27,18 @@ public class GameController : MonoBehaviour
         Sc.SetScene("002");
     }
 
+    public void SetNadeScene1()
+    {
+        SceneManager.LoadScene("Heroine001");
+    }
+
     public void SetSelect2Scene()
     {
         Sc.SetScene("003");
+    }
+
+    public void SetNadeScene2()
+    {
+        SceneManager.LoadScene("Heroine002");
     }
 }

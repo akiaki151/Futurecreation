@@ -65,12 +65,12 @@ public class SceneController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //  キャラの座標戻し
-                if (_charaAction)
-                {
-                    var character = Characters.Find(c => c.Name == "Characters");
-                    character.action = false;
-                    _charaAction = false;
-                }
+                //if (_charaAction)
+                //{
+                //    var character = Characters.Find(c => c.Name == "Characters");
+                //    character.action = false;
+                //    _charaAction = false;
+                //}
 
                 //ここでタップ判定(テキストを進めていいのかどうか)
                 if (EventSystem.current.IsPointerOverGameObject())

@@ -17,6 +17,7 @@ public class SaveData
     public string id;
     public string options;
     public Vector3 position;
+    public Vector3 scale;
 
     public override string ToString()
     {

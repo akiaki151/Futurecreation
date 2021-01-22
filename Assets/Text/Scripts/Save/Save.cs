@@ -152,6 +152,8 @@ public class Save : MonoBehaviour
     private void SaveOn()
     {
         canvas = GameObject.Find("Canvas");
+
+
         foreach (Transform child in canvas.transform)
         {
             if (child.name == "CharacterIcon")
@@ -178,14 +180,12 @@ public class Save : MonoBehaviour
             {
                 _charaImage = child.gameObject.GetComponent<Image>();
             }
-        }
-        foreach (Transform child in canvas.transform)
-        {
             if (child.name == "Background")
             {
                 _bgImage = child.gameObject.GetComponent<Image>();
             }
         }
+        
         foreach (Transform child in canvas.transform)
         {
             if (child.name == "TextWindow")
@@ -261,7 +261,7 @@ public class Save : MonoBehaviour
         {
             for (int i = 0; i < 20; i++)
             {
-                if (child.name == "TitleWindow"|| child.name == "ExitTitleConfirmationPanel"|| child.name == "SettingWindow")
+                if (child.name == "TitleWindow"|| child.name == "ExitTitleConfirmationPanel"|| child.name == "SettingWindow"||child.name =="Fade")
                 {
                     child.gameObject.SetActive(false);
                 }
@@ -331,7 +331,7 @@ public class Save : MonoBehaviour
         _charaImage.sprite    = Resources.Load<Sprite>("Image/Characters/" + saveData.chara_name);
         _charaImage.rectTransform.localPosition = saveData.position;
 
-        _bgImage.sprite       = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
+        _bgImage.sprite = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
         _Text.text = saveData.text;
 
         bank = DataBank.Open();

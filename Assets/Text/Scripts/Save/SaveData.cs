@@ -16,6 +16,7 @@ public class SaveData
     public int    loadnum;
     public string id;
     public string options;
+    public Vector3 position;
 
     public override string ToString()
     {

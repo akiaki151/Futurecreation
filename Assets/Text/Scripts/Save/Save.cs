@@ -25,7 +25,6 @@ public class Save : MonoBehaviour
         _sldm = GameObject.Find("SaveLoadWindow").GetComponent<SaveLoadDataManager>();
         bank = DataBank.Open();
         //Debug.Log($"save path of bank is { bank.SavePath }");
-
         //セーブデータが存在しないならば作成せよのIF文
         bank.Load<SaveData>(gameObject.name);
         saveData = bank.Get<SaveData>(gameObject.name);
@@ -209,8 +208,6 @@ public class Save : MonoBehaviour
 
         DateTime TodayNow = DateTime.Now;
 
-       
-
         saveData = new SaveData()
         {
             chara_name = _charaImage.sprite.name,
@@ -223,7 +220,8 @@ public class Save : MonoBehaviour
             sceneLoadName = _gc.Sc.sceneLoadName,
             loadnum = _gc.Sc.loadnum,
             id = _gc.Sc.ID,
-            options = _gc.Sc.Save_options
+            options = _gc.Sc.Save_options,
+            position= _charaImage.rectTransform.localPosition
         };
         bank.Store(gameObject.name, saveData);
         bank.SaveAll();
@@ -311,9 +309,12 @@ public class Save : MonoBehaviour
                 }
             }
         }
+       
         _speakerText.text = saveData.speakertext;
         _charaIcoImage.sprite = Resources.Load<Sprite>("Image/CharaIcons/" + saveData.icon_name);
         _charaImage.sprite    = Resources.Load<Sprite>("Image/Characters/" + saveData.chara_name);
+        _charaImage.rectTransform.localPosition = saveData.position;
+
         _bgImage.sprite       = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
         _Text.text = saveData.text;
 

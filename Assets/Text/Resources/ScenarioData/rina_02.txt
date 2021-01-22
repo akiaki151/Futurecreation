@@ -240,3 +240,7 @@
 *FadeIn=8:1
 #BGM=0
 #Getscenario=rina_03
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

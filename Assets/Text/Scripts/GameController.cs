@@ -5,7 +5,7 @@ public class GameController : MonoBehaviour
 {
     public SceneController Sc;
 
-    void Start ()
+    void Start()
     {
         Sc = new SceneController(this);
         SetFirstScene();
@@ -35,6 +35,11 @@ public class GameController : MonoBehaviour
     public void SetSelect2Scene()
     {
         Sc.SetScene("003");
+    }
+
+    public void SetSelect3Scene()
+    {
+        Sc.SetScene("111");
     }
 
     public void SetNadeScene2()

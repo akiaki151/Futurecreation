@@ -69,3 +69,8 @@
 {だが、もしも今後俺たちの仲を裂くような何かがあったとしても――}
 {利奈とならば、乗り越えられそうな気がする。}
 #Getscenario=SelectScenario
+
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

@@ -5,8 +5,7 @@ public class Actions
 {
     GameController gc;
     private GameObject canvas;
-    private GameObject targetGameObject;
-
+    
     public Actions(GameController gc)
     {
         this.gc = gc;
@@ -48,8 +47,11 @@ public class Actions
             {
                 if (child.name != "TitleWindow")
                 {
-                    targetGameObject = child.gameObject;
-                    targetGameObject.SetActive(false);
+                    child.gameObject.SetActive(false);
+                }
+                else
+                {
+                    child.gameObject.SetActive(true);
                 }
             }
         }

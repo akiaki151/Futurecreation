@@ -9,6 +9,7 @@
 #Speaker=
 {ふいに、隣で動く気配を感じた。}
 *FadeOut=8:0
+#BGM=everyday01
 #Speaker=翔
 {「ん……？」}
 #Ico=rina_02_icon
@@ -225,4 +226,5 @@
 #Speaker=
 {俺の利奈への感情の正体を掴めずにいた。}
 *FadeIn=8:1
+#BGM=0
 #Getscenario=rina_03

@@ -1,4 +1,9 @@
 ﻿#scene=001
+#Action=2
+
+
+
+
 #Background=fade_tex
 *FadeIn=19:0
 #Chara=del_chara(0:0:1)

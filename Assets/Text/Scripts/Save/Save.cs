@@ -256,6 +256,22 @@ public class Save : MonoBehaviour
     private void LoadOn()
     {
         canvas = GameObject.Find("Canvas");
+
+        foreach (Transform child in canvas.transform)
+        {
+            for (int i = 0; i < 20; i++)
+            {
+                if (child.name == "TitleWindow"|| child.name == "ExitTitleConfirmationPanel"|| child.name == "SettingWindow")
+                {
+                    child.gameObject.SetActive(false);
+                }
+                else
+                {
+                    child.gameObject.SetActive(true);
+                }
+            }
+        }
+
         foreach (Transform child in canvas.transform)
         {
             if (child.name == "CharacterIcon")

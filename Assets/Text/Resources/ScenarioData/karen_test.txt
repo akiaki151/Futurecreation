@@ -15,5 +15,10 @@
 #BGM=everyday01
 #Speaker=ゲーム開発者
 {現在制作中！！！}
+#Speaker=
+{ }
+#Next=111
+
+#scene=111
+#BGM=
 #Getscenario=SelectScenario
-#BGM=0

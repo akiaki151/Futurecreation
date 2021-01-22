@@ -12,6 +12,7 @@
 #Setscenario=rina_03
 #Setscenario=rina_04
 #Setscenario=rina_05
+#Setscenario=rina_06
 #Setscenario=csvTest2
 #Setscenario=csvTest3
 {ここはシナリオ.txtを一括で読み込む場所です！}

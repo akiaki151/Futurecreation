@@ -9,8 +9,6 @@ public class TwoOptionButton : MonoBehaviour
     [SerializeField] private ColorBlock UnselectedButtonColor;
 
     private Button Button_1, Button_2;
-    private GameObject Gameobject;
-    private Save save;
     private int CurrentIndex;
     private int NextIndex;
 
@@ -92,16 +90,5 @@ public class TwoOptionButton : MonoBehaviour
     public int GetIndex()
     {
         return CurrentIndex;
-    }
-
-    public void GetObjectName(GameObject obj)
-    {
-        Gameobject = obj;
-    }
-
-    public void SetObjectName()
-    {
-        save = Gameobject.GetComponent<Save>();
-        save.OnClickSaveLoad();
     }
 }

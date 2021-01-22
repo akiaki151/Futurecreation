@@ -14,6 +14,8 @@ public class SaveLoadDataManager : MonoBehaviour
     [SerializeField] private ColorBlock SelectedButtonColor;
     [SerializeField] private ColorBlock UnselectedButtonColor;
 
+    private GameObject TitleWindow;
+
     private enum SaveLoadIndex
     {
         NONE = 0,
@@ -26,6 +28,11 @@ public class SaveLoadDataManager : MonoBehaviour
 
     public int CurrentSaveLoadIndex;
     private int NextSaveLoadIndex;
+
+    private void Awake()
+    {
+        TitleWindow = GameObject.Find("TitleWindow");
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -63,6 +70,10 @@ public class SaveLoadDataManager : MonoBehaviour
         if (CurrentSaveLoadIndex == NextSaveLoadIndex) return;
         CurrentSaveLoadIndex = NextSaveLoadIndex;
 
+        if (TitleWindow.activeInHierarchy)
+        {
+            CurrentSaveLoadIndex = 2;
+        }
         ColorBlock newColor = UnselectedButtonColor;
 
         newColor.highlightedColor = UnselectedButtonColor.highlightedColor;

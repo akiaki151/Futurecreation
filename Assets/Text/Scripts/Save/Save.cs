@@ -221,7 +221,8 @@ public class Save : MonoBehaviour
             loadnum = _gc.Sc.loadnum,
             id = _gc.Sc.ID,
             options = _gc.Sc.Save_options,
-            position= _charaImage.rectTransform.localPosition
+            position= _charaImage.rectTransform.localPosition,
+            scale = _charaImage.rectTransform.localScale
         };
         bank.Store(gameObject.name, saveData);
         bank.SaveAll();
@@ -261,7 +262,8 @@ public class Save : MonoBehaviour
         {
             for (int i = 0; i < 20; i++)
             {
-                if (child.name == "TitleWindow"|| child.name == "ExitTitleConfirmationPanel"|| child.name == "SettingWindow"||child.name =="Fade")
+                if (child.name == "TitleWindow"|| child.name == "ExitTitleConfirmationPanel"||
+                    child.name == "SettingWindow"||child.name =="Fade"||child.name== "ButtonPanel")
                 {
                     child.gameObject.SetActive(false);
                 }
@@ -325,18 +327,25 @@ public class Save : MonoBehaviour
                 }
             }
         }
-       
-        _speakerText.text = saveData.speakertext;
-        _charaIcoImage.sprite = Resources.Load<Sprite>("Image/CharaIcons/" + saveData.icon_name);
-        _charaImage.sprite    = Resources.Load<Sprite>("Image/Characters/" + saveData.chara_name);
-        _charaImage.rectTransform.localPosition = saveData.position;
 
-        _bgImage.sprite = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
-        _Text.text = saveData.text;
 
         bank = DataBank.Open();
         bank.Load<SaveData>(gameObject.name);
         saveData = bank.Get<SaveData>(gameObject.name);
+
+        _charaImage.rectTransform.localPosition = saveData.position;
+        _charaImage.rectTransform.localScale = saveData.scale;
+
+        _speakerText.text = saveData.speakertext;
+        _charaIcoImage.sprite = Resources.Load<Sprite>("Image/CharaIcons/" + saveData.icon_name);
+        _charaImage.sprite    = Resources.Load<Sprite>("Image/Characters/" + saveData.chara_name);
+        
+        
+
+        _bgImage.sprite = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
+        _Text.text = saveData.text;
+
+        
         _gc.Sc.LoadScene(saveData.sceneLoadName, saveData.loadnum, saveData.id, saveData.options);
 
         

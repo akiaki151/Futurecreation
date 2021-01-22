@@ -143,7 +143,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2060146527323586037}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 69ab35cbbabe5cd4fa89dccd0215444e, type: 3}
   m_Name: 
@@ -167,13 +167,22 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: -3
+      value: -100
       inSlope: 2.440313
       outSlope: 2.440313
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
       outWeight: 0.12802875
+    - serializedVersion: 3
+      time: 0.01
+      value: -2.31104
+      inSlope: 2.4219525
+      outSlope: 2.4219525
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 10
       value: 20.415678
@@ -384,6 +393,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  frame: 12
+  speed: 0
+  frame: 11
   velocity: 300
   delay: 0
+  text: {fileID: 0}
+  i: 1

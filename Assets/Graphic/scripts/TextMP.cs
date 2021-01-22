@@ -97,7 +97,7 @@ public class TextMP : MonoBehaviour
         //}
 
         //action.BundAnimation(text);
-        action.SetAnim();
+        //action.SetAnim();
     }
 
 }

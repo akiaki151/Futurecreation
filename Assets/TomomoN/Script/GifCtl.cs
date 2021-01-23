@@ -11,7 +11,7 @@ public class GifCtl : MonoBehaviour
     UniGifImage GifImage = null;
     HeartEffectGen HeartEffect = null;
 
-    //bool bGifPlaying = false;
+    bool bGifPlaying = false;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +28,7 @@ public class GifCtl : MonoBehaviour
         if (heart.GetHeartCount() > heart.GetMaxHeartCount())
         {
             OnePicture.SetActive(false);
+            bGifPlaying = true;
             GifImage.Play();
         }
         else
@@ -38,5 +39,6 @@ public class GifCtl : MonoBehaviour
     }
 
 
-    //public void SetGifPlaying(bool bPlaying) { bGifPlaying = bPlaying; }
+    public void SetGifPlaying(bool bPlaying) { bGifPlaying = bPlaying; }
+    public bool IsGifPlaying() { return bGifPlaying; }
 }

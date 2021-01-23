@@ -148,11 +148,11 @@ public class UniGifImage : MonoBehaviour
                     UniGifImage onePicture = GameObject.Find("RawImage").GetComponent<UniGifImage>();
                     if(onePicture.m_loadOnStartUrl == "sister.gif")
                     {
-                        loopCount = 1;
+                        loopCount = 2;
                     }
                     else
                     {
-                        loopCount = 3;
+                        loopCount = 5;
                     }
                     m_gifTextureIndex = 0;
 
@@ -165,8 +165,8 @@ public class UniGifImage : MonoBehaviour
                             HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
                             heart.SetHeartCount(0);
                             // GifCtlをもらう
-                            //GifCtl gifCtl = GameObject.Find("GifControl").GetComponent<GifCtl>();
-                            //gifCtl.SetGifPlaying(false);
+                            GifCtl gifCtl = GameObject.Find("GifControl").GetComponent<GifCtl>();
+                            gifCtl.SetGifPlaying(false);
                             loopCount = 0;
                             Stop();
                             return;

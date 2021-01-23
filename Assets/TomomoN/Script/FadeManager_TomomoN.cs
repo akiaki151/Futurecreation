@@ -16,9 +16,13 @@ public class FadeManager_TomomoN : MonoBehaviour
 
     // フェードインアウトのフラグ
     private static bool bFadeIn = false;
+    private static bool bFadeOut = false;
 
     // フェードしたい時間（単位は秒）
     private static float fadeTime = 1.5f;
+
+    // 遷移先のシーンName
+    private static string nextScene = "";
 
 
 
@@ -57,6 +61,19 @@ public class FadeManager_TomomoN : MonoBehaviour
 
     }
 
+    // フェードアウト開始
+    public static void FadeOut(string NextScene)
+    {
+
+        if (fadeImage == null) Init();
+        nextScene = NextScene;
+        alpha = 0.0f;
+        fadeImage.color = Color.clear;
+        fadeCanvas.enabled = true;
+        bFadeOut = true;
+
+    }
+
     void Update()
     {
 
@@ -81,6 +98,24 @@ public class FadeManager_TomomoN : MonoBehaviour
             // フェード用Imageの色・透明度設定
             fadeImage.color = new Color(0.0f, 0.0f, 0.0f, alpha);
         }
+        else if (bFadeOut)
+        {
+            // 経過時間から透明度計算
+            alpha += Time.deltaTime / fadeTime;
+
+            // フェードアウト終了判定
+            if (alpha >= 1.0f)
+            {
+                bFadeOut = false;
+                alpha = 1.0f;
+
+                // 次のシーンへ遷移
+                SceneManager.LoadScene(nextScene);
+            }
+
+            // フェード用Imageの色・透明度設定
+            fadeImage.color = new Color(0.0f, 0.0f, 0.0f, alpha);
+        }
 
     }
 
@@ -88,5 +123,6 @@ public class FadeManager_TomomoN : MonoBehaviour
 
     // ゲッター
     public static bool IsFadeIn() { return bFadeIn; }
+    public static bool IsFadeOut() { return bFadeOut; }
 
 }

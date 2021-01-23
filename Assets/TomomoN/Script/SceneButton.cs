@@ -7,6 +7,7 @@ public class SceneButton : MonoBehaviour
 {
     public void OnClickSceneButton()
     {
+        Debug.Log("シーン遷移");
         SceneManager.LoadScene("Text");
     }
 }

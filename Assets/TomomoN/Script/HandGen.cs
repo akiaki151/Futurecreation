@@ -28,6 +28,29 @@ public class HandGen : MonoBehaviour
         {
             HandTexture.SetActive(true);
         }
-
+        // 終了ボタンの上に乗ってるとき
+        //if (HandTexture.GetComponent<HandCtl>().IsOnButtont())
+        //{
+        //    Debug.Log("ボタン消す");
+        //    HandTexture.SetActive(false);
+        //}
+        //else
+        //{
+        //    Debug.Log("ボタン復活");
+        //    HandTexture.SetActive(true);
+        //}
     }
+
+
+
+    //void OnMouseOver()
+    //{
+    //    Debug.Log("OnMouseOver");
+    //    HandTexture.SetActive(false);
+    //}
+    //void OnMouseExit()
+    //{
+    //    Debug.Log("OnMouseExit");
+    //    HandTexture.SetActive(true);
+    //}
 }

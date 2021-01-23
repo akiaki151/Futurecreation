@@ -8,6 +8,7 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
     [SerializeField] Sprite TitleImage, ExitImage;
 
     [SerializeField] private GameObject panel;
+    [SerializeField] private GameObject GameController;
     private GameObject canvas;
     private GameObject targetGameObject;
     private Button Button_1;
@@ -76,6 +77,7 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
                         }
                     }
                 }
+                GameController.GetComponent<GameController>().SetSelect3Scene();
                 panel.gameObject.SetActive(false);
                 break;
             case 2:

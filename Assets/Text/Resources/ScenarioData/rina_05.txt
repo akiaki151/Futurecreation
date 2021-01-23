@@ -390,6 +390,7 @@
 #Speaker=利奈
 {「はいはい……ふふっ、じゃあ……んっ……お願い……っ。優しくね……？」}
 *FadeIn=8:0
+#Action=5
 #Getscenario=rina_06
 
 #scene=111

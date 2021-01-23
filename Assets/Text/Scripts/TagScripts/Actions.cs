@@ -31,6 +31,9 @@ public class Actions
             case 4:
                 Title_Start();
                 break;
+            case 5:
+                SceneManager.LoadScene("Heroine002");
+                break;
             default:
                 break;
         }

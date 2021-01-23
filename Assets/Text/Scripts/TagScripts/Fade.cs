@@ -35,6 +35,8 @@ public class Fade : MonoBehaviour
         }
         gameObject.SetActive(false);
         LoadImage();
+        _playInfade = false;
+        _playOutfade = false;
     }
 
     public void LoadImage()
@@ -97,7 +99,6 @@ public class Fade : MonoBehaviour
         _playInfade = false;
         yield return FadeAnime(_fadeImage.material, 1);
         _playInfade = true;
-        _playOutfade = false;
     }
     public IEnumerator FadeOutStart()
     {

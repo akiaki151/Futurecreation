@@ -311,6 +311,7 @@ public class SceneController : MonoBehaviour
     {
         fade = _Fade.Find(c => c.Name == name);
         fade.Appear();
+        fade._playOutfade = false;
         fade.SetOutImage(ID, COLOR);
     }
     //////////////////////////////////////////////////////////////////////

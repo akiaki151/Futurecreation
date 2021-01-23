@@ -41,7 +41,7 @@ public class FadeController : MonoBehaviour
         m_Eneble = false;
     }
 
-        IEnumerator FadeAnime(Material material, float time)
+    IEnumerator FadeAnime(Material material, float time)
     {
         GetComponent<Image>().material = material;
         float current = 0;

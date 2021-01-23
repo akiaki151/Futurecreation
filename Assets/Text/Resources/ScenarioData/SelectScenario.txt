@@ -23,7 +23,7 @@
 #scene=002
 #Action=4
 *FadeIn=8:1
-#Getscenario=karen_test
+#Getscenario=karen_01
 #scene=003
 #Action=4
 *FadeIn=8:1

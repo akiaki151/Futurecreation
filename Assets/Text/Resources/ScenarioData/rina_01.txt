@@ -11,7 +11,7 @@
 #Setscenario=karen_03
 #Setscenario=karen_04
 #Setscenario=karen_05
-*FadeOut=8:1
+*FadeOut=6:1
 #Background=genkan_01
 #BGM=everyday01
 #Speaker=泰子

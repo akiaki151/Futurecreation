@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class LoadingCtl : MonoBehaviour
 {
-    //　シーンロード中に表示するUI画面
+    //　ロード中に表示するUI画面
     [SerializeField] private GameObject loadUI;
 
     //　読み込み率を表示するスライダー

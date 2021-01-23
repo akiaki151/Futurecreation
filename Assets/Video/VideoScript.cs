@@ -9,24 +9,36 @@ public class VideoScript : MonoBehaviour
 {
     [SerializeField] VideoPlayer vp;
 
+    Button button;
+
     void Start()
     {
-        
+        button = this.GetComponent<Button>();
+        button.onClick.AddListener(TaskOnClick);
     }
 
     void Update()
     {
-        if (vp.isPlaying)
-        {
-            if (Input.GetMouseButtonDown(0))
-            {
-                SceneManager.LoadScene("Text");
-            }
-        }
-        else
-        {
-            SceneManager.LoadScene("Text");
-        }
+        
     }
 
+    void TaskOnClick()
+    {
+        PauseVideo();
+    }
+
+    public void PauseVideo()
+    {
+        vp.Pause();
+    }
+
+    public void ResumeVideo()
+    {
+        vp.Play();
+    }
+
+    public void SkipVideo()
+    {
+        SceneManager.LoadScene("Text");
+    }
 }

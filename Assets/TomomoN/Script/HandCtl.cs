@@ -5,10 +5,9 @@ using UnityEngine.UI;
 
 public class HandCtl : MonoBehaviour
 {
-    public Sprite ChangeImage001;
-    public Sprite ChangeImage002;
+    //public Sprite ChangeImage001;
 
-    Image Imageinfo;
+    //Image Imageinfo;
     public static bool isNadeNade = false;
 
     const float maxDeg = 1.5f;
@@ -18,17 +17,19 @@ public class HandCtl : MonoBehaviour
     Vector3 OldPosition;
     float t = 0.0f;
 
+    //bool bOnButton = false;
+
     // Start is called before the first frame update
     void Start()
     {
         this.transform.position = new Vector3(-8.2f, -3.2f, 0.0f);
-        Imageinfo = this.GetComponent<Image>();
+        //Imageinfo = this.GetComponent<Image>();
     }
 
     void OnEnable()
     {
         this.transform.position = new Vector3(-8.2f, -3.2f, 0.0f);
-        Imageinfo = this.GetComponent<Image>();
+        //Imageinfo = this.GetComponent<Image>();
     }
 
     // Update is called once per frame
@@ -171,31 +172,34 @@ public class HandCtl : MonoBehaviour
 
 
     public bool IsMovement() { return (OldPosition != this.transform.position); }
+    //public bool IsOnButtont() { return bOnButton; }
 
-    
+
     void OnTriggerStay2D(Collider2D t)
     {
-        if (t.gameObject.name == "Button")
-        {
-            Imageinfo.sprite = ChangeImage002;
-        }
-        else
+        if (t.gameObject.name != "Button")
         {
             HandCtl.isNadeNade = true;
             NadeNadeRangeName = t.gameObject.name;
             Debug.Log("撫でてます");
         }
+        //else
+        //{
+        //    Debug.Log("ボタン上");
+        //    bOnButton = true;
+        //}
     }
     void OnTriggerExit2D(Collider2D t)
     {
-        if (t.gameObject.name == "Button")
-        {
-            Imageinfo.sprite = ChangeImage001;
-        }
-        else
-        {
-            HandCtl.isNadeNade = false;
-            Debug.Log("はずれた");
-        }
+        //if (t.gameObject.name == "Button")
+        //{
+        //    Debug.Log("ボタン外");
+        //    bOnButton = false;
+        //}
+        ////else
+        //{
+        //    HandCtl.isNadeNade = false;
+        //    Debug.Log("はずれた");
+        //}
     }
 }

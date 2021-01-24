@@ -332,21 +332,24 @@ public class Save : MonoBehaviour
         bank.Load<SaveData>(gameObject.name);
         saveData = bank.Get<SaveData>(gameObject.name);
 
-        _charaImage.rectTransform.localPosition = saveData.position;
-        _charaImage.rectTransform.localScale = saveData.scale;
+        if (saveData.text != "セーブデータがありません")
+        {
 
-        _speakerText.text = saveData.speakertext;
-        _charaIcoImage.sprite = Resources.Load<Sprite>("Image/CharaIcons/" + saveData.icon_name);
-        _charaImage.sprite    = Resources.Load<Sprite>("Image/Characters/" + saveData.chara_name);
-        
-        
+            _charaImage.rectTransform.localPosition = saveData.position;
+            _charaImage.rectTransform.localScale = saveData.scale;
 
-        _bgImage.sprite = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
-        _Text.text = saveData.text;
+            _speakerText.text = saveData.speakertext;
+            _charaIcoImage.sprite = Resources.Load<Sprite>("Image/CharaIcons/" + saveData.icon_name);
+            _charaImage.sprite = Resources.Load<Sprite>("Image/Characters/" + saveData.chara_name);
 
-        
-        _gc.Sc.LoadScene(saveData.sceneLoadName, saveData.loadnum, saveData.id, saveData.options);
 
+
+            _bgImage.sprite = Resources.Load<Sprite>("Image/BackGrounds/" + saveData.bg_name);
+            _Text.text = saveData.text;
+
+
+            _gc.Sc.LoadScene(saveData.sceneLoadName, saveData.loadnum, saveData.id, saveData.options);
+        }
         
     }
 }

@@ -7,6 +7,7 @@ public class GifCtl : MonoBehaviour
 {
     public GameObject RawImage = null;
     public GameObject OnePicture = null;
+    public GameObject ButtonObj = null;
 
     UniGifImage GifImage = null;
     HeartEffectGen HeartEffect = null;
@@ -28,12 +29,14 @@ public class GifCtl : MonoBehaviour
         if (heart.GetHeartCount() > heart.GetMaxHeartCount())
         {
             OnePicture.SetActive(false);
+            ButtonObj.SetActive(false);
             bGifPlaying = true;
             GifImage.Play();
         }
         else
         {
             OnePicture.SetActive(true);
+            ButtonObj.SetActive(true);
 
         }
     }

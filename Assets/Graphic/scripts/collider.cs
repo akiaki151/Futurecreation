@@ -29,7 +29,7 @@ public class collider : MonoBehaviour
 
     void OnMouseEnter()
     {
-        
+       
     }
     private void OnMouseOver()
     {

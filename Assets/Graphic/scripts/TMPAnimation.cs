@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using System;
 using System.Reflection;
-
+using UnityEngine.UI;
 
 public class TMPAnimation : MonoBehaviour
 {
@@ -32,7 +32,8 @@ public class TMPAnimation : MonoBehaviour
     public int frame;
     public int velocity;
     public int delay;
-
+    private GameObject _canvas;
+    private Vector3 _save_pos;
     private float nowDegree;
 
     public TextMeshProUGUI text;
@@ -48,11 +49,41 @@ public class TMPAnimation : MonoBehaviour
         Invoke(funcName[i], 0);
 
     }
-    void Start()
+
+    private void Awake()
     {
         text = GetComponent<TextMeshProUGUI>();
+        
+
+    }
+    void Start()
+    {
+        Image obj;
+        
+        _canvas = GameObject.Find("Canvas");
+        foreach (Transform child in _canvas.transform)
+        {
+            if (child.name == "MenuBar")
+            {
+               foreach(Transform child2 in child.transform)
+                {
+                    if(child2.name== "SaveButton")
+                    {
+                         obj = child2.GetComponent<Image>();
+                        _save_pos = obj.rectTransform.localPosition;
+                        Debug.Log(_save_pos);
+                    }
+                }
+            }
+        }
         speed = 0.0f;
-        SetAnim();
+
+        // _save_pos.y -= 10;
+
+        text.rectTransform.localPosition = new Vector3(0.0f, -65.0f, 0.0f);
+        
+
+      //  Invoke(funcName[i], 0);
     }
 
     private void Update()
@@ -132,6 +163,8 @@ public class TMPAnimation : MonoBehaviour
 
     public void UpAnimation()
     {
+       // Debug.Log("アップよバレた");
+
         startTime = Time.time;
 
 

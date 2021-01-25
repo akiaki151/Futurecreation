@@ -32,6 +32,7 @@ public class SceneController : MonoBehaviour
     private bool _charaAction = false;
     private GameObject canvas;
     private GameObject targetGameObject;
+    private GameObject targetGameObject2;
     private string _name="";
     public string ID = "";
     public string Save_options;
@@ -53,6 +54,10 @@ public class SceneController : MonoBehaviour
             if (child.name == "SaveLoadWindow")
             {
                 targetGameObject = child.gameObject;
+            }
+            if (child.name == "SettingWindow")
+            {
+                targetGameObject2 = child.gameObject;
             }
         }
         targetGameObject.SetActive(false);
@@ -77,7 +82,7 @@ public class SceneController : MonoBehaviour
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-                    if (collition2d != null || targetGameObject.activeSelf)
+                    if (collition2d != null || targetGameObject.activeSelf|| targetGameObject2.activeSelf)
                     {
                         loadnum = _currentScene.Index - 1;
                         sceneLoadName = _name;

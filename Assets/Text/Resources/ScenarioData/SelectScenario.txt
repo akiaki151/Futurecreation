@@ -31,3 +31,5 @@
 #Getscenario=rina_01
 #scene=010
 #Getscenario=karen_02
+#scene=011
+#Getscenario=rina_06

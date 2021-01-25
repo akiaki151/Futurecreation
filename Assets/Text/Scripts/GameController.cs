@@ -11,7 +11,7 @@ public class GameController : MonoBehaviour
     {
         Sc = new SceneController(this);
         
-        if (Actions.g_index != 0)
+        if (Actions.g_index == 1)
         {
             canvas = GameObject.Find("Canvas");
             foreach (Transform child in canvas.transform)
@@ -29,6 +29,27 @@ public class GameController : MonoBehaviour
                 }
             }
             Sc.SetScene("010");
+            Actions.g_index = 0;
+        }
+        else if(Actions.g_index == 2)
+        {
+            canvas = GameObject.Find("Canvas");
+            foreach (Transform child in canvas.transform)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" || child.name == "Fade")
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+            }
+            Sc.SetScene("011");
+            Actions.g_index = 0;
         }
         else
         {

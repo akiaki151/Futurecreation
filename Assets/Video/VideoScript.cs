@@ -13,13 +13,15 @@ public class VideoScript : MonoBehaviour
 
     void Start()
     {
+        vp.isLooping = true;
         button = this.GetComponent<Button>();
         button.onClick.AddListener(TaskOnClick);
+        vp.loopPointReached += SkipVideo2;
     }
 
     void Update()
     {
-        
+    
     }
 
     void TaskOnClick()
@@ -35,6 +37,12 @@ public class VideoScript : MonoBehaviour
     public void ResumeVideo()
     {
         vp.Play();
+    }
+
+    public void SkipVideo2(VideoPlayer vp)
+    {
+        vp.Stop();
+        SceneManager.LoadScene("Text");
     }
 
     public void SkipVideo()

@@ -389,6 +389,7 @@
 #Chara=妹_立ち絵_恥じらい(0:-400:1.8)
 #Speaker=利奈
 {「はいはい……ふふっ、じゃあ……んっ……お願い……っ。優しくね……？」}
+#Action=8
 *FadeIn=8:0
 #Action=5
 #Getscenario=rina_06

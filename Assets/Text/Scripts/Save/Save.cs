@@ -14,6 +14,7 @@ public class Save : MonoBehaviour
     private SaveData saveData;
     private DataBank bank;
     private GameObject canvas;
+    private GameObject panel;
     public int Savetext;
     private GameController _gc;
     private SaveLoadDataManager _sldm;
@@ -32,7 +33,7 @@ public class Save : MonoBehaviour
         {
             saveData = new SaveData()
             {
-                icon_name = "silhouette",
+                icon_name = "del",
                 chara_name= "del_chara",
                 time = "YYYY/MM/DD\nah:mm",
                 text = "セーブデータがありません",
@@ -46,7 +47,7 @@ public class Save : MonoBehaviour
             bank.SaveAll();
 
             saveData = bank.Get<SaveData>(gameObject.name);
-            //bank.Clear();
+            bank.Clear();
         }
 
 
@@ -87,7 +88,7 @@ public class Save : MonoBehaviour
         {
             saveData = new SaveData()
             {
-                icon_name = "silhouette",
+                icon_name = "del",
                 chara_name = "del_chara",
                 time = "YYYY/MM/DD\nah:mm",
                 text = "セーブデータがありません",
@@ -101,7 +102,7 @@ public class Save : MonoBehaviour
             bank.SaveAll();
 
             saveData = bank.Get<SaveData>(gameObject.name);
-            //bank.Clear();
+            bank.Clear();
         }
 
         foreach (Transform child in this.transform)
@@ -148,7 +149,7 @@ public class Save : MonoBehaviour
         {
             saveData = new SaveData()
             {
-                icon_name = "silhouette",
+                icon_name = "del",
                 chara_name = "del_chara",
                 time = "YYYY/MM/DD\nah:mm",
                 text = "セーブデータがありません",
@@ -310,85 +311,84 @@ public class Save : MonoBehaviour
 
     private void LoadOn()
     {
-        canvas = GameObject.Find("Canvas");
-
-        foreach (Transform child in canvas.transform)
-        {
-            for (int i = 0; i < 20; i++)
-            {
-                if (child.name == "TitleWindow"|| child.name == "ExitTitleConfirmationPanel"||
-                    child.name == "SettingWindow"||child.name =="Fade"||child.name== "ButtonPanel")
-                {
-                    child.gameObject.SetActive(false);
-                }
-                else
-                {
-                    child.gameObject.SetActive(true);
-                }
-            }
-        }
-
-        foreach (Transform child in canvas.transform)
-        {
-            if (child.name == "CharacterIcon")
-            {
-                _charaIcoImage = child.gameObject.GetComponent<Image>();
-                foreach (Transform child2 in child.transform)
-                {
-                    if (child2.name == "CharacterName")
-                    {
-                        foreach (Transform child3 in child2.transform)
-                        {
-                            if (child3.name == "Text")
-                            {
-                                _speakerText = child3.gameObject.GetComponent<Text>();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-        foreach (Transform child in canvas.transform)
-        {
-            if (child.name == "CharacterImage")
-            {
-                _charaImage = child.gameObject.GetComponent<Image>();
-            }
-        }
-        foreach (Transform child in canvas.transform)
-        {
-            if (child.name == "Background")
-            {
-                _bgImage = child.gameObject.GetComponent<Image>();
-            }
-        }
-        foreach (Transform child in canvas.transform)
-        {
-            if (child.name == "TextWindow")
-            {
-                foreach (Transform child2 in child.transform)
-                {
-                    if (child2.name == "TextPanel")
-                    {
-                        foreach (Transform child3 in child2.transform)
-                        {
-                            if (child3.name == "Text")
-                            {
-                                _Text = child3.gameObject.GetComponent<Text>();
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
 
         bank = DataBank.Open();
         bank.Load<SaveData>(gameObject.name);
         saveData = bank.Get<SaveData>(gameObject.name);
-
         if (saveData.text != "セーブデータがありません")
         {
+
+            canvas = GameObject.Find("Canvas");
+
+            foreach (Transform child in canvas.transform)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" ||
+                        child.name == "SettingWindow" || child.name == "Fade" || child.name == "ButtonPanel"|| child.name == "NotSaveData")
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+            }
+
+            foreach (Transform child in canvas.transform)
+            {
+                if (child.name == "CharacterIcon")
+                {
+                    _charaIcoImage = child.gameObject.GetComponent<Image>();
+                    foreach (Transform child2 in child.transform)
+                    {
+                        if (child2.name == "CharacterName")
+                        {
+                            foreach (Transform child3 in child2.transform)
+                            {
+                                if (child3.name == "Text")
+                                {
+                                    _speakerText = child3.gameObject.GetComponent<Text>();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            foreach (Transform child in canvas.transform)
+            {
+                if (child.name == "CharacterImage")
+                {
+                    _charaImage = child.gameObject.GetComponent<Image>();
+                }
+            }
+            foreach (Transform child in canvas.transform)
+            {
+                if (child.name == "Background")
+                {
+                    _bgImage = child.gameObject.GetComponent<Image>();
+                }
+            }
+            foreach (Transform child in canvas.transform)
+            {
+                if (child.name == "TextWindow")
+                {
+                    foreach (Transform child2 in child.transform)
+                    {
+                        if (child2.name == "TextPanel")
+                        {
+                            foreach (Transform child3 in child2.transform)
+                            {
+                                if (child3.name == "Text")
+                                {
+                                    _Text = child3.gameObject.GetComponent<Text>();
+                                }
+                            }
+                        }
+                    }
+                }
+            }
 
             _charaImage.rectTransform.localPosition = saveData.position;
             _charaImage.rectTransform.localScale = saveData.scale;
@@ -404,7 +404,34 @@ public class Save : MonoBehaviour
 
 
             _gc.Sc.LoadScene(saveData.sceneLoadName, saveData.loadnum, saveData.id, saveData.options);
+            return;
+        }
+        else
+        {
+            canvas = GameObject.Find("Canvas");
+
+            foreach (Transform child in canvas.transform)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    if (child.name == "NotSaveData")
+                    {
+                        panel = child.gameObject;
+                        panel.gameObject.SetActive(true);
+                    }
+                }
+            }
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+            Invoke("DelayPanelActive", 1.5f);
         }
         
+    }
+
+    void DelayPanelActive()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        panel.gameObject.SetActive(false);
     }
 }

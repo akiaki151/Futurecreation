@@ -18,7 +18,7 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" ||child.name== "Fade")
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" ||child.name== "Fade"|| child.name == "NotSaveData")
                     {
                         child.gameObject.SetActive(false);
                     }
@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" || child.name == "Fade")
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" || child.name == "Fade"|| child.name == "NotSaveData")
                     {
                         child.gameObject.SetActive(false);
                     }

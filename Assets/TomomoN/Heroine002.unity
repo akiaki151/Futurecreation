@@ -1719,6 +1719,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RawImage: {fileID: 1886379492}
   OnePicture: {fileID: 1790918231}
+  ButtonObj: {fileID: 418234315}
 --- !u!1001 &2136617161
 PrefabInstance:
   m_ObjectHideFlags: 0

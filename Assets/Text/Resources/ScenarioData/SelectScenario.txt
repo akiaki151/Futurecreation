@@ -1,12 +1,4 @@
 ﻿#scene=001
-#Speaker=""
-#Chara=del_chara
-#Ico=del
-#Background=bg_del
-#BGM=""
-#SE=""
-#Speaker=
-#Action=2
 #Setscenario=SelectScenario
 #Setscenario=rina_01
 #Setscenario=rina_02
@@ -20,6 +12,15 @@
 #Setscenario=karen_04
 #Setscenario=karen_05
 #Setscenario=karen_test
+#Action=6
+#Speaker=""
+#Chara=del_chara
+#Ico=del
+#Background=bg_del
+#BGM=""
+#SE=""
+#Speaker=
+#Action=2
 #scene=002
 #Action=4
 *FadeIn=8:1
@@ -28,3 +29,5 @@
 #Action=4
 *FadeIn=8:1
 #Getscenario=rina_01
+#scene=010
+#Getscenario=karen_02

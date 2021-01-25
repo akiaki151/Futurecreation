@@ -296,3 +296,7 @@
 {と謝る声。良いんだよ、と頭を撫でてやりたいけど腕を動かすこともできなくてもどかしい。}
 *FadeIn=6:0
 #Getscenario=karen_04
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

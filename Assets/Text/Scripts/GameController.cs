@@ -10,7 +10,30 @@ public class GameController : MonoBehaviour
     void Start()
     {
         Sc = new SceneController(this);
-        SetFirstScene();
+        
+        if (Actions.g_index != 0)
+        {
+            canvas = GameObject.Find("Canvas");
+            foreach (Transform child in canvas.transform)
+            {
+                for (int i = 0; i < 20; i++)
+                {
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" || child.name == "MenuBar"||child.name== "Fade")
+                    {
+                        child.gameObject.SetActive(false);
+                    }
+                    else
+                    {
+                        child.gameObject.SetActive(true);
+                    }
+                }
+            }
+            Sc.SetScene("010");
+        }
+        else
+        {
+            SetFirstScene();
+        }
     }
 
     void Update()

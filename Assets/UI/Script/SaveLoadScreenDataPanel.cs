@@ -39,6 +39,8 @@ public class SaveLoadScreenDataPanel : MonoBehaviour
             transform.Find("Comment").Find("Text").GetComponent<Text>().text = "";
             transform.Find("Comment").Find("Placeholder").GetComponent<Text>().text = "";
         }
+
+        save.SaveChangePanel();
     }
 
     // Update is called once per frame
@@ -52,5 +54,10 @@ public class SaveLoadScreenDataPanel : MonoBehaviour
             transform.Find("Number").GetComponent<Text>().text = "No." + DataNumber.ToString();
             save.SaveChangePanel();
         }
+    }
+
+    void SetSaveData(bool value)
+    {
+        SaveData = value;
     }
 }

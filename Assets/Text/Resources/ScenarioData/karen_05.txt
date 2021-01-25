@@ -314,3 +314,7 @@
 #Speaker=
 {俺とカレンはひとまず廃ビルを後にすることにした。}
 #Getscenario=SelectScenario
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

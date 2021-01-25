@@ -385,3 +385,7 @@
 #Speaker=
 {この話になるとどうしてもカレンの表情が曇るな。早く立ち直ってほしいけど、やはり時間が必要だろう。}
 #Getscenario=karen_05
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

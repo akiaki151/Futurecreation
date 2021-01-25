@@ -11,6 +11,7 @@
 #Setscenario=karen_03
 #Setscenario=karen_04
 #Setscenario=karen_05
+#Background=karen_road1
 #Speaker=カレン
 #Ico=てれ
 #Chara=てれ(0:-400:1.8)
@@ -346,3 +347,7 @@
 {俺一人ではこんな所来れないはずだ。}
 {でもそれは言えずにいた。}
 #Getscenario=karen_03
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

@@ -576,7 +576,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2080115285}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.9999929
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3243,6 +3243,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+      - m_Target: {fileID: 1695451044}
+        m_MethodName: SetSaveLoadIndex
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 3
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1565590289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3384,7 +3395,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.0000897295, y: 0.0007601418}
+  m_AnchoredPosition: {x: 0.0015586101, y: 0.0007601418}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1717433571
@@ -4315,7 +4326,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 902885052}
   m_Direction: 0
   m_Value: 0
-  m_Size: 1
+  m_Size: 0.99999434
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

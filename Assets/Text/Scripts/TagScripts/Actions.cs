@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 public class Actions
 {
     GameController gc;
     private GameObject canvas;
-    
+    public static int g_index = 0;
+
+
     public Actions(GameController gc)
     {
         this.gc = gc;
@@ -34,9 +36,39 @@ public class Actions
             case 5:
                 SceneManager.LoadScene("Heroine002");
                 break;
+            case 6:
+                canvas = GameObject.Find("Canvas");
+                foreach (Transform child in canvas.transform)
+                {
+                    if (child.name == "TextWindow")
+                    {
+                        foreach (Transform child2 in child.transform)
+                        {
+                            if (child2.name == "TextPanel")
+                            {
+                                foreach (Transform child3 in child2.transform)
+                                {
+                                    if (child3.name == "Text")
+                                    {
+                                        child3.gameObject.GetComponent<Text>().text = "";
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                break;
+            case 7:
+                CompIndex();
+                break;
             default:
                 break;
         }
+    }
+
+    public void CompIndex()
+    {
+        g_index = 1;
     }
 
     public void Updata()
@@ -63,14 +95,14 @@ public class Actions
         }
     }
 
-    private void Title_Start()
+    public void Title_Start()
     {
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
             for (int i = 0; i < 20; i++)
             {
-                if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow"||child.name== "SaveLoadWindow")
+                if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow"||child.name== "SaveLoadWindow"|| child.name == "MenuBar")
                 {
                     child.gameObject.SetActive(false);
                 }

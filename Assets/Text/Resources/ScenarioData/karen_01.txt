@@ -157,5 +157,10 @@
 #Ico=del
 #Speaker=悠一
 {「ご、ごめんっ…分かったって…ダメダメな俺のためにわざわざ作ってきてくれたんだろ？あ、ありがとな…？」}
+#Action=7
 #Action=3
 #Getscenario=karen_02
+
+#scene=111
+#BGM=
+#Getscenario=SelectScenario

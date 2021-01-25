@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour
                 }
             }
             Sc.SetScene("010");
+            Actions.g_index = 0;
         }
         else
         {

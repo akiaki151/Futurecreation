@@ -59,16 +59,19 @@ public class Actions
                 }
                 break;
             case 7:
-                CompIndex();
+                CompIndex(1);
+                break;
+            case 8:
+                CompIndex(2);
                 break;
             default:
                 break;
         }
     }
 
-    public void CompIndex()
+    public void CompIndex(int index)
     {
-        g_index = 1;
+        g_index = index;
     }
 
     public void Updata()

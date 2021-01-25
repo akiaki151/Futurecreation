@@ -5,17 +5,19 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SceneController
+public class SceneController : MonoBehaviour
 {
     public Actions Actions;
     public List<CharacterIcon> CharaIcons = new List<CharacterIcon>();//このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Character> Characters = new List<Character>();    //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Background> Backgrounds = new List<Background>();   //このように書きながらも結局インスタンス一つしか生成してないです(簡単に複数にも出来ます)
     public List<Score> Scores = new List<Score>();
-    public List<Fade> Fade = new List<Fade>();
+    public List<Fade> _Fade = new List<Fade>();
+    public Fade fade;
     private Sound _Sound;
     public string sceneTxtname { private get; set; }
-
+    public string sceneLoadName {  get; set; }//ロードで必要なもの
+    public int loadnum = 0;
     private GameController _gc;
     private GUIManager _gui;
     private SceneHolder _sh;
@@ -23,22 +25,37 @@ public class SceneController
     private Sequence _textSeq  = DOTween.Sequence();
     private Sequence _imageSeq = DOTween.Sequence();
     private Scene _currentScene;
-    private bool _isOptionsShowed;
+    public  bool _isOptionsShowed;
     private bool _isSaveShowed;
     private string _tempText;
     private float _messageSpeed = 0.1f;
     private bool _charaAction = false;
-    
+    private GameObject canvas;
+    private GameObject targetGameObject;
+    private string _name="";
+    public string ID = "";
+    public string Save_options;
 
     public SceneController(GameController _gc)
     {
         this._gc = _gc;
         _gui = GameObject.Find("GUI").GetComponent<GUIManager>();
+        
         Actions = new Actions(_gc);
         _sh = new SceneHolder(this);
         _sr = new SceneReader(this);
         _textSeq.Complete();
         sceneTxtname = "";
+        //ここはセーブのウィンドウが開いているか開いていないかでテキストのクリックを止める処理
+        canvas = GameObject.Find("Canvas");
+        foreach (Transform child in canvas.transform)
+        {
+            if (child.name == "SaveLoadWindow")
+            {
+                targetGameObject = child.gameObject;
+            }
+        }
+        targetGameObject.SetActive(false);
     }
 
     public void WaitClick()
@@ -48,30 +65,43 @@ public class SceneController
             if (Input.GetMouseButtonDown(0))
             {
                 //  キャラの座標戻し
-                if (_charaAction)
-                {
-                    var character = Characters.Find(c => c.Name == "Characters");
-                    character.action = false;
-                    _charaAction = false;
-                }
+                //if (_charaAction)
+                //{
+                //    var character = Characters.Find(c => c.Name == "Characters");
+                //    character.action = false;
+                //    _charaAction = false;
+                //}
 
+                //ここでタップ判定(テキストを進めていいのかどうか)
                 if (EventSystem.current.IsPointerOverGameObject())
                 {
                     Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                     Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-                    if (collition2d != null)
+                    if (collition2d != null || targetGameObject.activeSelf)
                     {
-                        var button = collition2d.gameObject.GetComponent<Button>();
-                        if (button != null) return;
+                        loadnum = _currentScene.Index - 1;
+                        sceneLoadName = _name;
+                        ID = sceneTxtname;
+                        
+                        return;
                     }
                 }
 
-
-                if (!_isOptionsShowed && !_imageSeq.IsPlaying() &&!_isSaveShowed)
+                if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
+                {
+                    Save_options = "";
+                    SetNextProcess();      
+                }
+            }
+            if(Input.GetKey(KeyCode.LeftControl))
+                SetNextProcess();
+            if (_Fade.Find(c => c.GetActive()) && fade._playInfade)
+            {
+                if (!fade._playOutfade)
                 {
                     SetNextProcess();
+                    fade._playOutfade = true;
                 }
-
             }
         }
     }
@@ -97,10 +127,55 @@ public class SceneController
 
     public void SetScene(string id)
     {
-        _currentScene = _sh.Scenes.Find(s => s.ID == id+sceneTxtname);
+        _currentScene = _sh.Scenes.Find(s => s.ID == id + sceneTxtname);
+        _name = id + sceneTxtname;
         _currentScene = _currentScene.Clone();
         if (_currentScene == null) Debug.LogError("scenario not found");
-        SetNextProcess();
+            SetNextProcess();
+    }
+    // 文字の出現回数をカウント
+    public static int CountChar(string s, char c)
+    {
+        return s.Length - s.Replace(c.ToString(), "").Length;
+    }
+
+    public void LoadScene(string LoadName, int num, string id,string line)
+    {
+        _currentScene = _sh.Scenes.Find(s => s.ID == LoadName);
+        _currentScene = _currentScene.Clone();
+        if (_currentScene == null) Debug.LogError("scenario not found");
+        _currentScene.LoadLine(num);
+        sceneTxtname = id;
+        if (line != ""&& line !=null)
+        {
+            int i = 0;
+            var options = new List<(string, string)>();
+            while (true)
+            {
+                if (i< CountChar(line, ';'))
+                {
+                    var splitted = line.Split(';');
+
+                    var splitted2 = splitted[i].Split(':');
+                   
+                    options.Add((splitted2[0], splitted2[1]));          
+                    i++;
+                }
+                else
+                {
+                    _gui.ButtonPanel.gameObject.SetActive(true);
+                    SetOptions(options);
+                    SetNextProcess();
+                    break;
+                }
+            }          
+        }
+        else
+        {
+            _isOptionsShowed = false;
+            SetNextProcess();
+        }
+        targetGameObject.SetActive(false);
     }
 
     public void SetText(string text)
@@ -179,6 +254,7 @@ public class SceneController
     {
         var character = Characters.Find(c => c.Name == name);
         character.SetImage(ID,x,y,scale);
+
     }
     //////////////////////////////////////////////////////////////////////
 
@@ -210,25 +286,33 @@ public class SceneController
     //フェード処理//////////////////////////////////////////////////
     public void SetFade(string name)
     {
-        Fade.ForEach(c => c.Destroy());
-        Fade = new List<Fade>();
+        _Fade.ForEach(c => c.Destroy());
+        _Fade = new List<Fade>();
         AddFade(name);
     }
     public void AddFade(string name)
     {
-        if (Fade.Exists(c => c.Name == name)) return;
+        if (_Fade.Exists(c => c.Name == name)) return;
 
         var prefab = Resources.Load("Prefabs/Fade") as GameObject;
         var fadeObject = Object.Instantiate(prefab);
         var fade = fadeObject.GetComponent<Fade>();
 
         fade.Init(name);
-        Fade.Add(fade);
+        _Fade.Add(fade);
     }
-    public void SetFadeImage(string name, string ID)
+    public void SetFadeInImage(string name, string ID, int COLOR)
     {
-        var fade = Fade.Find(c => c.Name == name);
-        fade.SetImage(ID);
+        fade = _Fade.Find(c => c.Name == name);
+        fade.Appear();
+        fade.SetInImage(ID, COLOR);
+    }
+    public void SetFadeOutImage(string name, string ID, int COLOR)
+    {
+        fade = _Fade.Find(c => c.Name == name);
+        fade.Appear();
+        fade._playOutfade = false;
+        fade.SetOutImage(ID, COLOR);
     }
     //////////////////////////////////////////////////////////////////////
 
@@ -286,27 +370,35 @@ public class SceneController
     }
     public void ChangeBGM(string num)
     {
-        int num2 = int.Parse(num);
-        _Sound.ChangeBGM(num2);
+        _Sound.ChangeBGM(num);
     }
     public void ChangeSE(string num, string flag)
     {
-        int num2 = int.Parse(num);
         int flag2 = int.Parse(flag);
-        _Sound.ChangeSE(num2, flag2);
+        _Sound.ChangeSE(num, flag2);
     }
-    //////////////////////////////////////////////////////////////////////\
+    //////////////////////////////////////////////////////////////////////
     public void SetOptions(List<(string text, string nextScene)> options)
     {
-        _isOptionsShowed = true;
-        foreach (var o in options)
+        if (!_isOptionsShowed)
         {
-            Button b = Object.Instantiate(_gui.OptionButton);
-            Text text = b.GetComponentInChildren<Text>();
-            text.text = o.text;
-            b.onClick.AddListener(() => onClickedOption(o.nextScene));
-            b.transform.SetParent(_gui.ButtonPanel, false);
+            _isOptionsShowed = true;
+            foreach (var o in options)
+            {
+                Button b = Object.Instantiate(_gui.OptionButton);
+                Text text = b.GetComponentInChildren<Text>();
+                text.text = o.text;
+                b.onClick.AddListener(() => onClickedOption(o.nextScene));
+                b.transform.SetParent(_gui.ButtonPanel, false);
+            }
         }
+    }
+
+    public void Save_Options(string data)
+    {
+        
+        Save_options += data;
+        Debug.Log(Save_options);
     }
 
     public void onClickedOption(string nextID = "")

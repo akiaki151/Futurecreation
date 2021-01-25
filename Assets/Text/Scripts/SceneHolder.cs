@@ -12,12 +12,12 @@ public class SceneHolder
         this._sc = _sc;
         Load("SelectScenario");
     }
-
     private void Load(string name)
     {
         var itemFile = Resources.Load("ScenarioData/"+name) as TextAsset;
         var textData = LoadText(itemFile);
         Scenes = Parse(textData);
+        
     }
 
     private List<string> Load2(string name)
@@ -76,6 +76,7 @@ public class SceneHolder
             if (line.Contains("#scene"))
             {
                 var ID = line.Replace("#scene=", "");
+                
                 scene = new Scene(ID);
                 scenes.Add(scene);
             }

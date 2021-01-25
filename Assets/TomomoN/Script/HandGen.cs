@@ -15,9 +15,8 @@ public class HandGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // ハートの数が一定数超えない場合returnする
-        HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
-        if (heart.GetHeartCount() > heart.GetMaxHeartCount())
+        GifCtl gif = GameObject.Find("GifControl").GetComponent<GifCtl>();
+        if (gif.IsGifPlaying())
         {
             HandTexture.SetActive(false);
         }
@@ -26,5 +25,15 @@ public class HandGen : MonoBehaviour
             HandTexture.SetActive(true);
         }
 
+        // ハートの数が一定数超えない場合returnする
+        //HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
+        //if (heart.GetHeartCount() > heart.GetMaxHeartCount())
+        //{
+        //    HandTexture.SetActive(false);
+        //}
+        //else
+        //{
+        //    HandTexture.SetActive(true);
+        //}
     }
 }

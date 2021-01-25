@@ -18,7 +18,7 @@ public class VolumeSliderToText : MonoBehaviour
 
         ValueSlider.onValueChanged.AddListener(delegate { SliderTaskOnChanged(); });
 
-        ValueSlider.value = Mathf.Abs(PlayerPrefs.GetInt(this.name)) / 40.0f * 100.0f;
+        ValueSlider.value = (PlayerPrefs.GetInt(this.name) + 40) * 100 / 40;
 
         ValueInputField.text = ValueSlider.value.ToString();
     }

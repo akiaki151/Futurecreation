@@ -11,30 +11,29 @@ public class SoundSetting : MonoBehaviour
 
     private void Awake()
     {
-        slider = transform.FindChild("Slider").GetComponent<Slider>();
+        slider = transform.Find("Slider").GetComponentInChildren<Slider>();
 
-        slider.value = Mathf.Abs(PlayerPrefs.GetInt(this.name)) / 40.0f * 100.0f;
+        float temp = PlayerPrefs.GetInt(this.name);
 
-        float calc = (slider.value - 100.0f) / 100.0f * 40.0f;
+        slider.value = (temp + 40) * 100 / 40;
 
-        AudioMixerObj.SetFloat(this.name, calc);
-        PlayerPrefs.SetInt(this.name, (int)calc);
+        AudioMixerObj.SetFloat(this.name, (int)temp);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        AudioMixerObj.SetFloat(this.name, PlayerPrefs.GetInt(this.name));
     }
 
     // Update is called once per frame
     void Update()
     {
         float temp;
-
+        
         AudioMixerObj.GetFloat(this.name, out temp);
 
-        float calc = (slider.value - 100.0f) / 100.0f * 40.0f;
+        float calc = slider.value / 100 * 40 - 40;
 
         if ((int)temp != (int)calc)
         {

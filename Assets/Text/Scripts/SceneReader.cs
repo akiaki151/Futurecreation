@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-
+using UnityEngine;
 public class SceneReader 
 {
     private SceneController _sc;
@@ -18,8 +18,11 @@ public class SceneReader
                                 "Next",
                                 "Options",
                                 "Getscenario",
-                                "Fade"
+                                //"Fade"
                                 };
+    private string[] _fadetag = {"FadeIn",
+                                "FadeOut"
+    };
     
     public SceneReader(SceneController _sc)
     {
@@ -39,29 +42,44 @@ public class SceneReader
         var text = "";
         var list = new List<string>();
         list.AddRange(_taglist);
+        var fade_list = new List<string>();
+        fade_list.AddRange(_fadetag);
         var _tagFactory = new Taglist();
-        
+
         if (line.Contains("#"))
         {
             while (true)
             {
                 if (!line.Contains("#")) break;
-                line = line.Replace("#", ""); 
+                line = line.Replace("#", "");
                 foreach (string tag in list)
                 {
                     if (line.Contains(tag))
                     {
 
-                        _tagFactory.CreateTag(tag).Do(_sc,line,s);
-                        
+                        _tagFactory.CreateTag(tag).Do(_sc, line, s);
+
                     }
                 }
-               
                 s.GoNextLine();
                 if (s.IsFinished()) break;
                 line = s.GetCurrentLine();
             }
         }
+        if (line.Contains("*"))
+        {
+            line = line.Replace("*", "");
+            foreach (string tag in fade_list)
+            {
+                if (line.Contains(tag))
+                {
+                    _tagFactory.CreateTag(tag).Do(_sc, line, s);
+                }
+            }
+            s.GoNextLine();
+            line = s.GetCurrentLine();
+        }
+
         if (line.Contains('{'))
         {
             line = line.Replace("{", "");

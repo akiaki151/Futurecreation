@@ -1,19 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine.UI;
 
-public class Fade : MonoBehaviour {
-
+public class Fade : MonoBehaviour
+{
     private GameObject _fadeObject;
     private Image _fadeImage;
     private Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
     private GameObject canvas;
 
     public string Name { get; private set; }
-    
-    void Start ()
+    public bool _playInfade { get; set; }
+    public bool _playOutfade { get; set; }
+
+    void Start()
     {
 
     }
@@ -32,27 +35,46 @@ public class Fade : MonoBehaviour {
         }
         gameObject.SetActive(false);
         LoadImage();
+        _playInfade = false;
+        _playOutfade = false;
     }
 
     public void LoadImage()
     {
-        var temp = Resources.LoadAll<Sprite>("Image/"+Name).ToList();
+        var temp = Resources.LoadAll<Sprite>("Image/" + Name).ToList();
         foreach (Sprite s in temp)
         {
             _sprites.Add(s.name, s);
         }
     }
 
-    public void SetImage(string imageID)
+    public void SetInImage(string imageID, int colorID)
     {
         _fadeImage.sprite = _sprites[imageID];
-        FadeIn();
-        FadeOut();
+        _fadeImage.material = Resources.Load<Material>("Materials/FadeIn");
+        _fadeImage.material.color = new Color(colorID, colorID, colorID, 0);
+        StartCoroutine(FadeInStart());
+    }
+    public void SetOutImage(string imageID, int colorID)
+    {
+        _fadeImage.sprite = _sprites[imageID];
+        _fadeImage.material = Resources.Load<Material>("Materials/FadeOut");
+        _fadeImage.material.color = new Color(colorID, colorID, colorID, 1);
+        StartCoroutine(FadeOutStart());
     }
 
     public void Appear()
     {
         _fadeObject.SetActive(true);
+    }
+    public void DisApp()
+    {
+        _fadeObject.SetActive(false);
+    }
+
+    public bool GetActive()
+    {
+        return _fadeObject.activeSelf;
     }
 
     public void FadeIn()
@@ -72,5 +94,27 @@ public class Fade : MonoBehaviour {
         Destroy(this);
     }
 
+    public IEnumerator FadeInStart()
+    {
+        _playInfade = false;
+        yield return FadeAnime(_fadeImage.material, 1);
+        _playInfade = true;
+    }
+    public IEnumerator FadeOutStart()
+    {
+        yield return FadeAnime(_fadeImage.material, 1);
+        _playOutfade = false;
+    }
 
+    private IEnumerator FadeAnime(Material material, float time)
+    {
+        float current = 0;
+        while (current < time)
+        {
+            material.SetFloat("_Alpha", current / time);
+            yield return new WaitForEndOfFrame();
+            current += Time.deltaTime;
+        }
+        material.SetFloat("_Alpha", 1);
+    }
 }

@@ -127,15 +127,19 @@ public class Taglist
         public void Do(SceneController _sc, string line, Scene s)
         {
             var options = new List<(string, string)>();
+
             while (true)
             {
+
                 s.GoNextLine();
                 line = line = s.Lines[s.Index];
+
                 if (line.Contains("["))
                 {
                     line = line.Replace("[", "").Replace("]", "");
                     var splitted = line.Split(':');
                     options.Add((splitted[0], splitted[1]));
+                    _sc.Save_Options(splitted[0] + ":" + splitted[1] + ";");
                 }
                 else
                 {
@@ -157,12 +161,23 @@ public class Taglist
         }
     }
 
-    public class Fade : ITag
+    public class FadeIn : ITag
     {
         public void Do(SceneController _sc, string line, Scene s)
         {
-            line = line.Replace("Fade=", "");
-            _sc.SetFadeImage("Fade", line);
+            line = line.Replace("FadeIn=", "");
+            var splitted = line.Split(':');
+            _sc.SetFadeInImage("Fade", splitted[0], int.Parse(splitted[1]));
+        }
+    }
+
+    public class FadeOut : ITag
+    {
+        public void Do(SceneController _sc, string line, Scene s)
+        {
+            line = line.Replace("FadeOut=", "");
+            var splitted = line.Split(':');
+            _sc.SetFadeOutImage("Fade", splitted[0], int.Parse(splitted[1]));
         }
     }
 }

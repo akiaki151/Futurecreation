@@ -41,7 +41,6 @@ public class Countdown : MonoBehaviour
         // 制限時間以下になったらコンソールに「制限時間終了」という文字列を表示する
         if (totalTime <= 0.0f)
         {
-            Debug.Log("カウントダウン終了");
             isStart = true;
         }
     }

@@ -76,20 +76,19 @@ public class FadeManager_TomomoN : MonoBehaviour
 
     void Update()
     {
-
-        // カウントダウンが終わるまで処理に入らない
-        if (!Countdown.isStart) return;
-
         // フラグ有効なら毎フレームフェードイン/アウト処理
         if (bFadeIn)
         {
+            // カウントダウンが終わるまで処理に入らない
+            //if (!Countdown.isStart) return;
+
             // 経過時間から透明度計算
             alpha -= Time.deltaTime / fadeTime;
 
             // フェードイン終了判定
             if (alpha <= 0.0f)
             {
-                Countdown.isStart = false;
+                //Countdown.isStart = false;
                 bFadeIn = false;
                 alpha = 0.0f;
                 fadeCanvas.enabled = false;
@@ -101,8 +100,8 @@ public class FadeManager_TomomoN : MonoBehaviour
         else if (bFadeOut)
         {
             // 経過時間から透明度計算
-            alpha += Time.deltaTime / fadeTime;
-
+            alpha += Time.deltaTime / (fadeTime + 1.5f);
+            
             // フェードアウト終了判定
             if (alpha >= 1.0f)
             {

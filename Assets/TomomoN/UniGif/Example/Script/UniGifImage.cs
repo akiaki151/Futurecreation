@@ -162,11 +162,11 @@ public class UniGifImage : MonoBehaviour
                         if (m_nowLoopCount >= loopCount)
                         {
                             // ハートの数が一定数超えない場合returnする
-                            HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
-                            heart.SetHeartCount(0);
+                            //HeartEffectGen heart = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
+                            //heart.SetHeartCount(0);
                             // GifCtlをもらう
-                            GifCtl gifCtl = GameObject.Find("GifControl").GetComponent<GifCtl>();
-                            gifCtl.SetGifPlaying(false);
+                            //GifTextureScript gif = GameObject.Find("GIfImage").GetComponent<GifTextureScript>();
+                            //gif.SetGifPlaying(false);
                             loopCount = 0;
                             Stop();
                             return;

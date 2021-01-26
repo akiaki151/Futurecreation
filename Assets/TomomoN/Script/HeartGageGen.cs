@@ -15,7 +15,7 @@ public class HeartGageGen : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        GifCtl gif = GameObject.Find("GifControl").GetComponent<GifCtl>();
+        GifTextureScript gif = GameObject.Find("GifImage").GetComponent<GifTextureScript>();
         if (gif.IsGifPlaying())
         {
             HeartGage.SetActive(false);

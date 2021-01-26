@@ -217,6 +217,8 @@ public class SceneController : MonoBehaviour
     //特別なアクション処理//////////////////////////////////////////////////
     public void Action(string num)
     {
+
+        Timer.startLoadScene = Time.realtimeSinceStartup;
         int num2 = int.Parse(num);
         Actions.SelectAction(num2);
     }

@@ -20,7 +20,7 @@ public class SliderToText : MonoBehaviour
 
         if (PlayerPrefs.GetInt(this.name) == 0)
         {
-            ValueSlider.value = 50;
+            ValueSlider.value = 5;
             PlayerPrefs.SetInt(this.name, (int)ValueSlider.value);
         }
         else
@@ -39,13 +39,13 @@ public class SliderToText : MonoBehaviour
 
     public void InputFieldTaskOnChanged()
     {
-        if (int.Parse(ValueInputField.text) > 100)
+        if (int.Parse(ValueInputField.text) > 10)
         {
-            ValueInputField.text = "100";
+            ValueInputField.text = "10";
         }
-        if (int.Parse(ValueInputField.text) < 0)
+        if (int.Parse(ValueInputField.text) < 1)
         {
-            ValueInputField.text = "0";
+            ValueInputField.text = "1";
         }
 
         ValueSlider.value = int.Parse(ValueInputField.text);

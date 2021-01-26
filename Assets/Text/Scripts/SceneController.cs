@@ -33,9 +33,13 @@ public class SceneController : MonoBehaviour
     private GameObject canvas;
     private GameObject targetGameObject;
     private GameObject targetGameObject2;
+    private GameObject textwindow_Obj;
     private GameObject ConfirmationObject;
     private GameObject ExitTitleConfirmationPanel;
     private GameObject TitleWindow;
+    private GameObject TextSpeed_Obj;
+    private GameObject AutoTextSpeed_Obj;
+    private GameObject WindowTransparency_Obj;
     private string _name="";
     public string ID = "";
     public string Save_options;
@@ -76,7 +80,11 @@ public class SceneController : MonoBehaviour
             {
                 targetGameObject2 = child.gameObject;
             }
-            if(child.name == "TitleWindow")
+            if (child.name == "TextWindow")
+            {
+                textwindow_Obj = child.gameObject;
+            }
+            if (child.name == "TitleWindow")
             {
                 TitleWindow = child.gameObject;
             }
@@ -116,7 +124,13 @@ public class SceneController : MonoBehaviour
         if (_currentScene != null)
         {
             KeyPush();
-
+            if (targetGameObject2.activeSelf)
+            {
+                _messageSpeed = 0.01f*((10/PlayerPrefs.GetInt("TextSpeed")));
+                _auto_interval = 10 - PlayerPrefs.GetInt("AutoTextSpeed");
+                textwindow_Obj.GetComponent<Image>().color = new Color(1,1,1,PlayerPrefs.GetInt("WindowTransparency") /10.0f);
+                
+            }
             if (_Fade.Find(c => c.GetActive()) && fade._playInfade)
             {
                 if (!fade._playOutfade)

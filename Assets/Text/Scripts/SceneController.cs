@@ -34,6 +34,7 @@ public class SceneController : MonoBehaviour
     private GameObject targetGameObject;
     private GameObject targetGameObject2;
     private GameObject ConfirmationObject;
+    private GameObject ExitTitleConfirmationPanel;
     private GameObject TitleWindow;
     private string _name="";
     public string ID = "";
@@ -42,12 +43,15 @@ public class SceneController : MonoBehaviour
     private Button load_button;
     private Button setting_button;
     private Button title_button;
-
+    private int _auto_judge;
+    private float _auto_interval;
+    private float auto_time;
     public SceneController(GameController _gc)
     {
         this._gc = _gc;
         _gui = GameObject.Find("GUI").GetComponent<GUIManager>();
-        
+        auto_time = 0.0f;
+        _auto_interval = 1.0f;
         Actions = new Actions(_gc);
         _sh = new SceneHolder(this);
         _sr = new SceneReader(this);
@@ -76,6 +80,10 @@ public class SceneController : MonoBehaviour
             {
                 TitleWindow = child.gameObject;
             }
+            if(child.name== "ExitTitleConfirmationPanel")
+            {
+                ExitTitleConfirmationPanel = child.gameObject;
+            }
             if (child.name == "MenuBar")
             {
                 foreach (Transform child2 in child.transform)
@@ -100,6 +108,7 @@ public class SceneController : MonoBehaviour
             }
         }
         targetGameObject.SetActive(false);
+        _auto_judge = 1;
     }
 
     public void WaitClick()
@@ -116,6 +125,8 @@ public class SceneController : MonoBehaviour
                     fade._playOutfade = true;
                 }
             }
+
+
         }
     }
 
@@ -141,42 +152,86 @@ public class SceneController : MonoBehaviour
             if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
             {
                 Save_options = "";
+                
                 SetNextProcess();
+            }
+        }
+        else
+        {
+            if (_auto_judge<0&&(!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed))
+            {
+                //ここでタップ判定(テキストを進めていいのかどうか)
+                if (EventSystem.current.IsPointerOverGameObject())
+                {
+                    Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                    Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
+                    if (collition2d != null || targetGameObject.activeSelf || targetGameObject2.activeSelf)
+                    {
+                        loadnum = _currentScene.Index - 1;
+                        sceneLoadName = _name;
+                        ID = sceneTxtname;
+
+                        return;
+                    }
+                }
+                auto_time += Time.deltaTime;
+                if (auto_time >= _auto_interval)
+                {
+                    Save_options = "";
+                    SetNextProcess();
+                    auto_time = 0;
+                }
             }
         }
 
 
-        if (Input.GetKey(KeyCode.LeftControl)|| Input.GetKey(KeyCode.RightControl))
+        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        {
+            _auto_judge = -1;
             SetNextProcess();
+        }
 
       
         if (Input.GetKeyDown(KeyCode.Escape) && !TitleWindow.activeSelf && !targetGameObject2.activeSelf && !targetGameObject.activeSelf)
         {
+            _auto_judge = 1;
             title_button.onClick.Invoke();
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {
+            _auto_judge = 1;
             ConfirmationObject.SetActive(false);
+            ExitTitleConfirmationPanel.SetActive(false);
             targetGameObject.SetActive(false);
             targetGameObject2.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.S) && !TitleWindow.activeSelf)
         {
+            _auto_judge = 1;
             save_button.onClick.Invoke();
             ConfirmationObject.SetActive(false);
+            ExitTitleConfirmationPanel.SetActive(false);
             targetGameObject2.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
         {
+            _auto_judge = 1;
             load_button.onClick.Invoke();
             ConfirmationObject.SetActive(false);
+            ExitTitleConfirmationPanel.SetActive(false);
             targetGameObject2.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            _auto_judge *= -1;
         }
 
         if (Input.GetKeyDown(KeyCode.M))
         {
+            _auto_judge = 1;
             setting_button.onClick.Invoke();
             ConfirmationObject.SetActive(false);
             targetGameObject.SetActive(false);

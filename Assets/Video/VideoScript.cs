@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class VideoScript : MonoBehaviour
 {
     [SerializeField] VideoPlayer vp;
+    [SerializeField] GameObject ConfirmationPanel;
 
     Button button;
 
@@ -21,7 +22,32 @@ public class VideoScript : MonoBehaviour
 
     void Update()
     {
-    
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            ConfirmationPanel.GetComponent<TwoOptionButton>().SetIndex(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            ConfirmationPanel.GetComponent<TwoOptionButton>().SetIndex(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            switch (ConfirmationPanel.GetComponent<TwoOptionButton>().GetIndex())
+            {
+                case 1:
+                    ConfirmationPanel.GetComponent<TwoOptionButton>().SetIndex(1);
+                    ConfirmationPanel.gameObject.SetActive(false);
+                    SkipVideo();
+                    break;
+                case 2:
+                    ConfirmationPanel.GetComponent<TwoOptionButton>().SetIndex(2);
+                    ConfirmationPanel.gameObject.SetActive(false);
+                    ResumeVideo();
+                    break;
+            }
+        }
     }
 
     void TaskOnClick()
@@ -47,6 +73,7 @@ public class VideoScript : MonoBehaviour
 
     public void SkipVideo()
     {
+        vp.Stop();
         SceneManager.LoadScene("Text");
     }
 }

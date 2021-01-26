@@ -18,6 +18,7 @@ public class Fade_Anime : MonoBehaviour
         Image _Image = GetComponent<Image>();
         _Image.material = Resources.Load<Material>("Materials/FadeOut");
         yield return FadeAnime(_Image.material, 3);
+        this.gameObject.SetActive(false);
     }
 
     IEnumerator FadeAnime(Material material, float time)

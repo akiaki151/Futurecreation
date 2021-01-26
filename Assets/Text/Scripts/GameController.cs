@@ -9,6 +9,8 @@ public class GameController : MonoBehaviour
     private GameObject canvas;
     void Start()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         Sc = new SceneController(this);
         
         if (Actions.g_index == 1)
@@ -18,7 +20,7 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" ||child.name== "Fade"|| child.name == "NotSaveData"||child.name == "BackLog")
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" ||child.name== "Fade"|| child.name == "NotSaveData"||child.name == "BackLog" || child.name == "NotSaveData" || child.name == "FadeImage")
                     {
                         child.gameObject.SetActive(false);
                     }
@@ -38,7 +40,7 @@ public class GameController : MonoBehaviour
             {
                 for (int i = 0; i < 20; i++)
                 {
-                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" || child.name == "Fade"|| child.name == "NotSaveData" || child.name == "BackLog")
+                    if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow" || child.name == "SaveLoadWindow" || child.name == "Fade"|| child.name == "NotSaveData" || child.name == "BackLog" || child.name == "FadeImage")
                     {
                         child.gameObject.SetActive(false);
                     }

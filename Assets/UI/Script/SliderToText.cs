@@ -72,4 +72,11 @@ public class SliderToText : MonoBehaviour
     {
         return ValueSlider.value;
     }
+
+    public void SetValue(int value)
+    {
+        ValueSlider.value = value;
+
+        PlayerPrefs.SetInt(this.name, (int)ValueSlider.value);
+    }
 }

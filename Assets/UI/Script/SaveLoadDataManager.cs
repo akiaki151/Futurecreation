@@ -9,7 +9,7 @@ public class SaveLoadDataManager : MonoBehaviour
     [SerializeField] private GameObject PageTitle;
     [SerializeField] private GameObject ConfirmationPanel;
 
-    [SerializeField] private Button SaveButton, LoadButton, QuickLoadButton, ChangeCommentButton, ReturnButton;
+    [SerializeField] private Button SaveButton, LoadButton, ChangeCommentButton, ReturnButton;
 
     [SerializeField] private ColorBlock SelectedButtonColor;
     [SerializeField] private ColorBlock UnselectedButtonColor;
@@ -96,8 +96,6 @@ public class SaveLoadDataManager : MonoBehaviour
                 SaveButton.colors = newColor;
                 ConfirmationPanel.GetComponent<SaveLoadConfirmationPanelManager>().SetIndex(1);
 
-                //PageTitle.GetComponent<Image>().sprite = PageTitleSave;
-
                 break;
             case 2:
                 newColor = SelectedButtonColor;
@@ -107,21 +105,6 @@ public class SaveLoadDataManager : MonoBehaviour
                 newColor.pressedColor = SelectedButtonColor.pressedColor;
                 LoadButton.colors = newColor;
                 ConfirmationPanel.GetComponent<SaveLoadConfirmationPanelManager>().SetIndex(2);
-
-                //PageTitle.GetComponent<Image>().sprite = PageTitleSave;
-
-                break;
-            case 3:
-                newColor = SelectedButtonColor;
-
-                newColor.highlightedColor = SelectedButtonColor.highlightedColor;
-                newColor.normalColor = SelectedButtonColor.normalColor;
-                newColor.pressedColor = SelectedButtonColor.pressedColor;
-                newColor.selectedColor = SelectedButtonColor.selectedColor;
-                newColor.disabledColor = SelectedButtonColor.disabledColor;
-                QuickLoadButton.colors = newColor;
-
-                //PageTitle.GetComponent<Image>().sprite = PageTitleSave;
 
                 break;
             case 4:

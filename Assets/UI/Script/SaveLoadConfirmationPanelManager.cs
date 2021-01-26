@@ -49,19 +49,9 @@ public class SaveLoadConfirmationPanelManager : MonoBehaviour
             switch(this.GetComponent<TwoOptionButton>().GetIndex())
             {
                 case 1:
-                    switch (CurrentIndex)
-                    {
-                        case 1:
-                            this.GetComponent<TwoOptionButton>().SetIndex(1);
-                            SetObjectName();
-                            this.gameObject.SetActive(false);
-                            break;
-
-                        case 2:
-                            this.GetComponent<TwoOptionButton>().SetIndex(2);
-                            this.gameObject.SetActive(false);
-                            break;
-                    }
+                    this.GetComponent<TwoOptionButton>().SetIndex(2);
+                    SetObjectName();
+                    this.gameObject.SetActive(false);
                     break;
                 case 2:
                     this.GetComponent<TwoOptionButton>().SetIndex(2);

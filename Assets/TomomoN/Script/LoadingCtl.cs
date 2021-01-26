@@ -11,8 +11,8 @@ public class LoadingCtl : MonoBehaviour
     //　読み込み率を表示するスライダー
     [SerializeField] private Slider slider;
 
-    //　読み込み率を表示するスライダー
-    [SerializeField] private float LoadingTime = 3.0f;
+    //　読み込み時間
+    private float LoadingTime = 3.0f;
 
     private float seconds = 0.0f; // 制限時間（秒）
     private float totalTime;    // トータル制限時間
@@ -23,7 +23,8 @@ public class LoadingCtl : MonoBehaviour
 
         loadUI.SetActive(true);
 
-        totalTime = seconds + 1.0f;
+        LoadingTime = Timer.LoadTime;
+        totalTime = seconds;
         oldSeconds = totalTime;
 
     }

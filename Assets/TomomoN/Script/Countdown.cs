@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class Countdown : MonoBehaviour
 {
-    [SerializeField] private float seconds = 3.0f; // 制限時間（秒）
+    private float seconds = 3.0f; // 制限時間（秒）
 
     private float totalTime;    // トータル制限時間
     private float oldSeconds;   // 前回Update時の秒数
@@ -14,6 +14,8 @@ public class Countdown : MonoBehaviour
 
     void Start()
     {
+
+        seconds = Timer.LoadTime;
 
         totalTime = seconds + 1.0f;
 

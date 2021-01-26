@@ -21,16 +21,21 @@ public class FillEffect : MonoBehaviour
     void Update()
     {
         // なでなで中か？
-        if (!HandCtl.isNadeNade) return;
-
-        HandCtl hand = GameObject.Find("HandPrefab").transform.GetChild(0).GetComponent<HandCtl>();
-        if (!hand.IsMovement())
+        if (!HandCtl.isNadeNade)
         {
             FillImage.color = ColorFlash(1.0f);
         }
         else
         {
-            FillImage.color = ColorFlash(10.0f);
+            HandCtl hand = GameObject.Find("HandPrefab").transform.GetChild(0).GetComponent<HandCtl>();
+            if (!hand.IsMovement())
+            {
+                FillImage.color = ColorFlash(1.0f);
+            }
+            else
+            {
+                FillImage.color = ColorFlash(10.0f);
+            }
         }
     }
 

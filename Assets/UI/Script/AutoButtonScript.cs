@@ -53,10 +53,12 @@ public class AutoButtonScript : MonoBehaviour
         if (value)
         {
             this.GetComponent<Button>().colors = IsAutoButtonColor;
+            PlayerPrefs.SetInt("auto", 1);
         }
         else
         {
             this.GetComponent<Button>().colors = IsNotAutoButtonColor;
+            PlayerPrefs.SetInt("auto", 0);
         }
     }
 

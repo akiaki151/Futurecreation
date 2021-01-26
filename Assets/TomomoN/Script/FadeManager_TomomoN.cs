@@ -85,8 +85,8 @@ public class FadeManager_TomomoN : MonoBehaviour
             // カウントダウンが終わるまで処理に入らない
             //if (!Countdown.isStart) return;
 
-            t += Time.deltaTime;
-            if (Timer.LoadTime > t) return;
+            //t += Time.deltaTime;
+            //if (Timer.LoadTime > t) return;
 
             // 経過時間から透明度計算
             alpha -= Time.deltaTime / fadeTime;

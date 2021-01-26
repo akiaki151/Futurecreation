@@ -40,6 +40,7 @@ public class SceneController : MonoBehaviour
     private GameObject TextSpeed_Obj;
     private GameObject AutoTextSpeed_Obj;
     private GameObject WindowTransparency_Obj;
+    private AutoButtonScript Auto_Obj;
     private string _name="";
     public string ID = "";
     public string Save_options;
@@ -112,6 +113,11 @@ public class SceneController : MonoBehaviour
                     {
                         title_button = child2.GetComponent<Button>();
                     }
+                    if (child2.name == "AutoButton")
+                    {
+                        Auto_Obj = child2.GetComponent<AutoButtonScript>();
+                    }
+                    
                 }
             }
         }
@@ -240,7 +246,21 @@ public class SceneController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.A))
         {
-            _auto_judge *= -1;
+            if (PlayerPrefs.GetInt("auto") == 0)
+            {
+                Auto_Obj.SetAuto(true);
+            }
+            else
+                Auto_Obj.SetAuto(false);
+        }
+
+        if (PlayerPrefs.GetInt("auto") ==1)
+        {
+            _auto_judge = -1;
+        }
+        else if (PlayerPrefs.GetInt("auto") == 0)
+        {
+            _auto_judge = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.M))

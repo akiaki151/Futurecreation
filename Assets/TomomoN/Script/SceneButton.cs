@@ -7,11 +7,10 @@ public class SceneButton : MonoBehaviour
 {
     public void OnClickSceneButton()
     {
-        GifCtl gif = GameObject.Find("GifControl").GetComponent<GifCtl>();
+        GifTextureScript gif = GameObject.Find("GifImage").GetComponent<GifTextureScript>();
         if (!gif.IsGifPlaying())
         {
-            Debug.Log("シーン遷移");
-            SceneManager.LoadScene("Text");
+            FadeManager_TomomoN.FadeOut("Text");
         }
     }
 }

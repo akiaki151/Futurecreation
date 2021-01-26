@@ -15,8 +15,7 @@ public class RestTime : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // カウントダウンが終わるまで処理に入らない
-        if (Countdown.isStart && !bSound)
+        if (!FadeManager_TomomoN.IsFadeIn() && !bSound)
         {
             AudioSource audio = GameObject.Find("Main Camera").GetComponent<AudioSource>();
             audio.Play();

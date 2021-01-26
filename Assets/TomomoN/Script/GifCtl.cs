@@ -5,19 +5,17 @@ using UnityEngine.UI;
 
 public class GifCtl : MonoBehaviour
 {
-    public GameObject RawImage = null;
+    public GameObject GifObj = null;
     public GameObject OnePicture = null;
     public GameObject ButtonObj = null;
 
-    UniGifImage GifImage = null;
+    GifTextureScript GifImage = null;
     HeartEffectGen HeartEffect = null;
-
-    bool bGifPlaying = false;
 
     // Start is called before the first frame update
     void Start()
     {
-        GifImage = RawImage.GetComponent<UniGifImage>();
+        GifImage = GifObj.GetComponent<GifTextureScript>();
         HeartEffect = GameObject.Find("HeartEffectGenerator").GetComponent<HeartEffectGen>();
     }
 
@@ -30,7 +28,6 @@ public class GifCtl : MonoBehaviour
         {
             OnePicture.SetActive(false);
             ButtonObj.SetActive(false);
-            bGifPlaying = true;
             GifImage.Play();
         }
         else
@@ -40,8 +37,4 @@ public class GifCtl : MonoBehaviour
 
         }
     }
-
-
-    public void SetGifPlaying(bool bPlaying) { bGifPlaying = bPlaying; }
-    public bool IsGifPlaying() { return bGifPlaying; }
 }

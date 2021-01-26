@@ -36,6 +36,7 @@ public class HandCtl : MonoBehaviour
     void Update()
     {
         if (FadeManager_TomomoN.IsFadeIn()) return;
+        if (FadeManager_TomomoN.IsFadeOut()) return;
 
         // 1フレーム前の座標を保存
         OldPosition = this.transform.position;
@@ -55,6 +56,9 @@ public class HandCtl : MonoBehaviour
         else
         {
             /* なでなで中の処理 */
+
+            GifTextureScript gif = GameObject.Find("GifImage").GetComponent<GifTextureScript>();
+            if (gif.IsGifPlaying()) return;
 
             // マウス座標取得
             Vector3 handPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -122,14 +126,12 @@ public class HandCtl : MonoBehaviour
                 if (mousePosition.x < startPos.x - 1.0f || endPos.x + 1.0f < mousePosition.x)
                 {
                     HandCtl.isNadeNade = false;
-                    Debug.Log("はずれた");
                 }
                 if (startPos.y < endPos.y)
                 {
                     if (mousePosition.y < startPos.y - 1.0f || endPos.y + 2.0f < mousePosition.y)
                     {
                         HandCtl.isNadeNade = false;
-                        Debug.Log("はずれた");
                     }
                 }
                 if (startPos.y > endPos.y)
@@ -137,7 +139,6 @@ public class HandCtl : MonoBehaviour
                     if (mousePosition.y > startPos.y + 2.0f || endPos.y - 1.0f > mousePosition.y)
                     {
                         HandCtl.isNadeNade = false;
-                        Debug.Log("はずれた");
                     }
                 }
             }
@@ -147,14 +148,12 @@ public class HandCtl : MonoBehaviour
                 if (mousePosition.y > startPos.y || endPos.y > mousePosition.y)
                 {
                     HandCtl.isNadeNade = false;
-                    Debug.Log("はずれた");
                 }
                 if (startPos.x < endPos.x)
                 {
                     if (mousePosition.x < startPos.x || endPos.x < mousePosition.x)
                     {
                         HandCtl.isNadeNade = false;
-                        Debug.Log("はずれた");
                     }
                 }
                 if (startPos.x > endPos.x)
@@ -162,7 +161,6 @@ public class HandCtl : MonoBehaviour
                     if (mousePosition.x > startPos.x || endPos.x > mousePosition.x)
                     {
                         HandCtl.isNadeNade = false;
-                        Debug.Log("はずれた");
                     }
                 }
             }
@@ -181,7 +179,6 @@ public class HandCtl : MonoBehaviour
         {
             HandCtl.isNadeNade = true;
             NadeNadeRangeName = t.gameObject.name;
-            Debug.Log("撫でてます");
         }
         //else
         //{

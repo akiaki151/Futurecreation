@@ -30,7 +30,7 @@ public class HeartEffectGen : MonoBehaviour
         if (!hand.IsMovement())
         {
             // Gif再生中か？
-            GifCtl gif = GameObject.Find("GifControl").GetComponent<GifCtl>();
+            GifTextureScript gif = GameObject.Find("GifImage").GetComponent<GifTextureScript>();
             if (gif.IsGifPlaying()) return;
 
             heartDelta += Time.deltaTime;    // デルタを加算
@@ -52,7 +52,7 @@ public class HeartEffectGen : MonoBehaviour
             if (!HandCtl.isNadeNade) return;
 
             // Gif再生中か？
-            GifCtl gif = GameObject.Find("GifControl").GetComponent<GifCtl>();
+            GifTextureScript gif = GameObject.Find("GifImage").GetComponent<GifTextureScript>();
             if (gif.IsGifPlaying()) return;
 
             SE_delta += Time.deltaTime;    // デルタを加算

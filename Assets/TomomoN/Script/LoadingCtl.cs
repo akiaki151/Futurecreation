@@ -49,7 +49,6 @@ public class LoadingCtl : MonoBehaviour
         // 制限時間以下になったらコンソールに「制限時間終了」という文字列を表示する
         if (totalTime >= LoadingTime)
         {
-            Debug.Log("ロード終了");
             loadUI.SetActive(false);
         }
     }

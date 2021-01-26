@@ -1271,6 +1271,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1406576918}
     m_Modifications:
+    - target: {fileID: 1496985083523773919, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4278022121461079840, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -1405,6 +1410,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278022122060914511, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
+        type: 3}
+      propertyPath: m_Text
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4278022122069926115, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
         type: 3}
@@ -1650,6 +1660,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278022122501606261, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
+        type: 3}
+      propertyPath: m_MaxValue
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4278022122501606261, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
+        type: 3}
+      propertyPath: m_Value
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4278022122717774664, guid: 6eeb017eb1a1b1448900c1ac3ce3d0fc,
         type: 3}
@@ -3512,7 +3532,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.00091528107, y: -0.00042582297}
+  m_AnchoredPosition: {x: 0.00064402435, y: -0.00042582297}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1717433571
@@ -4443,7 +4463,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 902885052}
   m_Direction: 0
   m_Value: 1
-  m_Size: 0.99999434
+  m_Size: 0.9999923
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

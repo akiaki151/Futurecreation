@@ -65,7 +65,6 @@ public class SettingPanelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) SettingWindow.SetActive(false);
         if (NextSettingIndex == CurrentSettingIndex) return;
 
         CurrentSettingIndex = NextSettingIndex;

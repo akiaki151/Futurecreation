@@ -33,9 +33,15 @@ public class SceneController : MonoBehaviour
     private GameObject canvas;
     private GameObject targetGameObject;
     private GameObject targetGameObject2;
+    private GameObject ConfirmationObject;
+    private GameObject TitleWindow;
     private string _name="";
     public string ID = "";
     public string Save_options;
+    private Button save_button;
+    private Button load_button;
+    private Button setting_button;
+    private Button title_button;
 
     public SceneController(GameController _gc)
     {
@@ -47,17 +53,50 @@ public class SceneController : MonoBehaviour
         _sr = new SceneReader(this);
         _textSeq.Complete();
         sceneTxtname = "";
-        //ここはセーブのウィンドウが開いているか開いていないかでテキストのクリックを止める処理
+        //Canvas内のデータ取得
         canvas = GameObject.Find("Canvas");
         foreach (Transform child in canvas.transform)
         {
             if (child.name == "SaveLoadWindow")
             {
                 targetGameObject = child.gameObject;
+                foreach (Transform child2 in targetGameObject.transform)
+                {
+                    if(child2.name == "SaveLoadConfirmationPanel")
+                    {
+                        ConfirmationObject = child2.gameObject;
+                    }
+                }
             }
             if (child.name == "SettingWindow")
             {
                 targetGameObject2 = child.gameObject;
+            }
+            if(child.name == "TitleWindow")
+            {
+                TitleWindow = child.gameObject;
+            }
+            if (child.name == "MenuBar")
+            {
+                foreach (Transform child2 in child.transform)
+                {
+                    if (child2.name == "SaveButton")
+                    {
+                        save_button = child2.GetComponent<Button>();
+                    }
+                    if (child2.name == "LoadButton")
+                    {
+                        load_button = child2.GetComponent<Button>();
+                    }
+                    if (child2.name == "SettingButton")
+                    {
+                        setting_button = child2.GetComponent<Button>();
+                    }
+                    if (child2.name == "TitleButton")
+                    {
+                        title_button = child2.GetComponent<Button>();
+                    }
+                }
             }
         }
         targetGameObject.SetActive(false);
@@ -67,39 +106,8 @@ public class SceneController : MonoBehaviour
     {
         if (_currentScene != null)
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                //  キャラの座標戻し
-                //if (_charaAction)
-                //{
-                //    var character = Characters.Find(c => c.Name == "Characters");
-                //    character.action = false;
-                //    _charaAction = false;
-                //}
+            KeyPush();
 
-                //ここでタップ判定(テキストを進めていいのかどうか)
-                if (EventSystem.current.IsPointerOverGameObject())
-                {
-                    Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                    Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
-                    if (collition2d != null || targetGameObject.activeSelf|| targetGameObject2.activeSelf)
-                    {
-                        loadnum = _currentScene.Index - 1;
-                        sceneLoadName = _name;
-                        ID = sceneTxtname;
-                        
-                        return;
-                    }
-                }
-
-                if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
-                {
-                    Save_options = "";
-                    SetNextProcess();      
-                }
-            }
-            if(Input.GetKey(KeyCode.LeftControl))
-                SetNextProcess();
             if (_Fade.Find(c => c.GetActive()) && fade._playInfade)
             {
                 if (!fade._playOutfade)
@@ -108,6 +116,70 @@ public class SceneController : MonoBehaviour
                     fade._playOutfade = true;
                 }
             }
+        }
+    }
+
+    public void KeyPush()
+    {
+        if (Input.GetMouseButtonDown(0))
+        {
+            //ここでタップ判定(テキストを進めていいのかどうか)
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                Vector2 tapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+                Collider2D collition2d = Physics2D.OverlapPoint(tapPoint);
+                if (collition2d != null || targetGameObject.activeSelf || targetGameObject2.activeSelf)
+                {
+                    loadnum = _currentScene.Index - 1;
+                    sceneLoadName = _name;
+                    ID = sceneTxtname;
+
+                    return;
+                }
+            }
+
+            if (!_isOptionsShowed && !_imageSeq.IsPlaying() && !_isSaveShowed)
+            {
+                Save_options = "";
+                SetNextProcess();
+            }
+        }
+
+
+        if (Input.GetKey(KeyCode.LeftControl)|| Input.GetKey(KeyCode.RightControl))
+            SetNextProcess();
+
+      
+        if (Input.GetKeyDown(KeyCode.Escape) && !TitleWindow.activeSelf && !targetGameObject2.activeSelf && !targetGameObject.activeSelf)
+        {
+            title_button.onClick.Invoke();
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            ConfirmationObject.SetActive(false);
+            targetGameObject.SetActive(false);
+            targetGameObject2.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.S) && !TitleWindow.activeSelf)
+        {
+            save_button.onClick.Invoke();
+            ConfirmationObject.SetActive(false);
+            targetGameObject2.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            load_button.onClick.Invoke();
+            ConfirmationObject.SetActive(false);
+            targetGameObject2.SetActive(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            setting_button.onClick.Invoke();
+            ConfirmationObject.SetActive(false);
+            targetGameObject.SetActive(false);
         }
     }
 

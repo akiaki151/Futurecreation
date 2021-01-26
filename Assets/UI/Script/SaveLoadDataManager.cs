@@ -65,8 +65,6 @@ public class SaveLoadDataManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape)) SaveLoadWindow.SetActive(false);
-
         if (CurrentSaveLoadIndex == NextSaveLoadIndex) return;
         CurrentSaveLoadIndex = NextSaveLoadIndex;
 

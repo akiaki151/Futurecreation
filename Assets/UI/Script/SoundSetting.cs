@@ -41,4 +41,32 @@ public class SoundSetting : MonoBehaviour
             PlayerPrefs.SetInt(this.name, (int)calc);
         }
     }
+
+    private void OnEnable()
+    {
+        float temp;
+        AudioMixerObj.GetFloat(this.name, out temp);
+
+        slider.value = (temp + 40) * 100 / 40;
+    }
+
+    public void AddVolume(int value)
+    {
+        slider.value += value;
+
+        float calc = slider.value / 100 * 40 - 40;
+
+        AudioMixerObj.SetFloat(this.name, calc);
+        PlayerPrefs.SetInt(this.name, (int)calc);
+    }
+
+    public void SubsVolume(int value)
+    {
+        slider.value -= value;
+
+        float calc = slider.value / 100 * 40 - 40;
+
+        AudioMixerObj.SetFloat(this.name, calc);
+        PlayerPrefs.SetInt(this.name, (int)calc);
+    }
 }

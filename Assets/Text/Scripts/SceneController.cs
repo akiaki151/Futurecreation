@@ -51,6 +51,8 @@ public class SceneController : MonoBehaviour
     private int _auto_judge;
     private float _auto_interval;
     private float auto_time;
+    private GameObject Backlog;
+    public static string LogText { get; set; }     //バックログの文字を保存する変数
     public SceneController(GameController _gc)
     {
         this._gc = _gc;
@@ -89,7 +91,11 @@ public class SceneController : MonoBehaviour
             {
                 TitleWindow = child.gameObject;
             }
-            if(child.name== "ExitTitleConfirmationPanel")
+            if (child.name == "BackLog")
+            {
+                Backlog = child.gameObject;
+            }
+            if (child.name== "ExitTitleConfirmationPanel")
             {
                 ExitTitleConfirmationPanel = child.gameObject;
             }
@@ -152,7 +158,7 @@ public class SceneController : MonoBehaviour
 
     public void KeyPush()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !Backlog.activeSelf)
         {
             //ここでタップ判定(テキストを進めていいのかどうか)
             if (EventSystem.current.IsPointerOverGameObject())
@@ -270,6 +276,17 @@ public class SceneController : MonoBehaviour
             ConfirmationObject.SetActive(false);
             targetGameObject.SetActive(false);
         }
+
+        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        {
+            Backlog.SetActive(true);
+            BackLogs _bl = Backlog.GetComponent<BackLogs>();
+            _bl.DialogueText(LogText);
+        }
+        if (Backlog.activeSelf && Input.GetMouseButton(1))
+        {
+            Backlog.SetActive(false);
+        }
     }
 
     public void SetComponents()
@@ -372,6 +389,7 @@ public class SceneController : MonoBehaviour
     public void SetSpeaker(string name = "")
     {
         _gui.Speaker.text = name;
+        LogText += name + "\n";
     }
 
 

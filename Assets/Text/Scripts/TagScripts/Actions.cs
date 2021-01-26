@@ -105,7 +105,7 @@ public class Actions
         {
             for (int i = 0; i < 20; i++)
             {
-                if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow"||child.name== "SaveLoadWindow"|| child.name == "NotSaveData")
+                if (child.name == "TitleWindow" || child.name == "ExitTitleConfirmationPanel" || child.name == "SettingWindow"||child.name== "SaveLoadWindow"|| child.name == "NotSaveData" || child.name == "BackLog")
                 {
                     child.gameObject.SetActive(false);
                 }

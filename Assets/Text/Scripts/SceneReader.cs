@@ -89,6 +89,7 @@ public class SceneReader
                 {
                     line = line.Replace("}", "");
                     text += line;
+                    SceneController.LogText += text + "\n\n";
                     s.GoNextLine();
                     break;
                 }

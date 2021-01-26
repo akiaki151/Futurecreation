@@ -24,6 +24,8 @@ public class FadeManager_TomomoN : MonoBehaviour
     // 遷移先のシーンName
     private static string nextScene = "";
 
+    private static float t = 0.0f;
+
 
 
     // フェード用のCanvasとImage生成
@@ -55,6 +57,7 @@ public class FadeManager_TomomoN : MonoBehaviour
     {
 
         if (fadeImage == null) Init();
+        t = 0.0f;
         alpha = 1.0f;
         fadeImage.color = Color.black;
         bFadeIn = true;
@@ -82,6 +85,9 @@ public class FadeManager_TomomoN : MonoBehaviour
             // カウントダウンが終わるまで処理に入らない
             //if (!Countdown.isStart) return;
 
+            t += Time.deltaTime;
+            if (Timer.LoadTime > t) return;
+
             // 経過時間から透明度計算
             alpha -= Time.deltaTime / fadeTime;
 
@@ -100,7 +106,7 @@ public class FadeManager_TomomoN : MonoBehaviour
         else if (bFadeOut)
         {
             // 経過時間から透明度計算
-            alpha += Time.deltaTime / (fadeTime + 1.5f);
+            alpha += Time.deltaTime / fadeTime;
             
             // フェードアウト終了判定
             if (alpha >= 1.0f)

@@ -10,7 +10,7 @@ public class HeartEffectGen : MonoBehaviour
     const int maxHeartCount = 300;
 
     float heartAddSpan = 0.01f;
-    float heartSubSpan = 1.5f;
+    float heartSubSpan = 0.125f;
     float heartDelta = 0.0f;
     float SE_Span = 0.125f;
     float SE_delta = 0.0f;

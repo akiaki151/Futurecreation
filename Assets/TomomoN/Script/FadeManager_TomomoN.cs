@@ -59,7 +59,7 @@ public class FadeManager_TomomoN : MonoBehaviour
         if (fadeImage == null) Init();
         t = 0.0f;
         alpha = 1.0f;
-        fadeImage.color = Color.black;
+        fadeImage.color = Color.white;
         bFadeIn = true;
 
     }
@@ -101,7 +101,7 @@ public class FadeManager_TomomoN : MonoBehaviour
             }
 
             // フェード用Imageの色・透明度設定
-            fadeImage.color = new Color(0.0f, 0.0f, 0.0f, alpha);
+            fadeImage.color = new Color(1.0f, 1.0f, 1.0f, alpha);
         }
         else if (bFadeOut)
         {
@@ -119,7 +119,7 @@ public class FadeManager_TomomoN : MonoBehaviour
             }
 
             // フェード用Imageの色・透明度設定
-            fadeImage.color = new Color(0.0f, 0.0f, 0.0f, alpha);
+            fadeImage.color = new Color(1.0f, 1.0f, 1.0f, alpha);
         }
 
     }

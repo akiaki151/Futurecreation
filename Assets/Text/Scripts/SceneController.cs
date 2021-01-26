@@ -211,16 +211,17 @@ public class SceneController : MonoBehaviour
         }
 
 
-        if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        if ((Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))&& !Backlog.activeSelf)
         {
             _auto_judge = -1;
             SetNextProcess();
         }
 
       
-        if (Input.GetKeyDown(KeyCode.Escape) && !TitleWindow.activeSelf && !targetGameObject2.activeSelf && !targetGameObject.activeSelf)
+        if (Input.GetKeyDown(KeyCode.Escape) && !TitleWindow.activeSelf && !targetGameObject2.activeSelf && !targetGameObject.activeSelf&& !Backlog.activeSelf)
         {
             _auto_judge = 1;
+            Backlog.SetActive(false);
             title_button.onClick.Invoke();
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
@@ -230,6 +231,8 @@ public class SceneController : MonoBehaviour
             ExitTitleConfirmationPanel.SetActive(false);
             targetGameObject.SetActive(false);
             targetGameObject2.SetActive(false);
+            Backlog.SetActive(false);
+
         }
 
         if (Input.GetKeyDown(KeyCode.S) && !TitleWindow.activeSelf)
@@ -239,6 +242,7 @@ public class SceneController : MonoBehaviour
             ConfirmationObject.SetActive(false);
             ExitTitleConfirmationPanel.SetActive(false);
             targetGameObject2.SetActive(false);
+            Backlog.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.L))
@@ -248,10 +252,12 @@ public class SceneController : MonoBehaviour
             ConfirmationObject.SetActive(false);
             ExitTitleConfirmationPanel.SetActive(false);
             targetGameObject2.SetActive(false);
+            Backlog.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Backlog.SetActive(false);
             if (PlayerPrefs.GetInt("auto") == 0)
             {
                 Auto_Obj.SetAuto(true);
@@ -271,16 +277,21 @@ public class SceneController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M))
         {
+            Backlog.SetActive(false);
             _auto_judge = 1;
             setting_button.onClick.Invoke();
             ConfirmationObject.SetActive(false);
             targetGameObject.SetActive(false);
         }
 
-        if (Input.GetAxis("Mouse ScrollWheel") > 0)
+        if ((Input.GetAxis("Mouse ScrollWheel") > 0|| Input.GetKeyDown(KeyCode.B)) && !TitleWindow.activeSelf && !targetGameObject2.activeSelf && !targetGameObject.activeSelf&& _auto_judge > 0)
         {
             Backlog.SetActive(true);
             BackLogs _bl = Backlog.GetComponent<BackLogs>();
+            ConfirmationObject.SetActive(false);
+            ExitTitleConfirmationPanel.SetActive(false);
+            targetGameObject.SetActive(false);
+            targetGameObject2.SetActive(false);
             _bl.DialogueText(LogText);
         }
         if (Backlog.activeSelf && Input.GetMouseButton(1))

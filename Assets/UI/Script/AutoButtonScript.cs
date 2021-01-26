@@ -20,7 +20,7 @@ public class AutoButtonScript : MonoBehaviour
     void Start()
     {
         ColorBlock newColor = IsNotAutoButtonColor;
-
+        PlayerPrefs.SetInt("auto", 0);
         newColor.highlightedColor = IsNotAutoButtonColor.highlightedColor;
         newColor.normalColor = IsNotAutoButtonColor.normalColor;
         newColor.pressedColor = IsNotAutoButtonColor.pressedColor;

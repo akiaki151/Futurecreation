@@ -5,12 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class SceneButton : MonoBehaviour
 {
+    Fade_Anime _Fade;
     public void OnClickSceneButton()
     {
         GifTextureScript gif = GameObject.Find("GifImage").GetComponent<GifTextureScript>();
         if (!gif.IsGifPlaying())
         {
-            FadeManager_TomomoN.FadeOut("Text");
+            _Fade = GameObject.Find("FadeImage").GetComponent<Fade_Anime>();
+            StartCoroutine(_Fade.FadeIn());
         }
     }
 }

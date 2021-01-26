@@ -478,6 +478,7 @@ MonoBehaviour:
   m_FadeIn: {fileID: 2100000, guid: 6d9b61164f801ab46872811fa20c914a, type: 2}
   m_FadeOut: {fileID: 2100000, guid: e523f38b8dc16924da669f1ca17e913d, type: 2}
   NewTextuer: {fileID: 21300000, guid: 1889dda305fc5b34cb5a92f331229b20, type: 3}
+  m_Eneble: 0
 --- !u!114 &1960152440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +498,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f6ed440898c441244a2c938b5b6ad0e3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 509aa168c182ee04fb3f5d812140cf59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

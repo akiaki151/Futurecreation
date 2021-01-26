@@ -14,10 +14,13 @@ public class GifTextureScript : MonoBehaviour
     int frameNum = 0;
     int loopNum = 0;
     bool bGifPlaying = false;
+    Fade_Anime _Fade;    
 
     // Start is called before the first frame update
     void Start()
     {
+        _Fade = GameObject.Find("FadeImage").GetComponent<Fade_Anime>();
+        StartCoroutine(_Fade.FadeOut());
         GifImage = this.GetComponent<Image>();
         dTime = 0.0f;
         frameNum = 0;

@@ -79,4 +79,9 @@ public class SliderToText : MonoBehaviour
 
         PlayerPrefs.SetInt(this.name, (int)ValueSlider.value);
     }
+
+    private void OnEnable()
+    {
+        ValueSlider.value = PlayerPrefs.GetInt(this.name);
+    }
 }

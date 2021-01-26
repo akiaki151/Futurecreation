@@ -13,7 +13,25 @@ public class SoundSetting : MonoBehaviour
     {
         slider = transform.Find("Slider").GetComponentInChildren<Slider>();
 
-        float temp = PlayerPrefs.GetInt(this.name);
+        float temp;
+
+        if (PlayerPrefs.GetInt(this.name) == 0)
+        {
+            if (this.name == "Master")
+            {
+                temp = 0;
+            }
+            else
+            {
+                temp = -20;
+            }
+
+            PlayerPrefs.SetInt(this.name, (int)temp);
+        }
+        else
+        {
+            temp = PlayerPrefs.GetInt(this.name);
+        }
 
         slider.value = (temp + 40) * 100 / 40;
 

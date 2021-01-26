@@ -91,4 +91,31 @@ public class TwoOptionButton : MonoBehaviour
     {
         return CurrentIndex;
     }
+
+    private void OnEnable()
+    {
+        CurrentIndex = NextIndex = 1;
+
+        Button_1 = this.GetComponentsInChildren<Button>()[1];
+        Button_2 = this.GetComponentsInChildren<Button>()[0];
+
+        ColorBlock newColor = UnselectedButtonColor;
+
+        newColor.highlightedColor = UnselectedButtonColor.highlightedColor;
+        newColor.normalColor = UnselectedButtonColor.normalColor;
+        newColor.pressedColor = UnselectedButtonColor.pressedColor;
+        newColor.selectedColor = UnselectedButtonColor.selectedColor;
+        newColor.disabledColor = UnselectedButtonColor.disabledColor;
+        Button_1.colors = newColor;
+        Button_2.colors = newColor;
+
+        newColor = SelectedButtonColor;
+
+        newColor.highlightedColor = SelectedButtonColor.highlightedColor;
+        newColor.normalColor = SelectedButtonColor.normalColor;
+        newColor.pressedColor = SelectedButtonColor.pressedColor;
+        newColor.selectedColor = SelectedButtonColor.selectedColor;
+        newColor.disabledColor = SelectedButtonColor.disabledColor;
+        Button_1.colors = newColor;
+    }
 }

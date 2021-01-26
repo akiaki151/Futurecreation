@@ -82,6 +82,8 @@ public class SliderToText : MonoBehaviour
 
     private void OnEnable()
     {
+        ValueInputField = this.gameObject.transform.Find("Value").GetComponent<InputField>();
+        ValueSlider = this.gameObject.transform.Find("Slider").GetComponent<Slider>();
         ValueSlider.value = PlayerPrefs.GetInt(this.name);
     }
 }

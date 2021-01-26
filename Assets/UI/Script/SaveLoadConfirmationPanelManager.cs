@@ -34,6 +34,42 @@ public class SaveLoadConfirmationPanelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            this.GetComponent<TwoOptionButton>().SetIndex(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            this.GetComponent<TwoOptionButton>().SetIndex(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            switch(this.GetComponent<TwoOptionButton>().GetIndex())
+            {
+                case 1:
+                    switch (CurrentIndex)
+                    {
+                        case 1:
+                            this.GetComponent<TwoOptionButton>().SetIndex(1);
+                            SetObjectName();
+                            this.gameObject.SetActive(false);
+                            break;
+
+                        case 2:
+                            this.GetComponent<TwoOptionButton>().SetIndex(2);
+                            this.gameObject.SetActive(false);
+                            break;
+                    }
+                    break;
+                case 2:
+                    this.GetComponent<TwoOptionButton>().SetIndex(2);
+                    this.gameObject.SetActive(false);
+                    break;
+            }
+        }
+
         if (NextIndex == CurrentIndex) return;
 
         CurrentIndex = NextIndex;

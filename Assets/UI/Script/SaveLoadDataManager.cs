@@ -48,7 +48,6 @@ public class SaveLoadDataManager : MonoBehaviour
         newColor.disabledColor = UnselectedButtonColor.disabledColor;
         SaveButton.colors = newColor;
         LoadButton.colors = newColor;
-        QuickLoadButton.colors = newColor;
         ChangeCommentButton.colors = newColor;
         ReturnButton.colors = newColor;
 
@@ -81,7 +80,6 @@ public class SaveLoadDataManager : MonoBehaviour
         newColor.disabledColor = UnselectedButtonColor.disabledColor;
         SaveButton.colors = newColor;
         LoadButton.colors = newColor;
-        QuickLoadButton.colors = newColor;
         ChangeCommentButton.colors = newColor;
         ReturnButton.colors = newColor;
 

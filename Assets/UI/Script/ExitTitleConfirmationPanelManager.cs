@@ -41,6 +41,63 @@ public class ExitTitleConfirmationPanelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            this.GetComponent<TwoOptionButton>().SetIndex(1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            this.GetComponent<TwoOptionButton>().SetIndex(2);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            switch (this.GetComponent<TwoOptionButton>().GetIndex())
+            {
+                case 1:
+                    switch (CurrentIndex)
+                    {
+                        case 1:
+                            canvas = GameObject.Find("Canvas");
+                            panel.GetComponent<TwoOptionButton>().SetIndex(1);
+                            foreach (Transform child in canvas.transform)
+                            {
+                                for (int i = 0; i < 20; i++)
+                                {
+                                    if (child.name == "TitleWindow")
+                                    {
+                                        child.gameObject.SetActive(true);
+                                    }
+                                    else
+                                    {
+                                        child.gameObject.SetActive(false);
+                                    }
+                                }
+                            }
+                            GameController.GetComponent<GameController>().SetSelect3Scene();
+                            panel.gameObject.SetActive(false);
+                            break;
+                        case 2:
+                            panel.GetComponent<TwoOptionButton>().SetIndex(1);
+#if UNITY_EDITOR
+                            // Application.Quit() does not work in the editor so
+                            // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
+                            UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
+                            panel.gameObject.SetActive(false);
+                            break;
+                    }
+                    break;
+                case 2:
+                    this.GetComponent<TwoOptionButton>().SetIndex(2);
+                    this.gameObject.SetActive(false);
+                    break;
+            }            
+        }
+
         if (NextIndex == CurrentIndex) return;
 
         CurrentIndex = NextIndex;

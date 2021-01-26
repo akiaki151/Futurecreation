@@ -16,11 +16,11 @@ public class FadeController : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !m_Eneble)
+        if(Input.GetKeyDown(KeyCode.Space) && m_Eneble)
         {
             StartCoroutine(TransitionIn());
         }
-        if (Input.GetKeyDown(KeyCode.Space) && m_Eneble)
+        if (Input.GetKeyDown(KeyCode.Space) && !m_Eneble)
         {
             StartCoroutine(TransitionOut());
         }
@@ -37,7 +37,7 @@ public class FadeController : MonoBehaviour
     {
         Image _Image = GetComponent<Image>();
         _Image.material = Resources.Load<Material>("Materials/FadeOut");
-        yield return FadeAnime(_Image.material, 1);
+        yield return FadeAnime(_Image.material, 1.5f);
         m_Eneble = false;
     }
 
